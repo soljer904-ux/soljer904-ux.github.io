@@ -1,0 +1,6 @@
+.netlify-token
+.netlify-login
+.netlify_site_id
+.last_deploy_hash
+*.bak*
+__pycache__/

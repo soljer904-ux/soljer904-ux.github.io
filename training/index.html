@@ -1,0 +1,676 @@
+<!doctype html>
+<html lang="en-GB" data-theme="halloween"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; img-src 'none'; connect-src 'none'; form-action 'none'; base-uri 'none'">
+<meta name="robots" content="noindex, nofollow, noarchive"><meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#0F766E">
+<title>Training Portal</title>
+<style>
+:root{--bg:#FFF3DC;--fg:#35190A;--muted:#5E3A1E;--card:#FFFBF3;--line:#D9A85F;--accent:#A33A0C;--accent2:#E8A317;--tint:#FBE2B0;--hdrbg:#7B1E2B;--hdrfg:#FFF3DC;--herobg:#A8420F;--herofg:#FFF8EC;--today:#FFE08A;}
+html[data-theme="autumn"]{--bg:#FFF3DC;--fg:#35190A;--muted:#5E3A1E;--card:#FFFBF3;--line:#D9A85F;--accent:#A33A0C;--accent2:#E8A317;--tint:#FBE2B0;--hdrbg:#7B1E2B;--hdrfg:#FFF3DC;--herobg:#A8420F;--herofg:#FFF8EC;--today:#FFE08A;}
+html[data-theme="halloween"]{--bg:#150F20;--fg:#F7F0FF;--muted:#D3C6EA;--card:#251A3A;--line:#6A47A3;--accent:#FFA23A;--accent2:#FF7A00;--tint:#36264F;--hdrbg:#07040C;--hdrfg:#FFA23A;--herobg:#4C1D7D;--herofg:#FFFFFF;--today:#5A3200;}
+html[data-theme="christmas"]{--bg:#F7F1E0;--fg:#1B2A1E;--muted:#41524A;--card:#FFFDF6;--line:#C9B27A;--accent:#0F6B3A;--accent2:#D4A017;--tint:#E3F0E2;--hdrbg:#A4161A;--hdrfg:#FFF8E1;--herobg:#0F5132;--herofg:#FFFDF3;--today:#FFE9A6;}
+html[data-theme="winter"]{--bg:#EAF3FB;--fg:#10243E;--muted:#3B536E;--card:#FFFFFF;--line:#9BBFE0;--accent:#1B5AA6;--accent2:#6FB1E6;--tint:#D5E7F7;--hdrbg:#1F4E79;--hdrfg:#F2F8FF;--herobg:#17375E;--herofg:#F2F8FF;--today:#BFE0FF;}
+html[data-theme="spring"]{--bg:#F3FAEC;--fg:#1C3318;--muted:#43603C;--card:#FFFFFF;--line:#A9D18E;--accent:#2C7A30;--accent2:#E0699B;--tint:#DFF1D2;--hdrbg:#2E7D32;--hdrfg:#FFFFFF;--herobg:#276B2B;--herofg:#FFFFFF;--today:#FFD9E8;}
+html[data-theme="summer"]{--bg:#FFFAE0;--fg:#2E2400;--muted:#5A4A10;--card:#FFFFFF;--line:#E8CB60;--accent:#005F8F;--accent2:#FFB300;--tint:#FFEDA8;--hdrbg:#00689B;--hdrfg:#FFFFFF;--herobg:#B8400C;--herofg:#FFFFFF;--today:#C9ECFF;}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;background:#FFF3DC}
+[hidden]{display:none !important}
+body{margin:0;background:#FFF3DC;background:var(--bg);color:#35190A;color:var(--fg);font:20px/1.5 "Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-family:Roboto,"Segoe UI","Helvetica Neue",Arial,sans-serif}
+a{color:#A33A0C;color:var(--accent);}
+main{max-width:1180px;margin:0 auto;padding:18px 16px 48px}
+h1,h2,h3,h4,p{margin-top:0}
+/* header with live clock */
+.hdr{background:#7B1E2B;background:var(--hdrbg);color:#FFF3DC;color:var(--hdrfg);border-bottom:8px solid #E8A317;border-bottom:8px solid var(--accent2);padding:10px 16px 16px}
+.hdr-in{max-width:1180px;margin:0 auto}
+.deco{font-size:28px;line-height:1.4;letter-spacing:.5em;white-space:nowrap;overflow:hidden;text-align:center;margin:0 0 4px}
+.hdr-row{display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;-webkit-box-align:center;-ms-flex-align:center;align-items:center}
+.hdr-left{padding-right:16px}
+.hdr h1{font-size:2.6rem;line-height:1.1;margin:.1em 0 .1em;color:@hdrfg}
+.theme-tag{font-size:1.15rem;margin:0;color:#FFF3DC;color:var(--hdrfg);font-weight:600}
+.mode{display:inline-block;background:#E8A317;background:var(--accent2);color:#2A1600;border-radius:999px;padding:.15em .9em;font-weight:700;font-size:.95rem;margin:0 0 .3em}
+.clock-box{text-align:right}
+.clock{font-size:5.2rem;line-height:1;font-weight:800;letter-spacing:.02em;min-height:1em}
+.datefull{font-size:1.6rem;font-weight:700;margin-top:.1em}
+.sub{color:#5E3A1E;color:var(--muted);margin:.2em 0 .9em;font-size:1.05rem}
+/* hero: tonight */
+.tonight{background:#A8420F;background:var(--herobg);color:#FFF8EC;color:var(--herofg);border:6px solid #E8A317;border:6px solid var(--accent2);border-radius:24px;padding:20px 26px 24px;margin:0 0 22px}
+.tonight .kicker{margin:0;font-weight:800;font-size:1.35rem;text-transform:uppercase;letter-spacing:.1em;color:@herofg}
+.tonight h2{font-size:1.15rem;color:#FFF8EC;color:var(--herofg);margin:.1em 0 0;font-weight:600}
+.tonight .dish{font-size:2.7rem;line-height:1.15;font-weight:800;margin:.15em 0}
+.tonight .meta{color:#FFF8EC;color:var(--herofg);font-size:1.15rem}
+.tonight .none{font-size:2.3rem;font-weight:800;margin:.3em 0 .1em}
+.tonight .next{font-size:1.25rem;margin:0}
+.tonight .note,.tonight .tweak{background:rgba(255,255,255,.18);color:@herofg}
+.tonight .btn{background:#FFF8EC;background:var(--herofg);color:#A8420F;color:var(--herobg);border-color:@herofg}
+.tonight .cook{background:#E8A317;background:var(--accent2);color:#2A1600}
+.tonight .badge{color:@herofg}
+.tonight legend,.tonight .hint,.tonight .c{color:@herofg}
+.tonight fieldset{border-color:@herofg}
+.tonight textarea{background:#fff;color:#222}
+/* week at a glance */
+.sec-h{font-size:1.5rem;margin:26px 0 8px;color:@fg}
+.tiles{list-style:none;padding:0;margin:0 -6px;display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap}
+.tile{width:50%;padding:6px}
+.tile a{display:block;height:100%;min-height:150px;text-decoration:none;color:#35190A;color:var(--fg);background:#FFFBF3;background:var(--card);border:3px solid #D9A85F;border:3px solid var(--line);border-radius:18px;padding:12px 14px;position:relative}
+.t-day{display:block;font-size:1.2rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:@accent}
+.t-date{display:block;font-size:1.05rem;color:@muted}
+.t-dish{display:block;font-size:1.3rem;font-weight:700;line-height:1.25;margin-top:.3em}
+.t-meta{display:block;font-size:1.05rem;color:#5E3A1E;color:var(--muted);margin-top:.2em}
+.t-now{display:none;position:absolute;top:10px;right:10px;background:#E8A317;background:var(--accent2);color:#2A1600;font-weight:800;font-size:1rem;border-radius:999px;padding:.05em .7em;text-transform:uppercase}
+.tile.today a{background:#FFE08A;background:var(--today);border-color:#E8A317;border-color:var(--accent2);border-width:5px}
+.tile.today .t-now{display:block}
+.tile.past,.dw.past{opacity:.55}
+/* day details */
+.days{list-style:none;padding:0;margin:0 -8px;display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap}
+.dw{width:100%;padding:8px}
+.day,.card{background:#FFFBF3;background:var(--card);border:2px solid #D9A85F;border:2px solid var(--line);border-radius:18px;padding:16px 18px;height:100%}
+.dw.today .day{border-color:#E8A317;border-color:var(--accent2);border-width:5px;background:@today}
+.day h2{font-size:1.05rem;text-transform:uppercase;letter-spacing:.05em;color:#5E3A1E;color:var(--muted);margin:0}
+.dish{font-size:1.5rem;font-weight:700;line-height:1.25;margin:.25em 0}
+.meta{color:#5E3A1E;color:var(--muted);margin:0 0 .5em;font-size:1.05rem}
+.est{color:#5E3A1E;color:var(--muted);margin:0 0 .3em;font-size:1.05rem;font-weight:600}.est-q{font-weight:400}
+.tonight .est{color:@herofg}
+.note,.tweak{background:#FBE2B0;background:var(--tint);border-radius:12px;padding:.5em .75em;margin:.5em 0}
+.links{display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;margin:.5em -4px 0}
+.links>*{margin:4px}
+.btn{display:inline-block;padding:.6em 1em;border:2px solid #D9A85F;border:2px solid var(--line);border-radius:12px;color:#A33A0C;color:var(--accent);background:#FFFBF3;background:var(--card);text-decoration:none;font-weight:700;font-size:1.05rem;min-height:48px;line-height:1.3}
+.cook{display:inline-block;margin:.35em .4em 0 0;background:#FBE2B0;background:var(--tint);color:#A33A0C;color:var(--accent);border:1px solid #E8A317;border:1px solid var(--accent2);border-radius:999px;padding:.1em .75em;font-weight:700;font-size:1rem}
+.badge{display:inline-block;margin:.4em 0 0;font-weight:700;font-size:1.05rem}
+.rate{margin-top:.6em}.rate summary{list-style:none;cursor:pointer;display:inline-block}.rate summary::-webkit-details-marker{display:none}
+.rate-body{margin-top:.6em}
+.rate-body>*{margin-bottom:.5em}
+fieldset{border:2px solid #D9A85F;border:2px solid var(--line);border-radius:12px;margin:0 0 .5em;padding:.4em .8em;display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap}
+legend{color:#5E3A1E;color:var(--muted);font-size:1rem}
+fieldset label{min-height:48px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin-right:1.2em;font-size:1.05rem}
+input[type=radio]{width:26px;height:26px;margin:0 .45em 0 0}
+.c{display:block;color:#5E3A1E;color:var(--muted);font-size:1.05rem}
+textarea{display:block;font:inherit;color:#35190A;color:var(--fg);background:#FFF3DC;background:var(--bg);border:2px solid #D9A85F;border:2px solid var(--line);border-radius:12px;padding:.5em;width:100%;margin-top:.3em}
+.hint{color:#5E3A1E;color:var(--muted);font-size:1rem;margin:0}
+.send{margin-top:.3em}
+/* festive panel */
+.festive{background:#FBE2B0;background:var(--tint);border:4px dashed #E8A317;border:4px dashed var(--accent2);border-radius:22px;padding:16px 18px 12px;margin:0 0 22px}
+.fest-h{font-size:1.6rem;margin:0 0 .1em;color:@fg}
+.ideas{list-style:none;padding:0;margin:0 -6px;display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap}
+.idea{width:100%;padding:6px}
+.idea-in{background:#FFFBF3;background:var(--card);border:2px solid #D9A85F;border:2px solid var(--line);border-radius:16px;padding:12px 16px;height:100%}
+.idea.pick{width:100%}
+.idea.pick .idea-in{border:5px solid #E8A317;border:5px solid var(--accent2);background:@today}
+.idea h3{font-size:1.3rem;margin:0 0 .2em}
+.idea.pick h3{font-size:1.7rem}
+.idea p{margin:0 0 .4em}
+.pick-tag{display:none;background:#E8A317;background:var(--accent2);color:#2A1600;font-weight:800;border-radius:999px;padding:.05em .8em;font-size:1rem;margin-bottom:.4em;text-transform:uppercase}
+.idea.pick .pick-tag{display:inline-block}
+/* extras, cards */
+.extras{margin-top:30px}.extras-h{font-size:1.5rem;margin:0 0 .2em}
+.cards{margin-top:12px}
+.card{margin-bottom:14px;height:auto}
+.card h3{font-size:1.4rem;margin:0 0 .4em}.card h4{margin:1em 0 .3em}
+dl{margin:0}dt{color:#5E3A1E;color:var(--muted);float:left;clear:left;margin-right:.8em}dd{margin:0 0 .3em}dd:after{content:"";display:block;clear:both}
+ol li,ul li{margin:.25em 0}
+footer{color:#5E3A1E;color:var(--muted);font-size:1rem;margin-top:28px}
+@media (min-width:560px){.tile{width:33.333%}}
+@media (min-width:700px){.dw{width:50%}.idea{width:50%}}
+@media (min-width:900px){.tile{width:25%}.idea{width:33.333%}.idea.pick{width:100%}}
+@media (min-width:1100px){.dw{width:33.333%}}
+@media (max-width:640px){.hdr h1{font-size:2rem}.clock{font-size:3.6rem}.datefull{font-size:1.3rem}.clock-box{text-align:left;margin-top:.4em}.tonight .dish{font-size:2.1rem}.deco{font-size:22px}}
+@media print{.deco{display:none}}
+
+
+.fam-nav{margin:0 0 14px;font-size:1rem}
+.fam-nav a{margin-right:14px;display:inline-block}
+.fcard{background:#FFFBF3;background:var(--card);border:3px solid #D9A85F;border:3px solid var(--line);border-radius:22px;padding:16px 18px;margin:0 0 16px}
+.fcard h2{font-size:1.35rem;margin:0 0 8px}
+.fcard h3{font-size:1.15rem;margin:14px 0 6px}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px}
+.tab{flex:1 1 90px;min-height:48px;border-radius:999px;border:3px solid #D9A85F;border-color:var(--line);background:#FFFBF3;background:var(--card);color:inherit;font:inherit;font-weight:700;font-size:1.05rem;cursor:pointer;padding:10px 14px}
+.tab.on{background:#A33A0C;background:var(--accent);color:#fff;border-color:#A33A0C;border-color:var(--accent)}
+.panel[hidden]{display:none !important}
+.props{list-style:none;margin:0 0 12px;padding:0}
+.props li{padding:6px 0;border-top:1px dashed #D9A85F;border-top:1px dashed var(--line);display:flex;flex-wrap:wrap;gap:6px 12px}
+.props li:first-child{border-top:0}
+.props .k{font-weight:700;min-width:5.5em;color:#A33A0C;color:var(--accent)}
+.rowlist{list-style:none;margin:0;padding:0}
+.rowlist li{padding:10px 0;border-top:2px dashed #D9A85F;border-top:2px dashed var(--line)}
+.rowlist li:first-child{border-top:0}
+.rowlist .t{font-weight:700}
+.rowlist .d{display:block;font-size:.95rem;opacity:.85}
+.rowlist .m{display:block;font-size:.9rem;opacity:.7}
+.rota{width:100%;border-collapse:collapse;font-size:.98rem;margin:6px 0 4px}
+.rota th,.rota td{padding:8px 6px;border-top:1px solid #D9A85F;border-top:1px solid var(--line);text-align:left;vertical-align:top}
+.rota th{font-size:.85rem;text-transform:uppercase;letter-spacing:.04em;opacity:.8}
+.note{background:#FBE2B0;background:var(--tint);border-radius:14px;padding:10px 12px;font-weight:600;margin:8px 0}
+.steps{margin:0;padding-left:1.2em}
+.steps li{margin:.4em 0}
+.timer{display:flex;flex-direction:column;gap:12px}
+.timer label{font-size:.95rem;opacity:.85;font-weight:600}
+.timer select,.timer input[type=number]{min-height:48px;width:100%;font:inherit;font-size:1.05rem;border-radius:12px;border:2px solid #D9A85F;border-color:var(--line);background:#FFF3DC;background:var(--bg);color:inherit;padding:10px 12px}
+.custom-row{display:flex;flex-wrap:wrap;gap:10px}
+.custom-row label{flex:1 1 90px;display:flex;flex-direction:column;gap:4px}
+.phase-kind{text-align:center;font-size:.95rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#0F766E}
+.phase-kind.rest{color:#6B5A3E}
+.phase-kind.warmup,.phase-kind.cooldown{color:#3C7A3C}
+.phase-kind.ready{color:#6B5A3E}
+.phase-label{text-align:center;font-size:1.35rem;font-weight:800;margin-top:4px}
+.phase-cue{text-align:center;font-size:1rem;opacity:.85;margin-top:2px}
+.timebig{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:4.6rem;line-height:1;font-weight:800;text-align:center;letter-spacing:-.04em;padding:8px 0}
+.tmeta{text-align:center;font-size:.95rem;opacity:.8}
+.bar{height:10px;border-radius:999px;background:#E8D4B0;overflow:hidden}
+.bar>i{display:block;height:100%;width:0;background:#14B8A6;transition:width .35s linear}
+.btns{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.btns button{flex:1 1 120px;min-height:56px;border-radius:14px;border:3px solid #D9A85F;border-color:var(--line);background:#FFFBF3;background:var(--card);color:inherit;font:inherit;font-size:1.15rem;font-weight:800;cursor:pointer;padding:12px 16px;-webkit-tap-highlight-color:transparent}
+.btns button.pri{background:#14B8A6;border-color:#0F766E;color:#042f2e}
+.thint{text-align:center;font-size:.85rem;opacity:.75;margin:0}
+@media(max-width:640px){.timebig{font-size:3.8rem}}
+
+</style></head>
+<body>
+<header class="hdr"><div class="hdr-in">
+<p class="deco" id="deco" aria-hidden="true">🎃 👻 🦇 🕷️ 🕸️   🕸️ 🕷️ 🦇 👻 🎃   🎃 👻 🦇 🕷️ 🕸️</p>
+<div class="hdr-row">
+<div class="hdr-left"><h1>Training Portal</h1><p class="theme-tag">Plan · interval timer · phone-first</p></div>
+<div class="clock-box"><div class="clock" id="clock"></div><div class="datefull" id="datefull">Tuesday 27 October</div></div>
+</div></div></header>
+<main>
+<p class="fam-nav">
+<a href="/">🍽️ Meal plan</a>
+<a href="/family/">👨‍👩‍👧‍👦 Family page</a>
+<a href="/hub/">🏠 Hub</a>
+</p>
+<p class="note">Tap <strong>Timer</strong>, pick a preset, then <strong>Start</strong> so the phone unlocks sound. Big buttons for the floor.</p>
+<div class="tabs" role="tablist">
+<button type="button" class="tab on" id="tab-plan" data-tab="plan">Plan</button>
+<button type="button" class="tab" id="tab-timer" data-tab="timer">Timer</button>
+</div>
+
+<section class="panel" id="panel-plan">
+<section class="fcard" id="this-week">
+<h2>This week</h2>
+<ul class="props">
+<li><span class="k">Goals</span><span>Strength, muscle, fitness, energy, better eating</span></li>
+<li><span class="k">Gear</span><span>8 &amp; 12 kg kettlebells · 5/6 kg DBs for flyes only</span></li>
+<li><span class="k">Office</span><span>Mon Tue Thu · leave 6am · home ~7pm</span></li>
+<li><span class="k">WFH</span><span>Wed · Fri half-day</span></li>
+<li><span class="k">Coming</span><span>November squat &amp; push-up challenge</span></li>
+</ul>
+<ul class="rowlist">
+<li><span class="t">Mon evening ~30 min</span><span class="d">Door-to-Floor → 12kg EMOM swings 10 min → goblet 3×12 → feet-raised push-ups + rows 3×8–10</span><span class="m">After 7pm · Strength</span></li>
+<li><span class="t">Tue &amp; Thu evenings</span><span class="d">7-min Door-to-Floor Reset · gentle 6/10 · nose breathing</span><span class="m">Recovery · Stretch</span></li>
+<li><span class="t">Wed 5–6pm ~45 min</span><span class="d">RFESS · SL RDL · 1-arm press · push-ups + flyes</span><span class="m">Before nanny leaves · Strength</span></li>
+<li><span class="t">Fri ~2pm 30–35 min</span><span class="d">Clean-squat-press · TGU · rows + flyes</span><span class="m">Twins nap · Strength</span></li>
+<li><span class="t">Daily</span><span class="d">5–8 min flexibility · optional partner session with Isla (7)</span><span class="m">Anytime · Mobility</span></li>
+</ul>
+</section>
+
+<section class="fcard" id="monday">
+<h2>Monday evening</h2>
+<p class="sub">~30 min · 12 kg bell</p>
+<table class="rota"><thead><tr><th>Exercise</th><th>Sets / reps</th><th>Rest</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td>KB swings (EMOM)</td><td>10 at 0:00 each minute × 10</td><td>—</td><td>12 kg</td></tr>
+<tr><td>Goblet squat</td><td>3 × 12</td><td>75–90 s</td><td>3s lowering</td></tr>
+<tr><td>Feet-raised push-ups</td><td>3 × 8–10</td><td>pair</td><td>Feet on step</td></tr>
+<tr><td>One-arm row</td><td>3 × 8–10 / arm</td><td>75 s after pair</td><td>8 or 12 kg</td></tr>
+</tbody></table>
+</section>
+
+<section class="fcard" id="tue-thu">
+<h2>Tue &amp; Thu recovery</h2>
+<p class="sub">~7 min · gentle 6/10 · nose breathing</p>
+<table class="rota"><thead><tr><th>Move</th><th>Dose</th><th>Cue</th></tr></thead>
+<tbody>
+<tr><td>Standing back extension</td><td>5 reps</td><td>Open the front</td></tr>
+<tr><td>Half-kneeling hip flexor</td><td>45 s each</td><td>Tuck pelvis</td></tr>
+<tr><td>Figure-4 glute</td><td>45 s each</td><td>Lying or door</td></tr>
+<tr><td>Cat-cow</td><td>8 reps</td><td>Slow waves</td></tr>
+<tr><td>Open-book rotation</td><td>5 each</td><td>Follow top hand</td></tr>
+<tr><td>Child's pose + side reach</td><td>30s + 15s each</td><td>Reach along floor</td></tr>
+<tr><td>Glute bridge</td><td>10 · 2s squeeze</td><td>Ribs down</td></tr>
+</tbody></table>
+<p>Use the Stretch timer preset.</p>
+</section>
+
+<section class="fcard" id="wednesday">
+<h2>Wednesday strength</h2>
+<p class="sub">5–6pm · ~45 min</p>
+<table class="rota"><thead><tr><th>Exercise</th><th>Sets / reps</th><th>Rest</th><th>Load</th></tr></thead>
+<tbody>
+<tr><td>RFESS</td><td>4 × 8–10 / leg</td><td>75–90 s</td><td>12 kg or BW</td></tr>
+<tr><td>Single-leg RDL</td><td>3 × 10 / leg</td><td>60–75 s</td><td>8–12 kg</td></tr>
+<tr><td>One-arm press</td><td>4 × 6–8 / arm</td><td>75–90 s</td><td>12 kg (8 if form slips)</td></tr>
+<tr><td>Push-ups + DB flyes</td><td>3 rounds</td><td>75 s after pair</td><td>Flyes 5–6 kg only</td></tr>
+</tbody></table>
+</section>
+
+<section class="fcard" id="friday">
+<h2>Friday strength</h2>
+<p class="sub">~2pm · 30–35 min</p>
+<table class="rota"><thead><tr><th>Exercise</th><th>Sets / reps</th><th>Rest</th><th>Load</th></tr></thead>
+<tbody>
+<tr><td>Clean + squat + press</td><td>5 × 5 / side</td><td>90 s</td><td>12 kg</td></tr>
+<tr><td>Turkish get-up</td><td>3 / side</td><td>60–75 s</td><td>8 kg first</td></tr>
+<tr><td>Rows + DB flyes</td><td>3 rounds</td><td>75 s after pair</td><td>Rows 8–12 · flyes 5–6</td></tr>
+</tbody></table>
+</section>
+
+<section class="fcard" id="daily">
+<h2>Daily flexibility + partner</h2>
+<p>Daily: 5–8 min easy mobility. Optional partner with Isla (7): supervise. Isla uses no kettlebell — bodyweight or 1–2 kg bottle; knee/step push-ups.</p>
+<ol class="steps">
+<li><strong>3-min warm-up</strong> — 10 hinges · 10 bridges · 10 air squats · 10 cat-cows</li>
+<li><strong>Isla swing tip</strong> — one slow hinge with bottle at arm's length before round 1</li>
+<li><strong>Swings</strong> — alternate 5 each per minute × 10 (12 kg · Isla bottle/none)</li>
+<li><strong>Squats</strong> — 3 × 12 each · one works while the other rests</li>
+<li><strong>Push-up / row relay</strong> — one each, swap · 3 rounds</li>
+</ol>
+<p>Use the Partner timer preset.</p>
+</section>
+
+<section class="fcard" id="progression">
+<h2>Progression</h2>
+<ol class="steps">
+<li><strong>Add reps first</strong> — then slow the lowering or cut 15 s rest</li>
+<li><strong>Heavier bell in 4–6 weeks</strong> — target 20–24 kg once 12 kg feels easy</li>
+<li><strong>November challenge</strong> — squat &amp; push-up challenge upcoming — keep Door-to-Floor work</li>
+</ol>
+</section>
+</section>
+
+<section class="panel" id="panel-timer" hidden>
+<section class="fcard">
+<h2>Interval timer</h2>
+<p class="sub">Presets per workout · big Start / Pause / Reset · iPhone Safari</p>
+<div class="timer" id="timer">
+<label for="preset">Preset</label>
+<select id="preset">
+<option value="mon-emom">Mon — EMOM swings (10×60s)</option>
+<option value="stretch">Tue/Thu — Door-to-Floor stretch</option>
+<option value="wed">Wed — Strength circuit</option>
+<option value="fri">Fri — Strength circuit</option>
+<option value="partner">Partner with Isla</option>
+<option value="custom">Custom work/rest/rounds</option>
+</select>
+<div class="custom-row" id="custom-row" hidden>
+<label>Work (s)<input type="number" id="cw" value="40" min="5" max="600"></label>
+<label>Rest (s)<input type="number" id="cr" value="20" min="0" max="600"></label>
+<label>Rounds<input type="number" id="cn" value="8" min="1" max="40"></label>
+</div>
+<div class="phase-kind ready" id="kind">Ready</div>
+<div class="phase-label" id="label">—</div>
+<div class="phase-cue" id="cue"></div>
+<div class="timebig" id="clock-t">0:00</div>
+<div class="tmeta" id="tmeta">Pick a preset, then Start</div>
+<div class="bar" aria-hidden="true"><i id="bar"></i></div>
+<div class="btns">
+<button type="button" class="pri" id="btn-start">Start</button>
+<button type="button" class="pri" id="btn-pause" hidden>Pause</button>
+<button type="button" id="btn-skip" hidden>Skip</button>
+<button type="button" id="btn-reset" hidden>Reset</button>
+</div>
+<p class="thint">Beep on each phase · double beep on final minute · 3-2-1 ticks. Audio unlocks on Start. Vibration and screen wake lock when the phone allows them.</p>
+</div>
+</section>
+</section>
+
+<footer>Updated 27 Oct 2026. Rest defaults 60–90 s when not listed. Train hard only if fully well.</footer>
+</main>
+<script>
+// Pure date logic (no DOM). Keep in step with theme_for() / festive_for() in build.py.
+var WFT = (function () {
+  var WIN = { halloween: ["10", "25", 4], xmas1: ["12", "11", 4], xmas2: ["12", "18", 4] };
+  var NAMES = { autumn: 1, halloween: 1, christmas: 1, winter: 1, spring: 1, summer: 1 };
+  function parse(iso) {
+    var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || "");
+    if (!m) return null;
+    var y = parseInt(m[1], 10), mo = parseInt(m[2], 10), d = parseInt(m[3], 10);
+    var t = new Date(Date.UTC(y, mo - 1, d));
+    if (t.getUTCFullYear() !== y || t.getUTCMonth() !== mo - 1 || t.getUTCDate() !== d) return null;
+    return { y: y, m: mo, d: d, t: t.getTime() };
+  }
+  function days(a, b) { return Math.round((b.t - a.t) / 86400000); }
+  function themeFor(iso) {
+    var p = parse(iso); if (!p) return "autumn";
+    if (p.m === 12 && p.d >= 11 && p.d <= 25) return "christmas";
+    if (p.m === 10 && p.d >= 25 && p.d <= 31) return "halloween";
+    if (p.m >= 9 && p.m <= 11) return "autumn";
+    if (p.m === 12 || p.m <= 2) return "winter";
+    if (p.m <= 5) return "spring";
+    return "summer";
+  }
+  function festiveWindow(iso) {
+    var p = parse(iso); if (!p) return "";
+    if (p.m === 10 && p.d >= 25 && p.d <= 31) return "halloween";
+    if (p.m === 12 && p.d >= 11 && p.d <= 17) return "xmas1";
+    if (p.m === 12 && p.d >= 18 && p.d <= 25) return "xmas2";
+    return "";
+  }
+  // Index of the idea to highlight on a date inside window win (n ideas).
+  function ideaIndex(iso, win, n) {
+    var p = parse(iso), w = WIN[win]; if (!p || !w || !n) return 0;
+    var start = parse(p.y + "-" + w[0] + "-" + w[1]);
+    var k = days(start, p) % n; return k < 0 ? k + n : k;
+  }
+  // Theme override from ?theme=: a festive theme maps to the festive window for the date.
+  function windowForTheme(theme, iso) {
+    var p = parse(iso);
+    if (theme === "halloween") return "halloween";
+    if (theme === "christmas") return (p && p.m === 12 && p.d >= 18) ? "xmas2" : "xmas1";
+    return "";
+  }
+  function daysUntil(iso, mo, d) {
+    var p = parse(iso); if (!p) return 0;
+    return days(p, parse(p.y + "-" + (mo < 10 ? "0" : "") + mo + "-" + (d < 10 ? "0" : "") + d));
+  }
+  return { parse: parse, themeFor: themeFor, festiveWindow: festiveWindow, ideaIndex: ideaIndex,
+           windowForTheme: windowForTheme, daysUntil: daysUntil, NAMES: NAMES };
+})();
+
+</script>
+<script>
+(function () {
+  var DAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  var MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  var THEMES = {"autumn": {"emoji": ["\ud83c\udf42", "\ud83c\udf41", "\ud83c\udf30", "\ud83c\udf44", "\ud83c\udf4e"]}, "halloween": {"emoji": ["\ud83c\udf83", "\ud83d\udc7b", "\ud83e\udd87", "\ud83d\udd77\ufe0f", "\ud83d\udd78\ufe0f"]}, "christmas": {"emoji": ["\ud83c\udf84", "\u2744\ufe0f", "\u2b50", "\ud83d\udd14", "\ud83c\udf81"]}, "winter": {"emoji": ["\u2744\ufe0f", "\u26c4", "\ud83e\udde3", "\u2615", "\ud83e\udde4"]}, "spring": {"emoji": ["\ud83c\udf37", "\ud83d\udc23", "\ud83c\udf31", "\ud83c\udf3c", "\ud83e\udd8b"]}, "summer": {"emoji": ["\u2600\ufe0f", "\ud83c\udf49", "\ud83c\udf3b", "\ud83c\udf66", "\ud83d\udd76\ufe0f"]}};
+  function pad(n) { return (n < 10 ? "0" : "") + n; }
+  function byId(i) { return document.getElementById(i); }
+  function qs(name) {
+    var q = (location.search || "").replace(/^\?/, "").split("&");
+    for (var i = 0; i < q.length; i++) { var kv = q[i].split("="); if (kv[0] === name) return decodeURIComponent(kv[1] || ""); }
+    return "";
+  }
+  function london() {
+    var now = new Date(), iso = now.getFullYear() + "-" + pad(now.getMonth() + 1) + "-" + pad(now.getDate()), hh = now.getHours(), mm = now.getMinutes();
+    try {
+      var f = new Intl.DateTimeFormat("en-GB", { timeZone: "Europe/London", year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", hour12: false });
+      var m = /(\d{1,2})\D+(\d{1,2})\D+(\d{4})\D+(\d{1,2})\D+(\d{2})/.exec(f.format(now));
+      if (m) { iso = m[3] + "-" + pad(parseInt(m[2], 10)) + "-" + pad(parseInt(m[1], 10)); hh = parseInt(m[4], 10) % 24; mm = parseInt(m[5], 10); }
+    } catch (err) {}
+    return { iso: iso, hh: hh, mm: mm };
+  }
+  var dp = qs("date"), override = (typeof WFT !== "undefined" && WFT.parse(dp)) ? dp : "";
+  var L0 = london(), iso = override || L0.iso;
+  var P = (typeof WFT !== "undefined" && WFT.parse(iso)) ? WFT.parse(iso) : { d: +L0.iso.split("-")[2], m: +L0.iso.split("-")[1], t: Date.now() };
+  var dow = new Date(P.t || Date.now()).getUTCDay();
+  if (typeof WFT !== "undefined") {
+    var th = WFT.themeFor(iso); document.documentElement.setAttribute("data-theme", th);
+    var em = THEMES[th].emoji; byId("deco").textContent = em.join(" ") + "   " + em.slice().reverse().join(" ") + "   " + em.join(" ");
+  }
+  byId("datefull").textContent = DAYS[dow] + " " + P.d + " " + MONTHS[(P.m || 1) - 1];
+  function tickClock() { var L = london(); byId("clock").textContent = pad(L.hh) + ":" + pad(L.mm); }
+  tickClock(); setInterval(tickClock, 20000);
+
+  var tabs = document.querySelectorAll(".tab");
+  function showTab(name) {
+    for (var i = 0; i < tabs.length; i++) tabs[i].className = tabs[i].getAttribute("data-tab") === name ? "tab on" : "tab";
+    byId("panel-plan").hidden = name !== "plan";
+    byId("panel-timer").hidden = name !== "timer";
+  }
+  for (var ti = 0; ti < tabs.length; ti++) (function (btn) {
+    btn.onclick = function () { showTab(btn.getAttribute("data-tab")); };
+  })(tabs[ti]);
+  if (location.hash === "#timer") showTab("timer");
+
+  function w(label, seconds, cue) { return { kind: "work", label: label, seconds: seconds, cue: cue || "" }; }
+  function r(seconds, label) { return { kind: "rest", label: label || "Rest", seconds: seconds, cue: "" }; }
+  function stretch() {
+    return [
+      { kind: "warmup", label: "Settle in", seconds: 20, cue: "Shoes off, phone ready" },
+      w("Standing back extension", 45, "5 slow reps"), r(10, "Transition"),
+      w("Hip flexor — left", 45, "Half-kneeling, gentle 6/10"), r(8, "Switch"),
+      w("Hip flexor — right", 45, "Half-kneeling, gentle 6/10"), r(10, "Transition"),
+      w("Figure-4 glute — left", 45, "Lying or door frame"), r(8, "Switch"),
+      w("Figure-4 glute — right", 45), r(10, "Transition"),
+      w("Cat-cow", 50, "8 slow reps"), r(10, "Transition"),
+      w("Open-book — left", 40, "5 rotations"), r(8, "Switch"),
+      w("Open-book — right", 40, "5 rotations"), r(10, "Transition"),
+      w("Child's pose — centre", 30), w("Child's pose — left reach", 15), w("Child's pose — right reach", 15), r(8, "Transition"),
+      w("Glute bridge", 60, "10 reps, 2s squeeze"),
+      { kind: "cooldown", label: "Done — breathe", seconds: 20, cue: "Nose breathing" }
+    ];
+  }
+  function mon() {
+    var p = [{ kind: "warmup", label: "Door-to-Floor warm-up", seconds: 60, cue: "Or run Stretch preset first" }];
+    for (var m = 1; m <= 10; m++) p.push(w("EMOM minute " + m, 60, "10x 12kg swings at start, then rest"));
+    p.push({ kind: "cooldown", label: "Strength block next", seconds: 30, cue: "Goblet 3x12 then push-ups + rows 3x8-10" });
+    return p;
+  }
+  function wed() {
+    var p = [{ kind: "warmup", label: "Warm-up", seconds: 180, cue: "Hinges, bridges, air squats, cat-cow" }], s;
+    for (s = 1; s <= 4; s++) {
+      p.push(w("RFESS " + s + " L", 45, "8-10"), r(20));
+      p.push(w("RFESS " + s + " R", 45, "8-10"), r(75));
+    }
+    for (s = 1; s <= 3; s++) {
+      p.push(w("SL RDL " + s + " L", 40, "10"), r(15));
+      p.push(w("SL RDL " + s + " R", 40, "10"), r(60));
+    }
+    for (s = 1; s <= 4; s++) p.push(w("1-arm press " + s, 50, "6-8/side"), r(75));
+    for (s = 1; s <= 3; s++) p.push(w("Push-ups + flyes " + s, 70), r(75));
+    p.push({ kind: "cooldown", label: "Cool-down", seconds: 120, cue: "5-8 min flexibility" });
+    return p;
+  }
+  function fri() {
+    var p = [{ kind: "warmup", label: "Warm-up", seconds: 180, cue: "Hinges, bridges, air squats, cat-cow" }], s;
+    for (s = 1; s <= 5; s++) p.push(w("Clean-squat-press " + s, 70, "5/side, 12kg"), r(90));
+    for (s = 1; s <= 3; s++) {
+      p.push(w("TGU R " + s, 50), r(20));
+      p.push(w("TGU L " + s, 50), r(60));
+    }
+    for (s = 1; s <= 3; s++) p.push(w("Rows + flyes " + s, 70), r(75));
+    p.push({ kind: "cooldown", label: "Cool-down", seconds: 120, cue: "5-8 min flexibility" });
+    return p;
+  }
+  function partner() {
+    var p = [
+      { kind: "warmup", label: "Warm-up together", seconds: 180, cue: "10 hinges, bridges, air squats, cat-cows" },
+      w("Isla tip — slow hinge", 30, "Bottle at arm's length")
+    ], m, s, rr;
+    for (m = 1; m <= 10; m++) p.push(w("Swings min " + m, 60, "Alternate 5 each · Isla: no bell"));
+    for (s = 1; s <= 3; s++) {
+      p.push(w("Goblet " + s, 50, "12 reps"));
+      p.push(w("Isla squats " + s, 50, "12 air/light"));
+      p.push(r(45));
+    }
+    for (rr = 1; rr <= 3; rr++) {
+      p.push(w("Push/row relay " + rr, 90, "Isla: knees or step"));
+      p.push(r(45));
+    }
+    p.push({ kind: "cooldown", label: "High-five cool-down", seconds: 60 });
+    return p;
+  }
+  function custom(work, rest, rounds) {
+    var p = [{ kind: "warmup", label: "Warm-up", seconds: 60 }], r0;
+    for (r0 = 1; r0 <= rounds; r0++) {
+      p.push(w("Work " + r0, work));
+      if (r0 < rounds) p.push(r(rest, "Rest " + r0));
+    }
+    p.push({ kind: "cooldown", label: "Cool-down", seconds: 60 });
+    return p;
+  }
+
+  function buildPhases() {
+    var id = byId("preset").value;
+    if (id === "mon-emom") return mon();
+    if (id === "stretch") return stretch();
+    if (id === "wed") return wed();
+    if (id === "fri") return fri();
+    if (id === "partner") return partner();
+    var work = Math.max(5, Math.min(600, parseInt(byId("cw").value, 10) || 40));
+    var rest = Math.max(0, Math.min(600, parseInt(byId("cr").value, 10) || 20));
+    var rounds = Math.max(1, Math.min(40, parseInt(byId("cn").value, 10) || 8));
+    return custom(work, rest, rounds);
+  }
+
+  function fmt(total) {
+    var s = Math.max(0, Math.ceil(total));
+    return Math.floor(s / 60) + ":" + pad(s % 60);
+  }
+
+  var ctx = null;
+  function ensureAudio() {
+    var AC = window.AudioContext || window.webkitAudioContext;
+    if (!AC) return null;
+    if (!ctx) ctx = new AC();
+    return ctx;
+  }
+  function unlockAudio() {
+    var c = ensureAudio();
+    if (!c) return;
+    if (c.state === "suspended") c.resume();
+    var o = c.createOscillator(), g = c.createGain();
+    g.gain.value = 0.0001; o.connect(g); g.connect(c.destination);
+    o.start(); o.stop(c.currentTime + 0.01);
+  }
+  function play(kind) {
+    var c = ensureAudio();
+    if (!c) return;
+    if (c.state === "suspended") c.resume();
+    function tone(freq, start, dur, vol) {
+      vol = vol || 0.18;
+      var o = c.createOscillator(), g = c.createGain();
+      o.type = "sine"; o.frequency.value = freq;
+      g.gain.setValueAtTime(0.0001, start);
+      g.gain.exponentialRampToValueAtTime(vol, start + 0.02);
+      g.gain.exponentialRampToValueAtTime(0.0001, start + dur);
+      o.connect(g); g.connect(c.destination);
+      o.start(start); o.stop(start + dur + 0.02);
+    }
+    var t = c.currentTime;
+    if (kind === "phase") tone(880, t, 0.4);
+    else if (kind === "final") { tone(660, t, 0.22); tone(660, t + 0.32, 0.22); }
+    else tone(990, t, 0.12, 0.14);
+    try { if (navigator.vibrate) navigator.vibrate(kind === "final" ? [40, 40, 40] : 30); } catch (err) {}
+  }
+
+  var wake = null;
+  function releaseWake() {
+    if (wake) { try { wake.release(); } catch (err) {} wake = null; }
+  }
+  function requestWake() {
+    try {
+      if (navigator.wakeLock && navigator.wakeLock.request) {
+        navigator.wakeLock.request("screen").then(function (lock) { wake = lock; }).catch(function () {});
+      }
+    } catch (err) {}
+  }
+
+  var phases = buildPhases();
+  var running = false, paused = false, done = false, idx = 0, rem = 0;
+  var timerId = null, lastSec = null, finalBeeped = false, cdBeeped = {};
+
+  function totalSec(list) {
+    var a = 0; for (var i = 0; i < list.length; i++) a += list[i].seconds; return a;
+  }
+  function elapsedSec() {
+    var a = 0; for (var i = 0; i < idx; i++) a += phases[i].seconds;
+    if (phases[idx]) a += phases[idx].seconds - rem;
+    return a;
+  }
+  function workCount(list) {
+    var n = 0; for (var i = 0; i < list.length; i++) if (list[i].kind === "work") n++; return n;
+  }
+  function workIndex(list, i) {
+    var n = 0; for (var j = 0; j <= i && j < list.length; j++) if (list[j].kind === "work") n++; return n;
+  }
+
+  function render() {
+    var phase = phases[idx];
+    var kindEl = byId("kind");
+    if (done) { kindEl.textContent = "Complete"; kindEl.className = "phase-kind cooldown"; }
+    else if (paused) { kindEl.textContent = "Paused"; kindEl.className = "phase-kind ready"; }
+    else if (running && phase) { kindEl.textContent = phase.kind; kindEl.className = "phase-kind " + phase.kind; }
+    else { kindEl.textContent = "Ready"; kindEl.className = "phase-kind ready"; }
+    byId("label").textContent = done ? "Session done" : (phase ? phase.label : "—");
+    byId("cue").textContent = (!done && phase && phase.cue) ? phase.cue : "";
+    byId("clock-t").textContent = done ? "0:00" : fmt(rem || (phase ? phase.seconds : 0));
+    var tot = totalSec(phases), el = elapsedSec();
+    var next = phases[idx + 1];
+    var meta;
+    if (running || done) {
+      meta = "Phase " + Math.min(idx + 1, phases.length) + " / " + phases.length + " · " + fmt(Math.max(0, tot - el)) + " left";
+      var wi = workIndex(phases, idx), wc = workCount(phases);
+      if (phase && phase.kind === "work") meta += " · Work " + wi + "/" + wc;
+      if (next && running && !done) meta += " · Next: " + next.label;
+    } else {
+      meta = phases.length + " phases · ~" + fmt(tot) + " total · " + workCount(phases) + " work rounds";
+    }
+    byId("tmeta").textContent = meta;
+    byId("bar").style.width = (tot ? Math.min(100, (el / tot) * 100) : 0) + "%";
+    byId("btn-start").hidden = !((!running && !done) || done);
+    byId("btn-start").textContent = done ? "Start again" : "Start";
+    byId("btn-pause").hidden = !running;
+    byId("btn-pause").textContent = paused ? "Resume" : "Pause";
+    byId("btn-skip").hidden = !running;
+    byId("btn-reset").hidden = !(running || done || idx > 0);
+    byId("preset").disabled = running;
+    byId("custom-row").hidden = !(byId("preset").value === "custom" && !running);
+  }
+
+  function enter(i) {
+    if (i >= phases.length) {
+      running = false; paused = false; done = true; rem = 0; releaseWake();
+      play("phase"); stopTick(); render(); return;
+    }
+    finalBeeped = false; cdBeeped = {}; lastSec = null;
+    idx = i; rem = phases[i].seconds; play("phase");
+    var moreWork = false;
+    for (var j = i + 1; j < phases.length; j++) if (phases[j].kind === "work") { moreWork = true; break; }
+    var lastWork = phases[i].kind === "work" && !moreWork;
+    if (lastWork || /minute 10|min 10/i.test(phases[i].label)) { finalBeeped = true; play("final"); }
+    render();
+  }
+
+  function stopTick() { if (timerId) { clearInterval(timerId); timerId = null; } }
+  function startTick() {
+    stopTick();
+    timerId = setInterval(function () {
+      if (!running || paused || done) return;
+      var phase = phases[idx];
+      if (!phase) return;
+      if (rem <= 1) { enter(idx + 1); return; }
+      var next = rem - 1;
+      if (lastSec !== next) {
+        lastSec = next;
+        if (next === 60 && phase.seconds > 60 && !finalBeeped) { finalBeeped = true; play("final"); }
+        if ((next === 3 || next === 2 || next === 1) && !cdBeeped[next]) { cdBeeped[next] = true; play("countdown"); }
+      }
+      rem = next; render();
+    }, 1000);
+  }
+
+  function start() {
+    unlockAudio(); requestWake();
+    phases = buildPhases();
+    done = false; paused = false; running = true;
+    finalBeeped = false; cdBeeped = {}; lastSec = null;
+    idx = 0; rem = phases[0] ? phases[0].seconds : 0;
+    play("phase"); startTick(); render();
+  }
+  function reset() {
+    stopTick(); running = false; paused = false; done = false;
+    phases = buildPhases(); idx = 0; rem = phases[0] ? phases[0].seconds : 0;
+    releaseWake(); render();
+  }
+
+  byId("btn-start").onclick = function () { start(); };
+  byId("btn-pause").onclick = function () {
+    if (!running) return;
+    paused = !paused;
+    if (paused) stopTick(); else startTick();
+    render();
+  };
+  byId("btn-skip").onclick = function () { if (running) enter(idx + 1); };
+  byId("btn-reset").onclick = function () { reset(); };
+  byId("preset").onchange = function () { if (!running) reset(); };
+  ["cw", "cr", "cn"].forEach(function (id) {
+    byId(id).onchange = function () { if (!running) reset(); };
+  });
+  document.addEventListener("visibilitychange", function () {
+    if (document.visibilityState === "visible" && running && !paused) requestWake();
+  });
+  reset();
+})();
+
+</script>
+</body></html>

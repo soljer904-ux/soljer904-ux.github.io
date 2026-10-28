@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en-GB" data-theme="halloween"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="refresh" content="1800">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; img-src 'none'; connect-src 'none'; form-action 'none'; base-uri 'none'">
+<meta name="robots" content="noindex, nofollow, noarchive"><meta name="referrer" content="no-referrer">
+<title>Our Family Page</title>
+<style>
+:root{--bg:#FFF3DC;--fg:#35190A;--muted:#5E3A1E;--card:#FFFBF3;--line:#D9A85F;--accent:#A33A0C;--accent2:#E8A317;--tint:#FBE2B0;--hdrbg:#7B1E2B;--hdrfg:#FFF3DC;--herobg:#A8420F;--herofg:#FFF8EC;--today:#FFE08A;}
+html[data-theme="autumn"]{--bg:#FFF3DC;--fg:#35190A;--muted:#5E3A1E;--card:#FFFBF3;--line:#D9A85F;--accent:#A33A0C;--accent2:#E8A317;--tint:#FBE2B0;--hdrbg:#7B1E2B;--hdrfg:#FFF3DC;--herobg:#A8420F;--herofg:#FFF8EC;--today:#FFE08A;}
+html[data-theme="halloween"]{--bg:#150F20;--fg:#F7F0FF;--muted:#D3C6EA;--card:#251A3A;--line:#6A47A3;--accent:#FFA23A;--accent2:#FF7A00;--tint:#36264F;--hdrbg:#07040C;--hdrfg:#FFA23A;--herobg:#4C1D7D;--herofg:#FFFFFF;--today:#5A3200;}
+html[data-theme="christmas"]{--bg:#F7F1E0;--fg:#1B2A1E;--muted:#41524A;--card:#FFFDF6;--line:#C9B27A;--accent:#0F6B3A;--accent2:#D4A017;--tint:#E3F0E2;--hdrbg:#A4161A;--hdrfg:#FFF8E1;--herobg:#0F5132;--herofg:#FFFDF3;--today:#FFE9A6;}
+html[data-theme="winter"]{--bg:#EAF3FB;--fg:#10243E;--muted:#3B536E;--card:#FFFFFF;--line:#9BBFE0;--accent:#1B5AA6;--accent2:#6FB1E6;--tint:#D5E7F7;--hdrbg:#1F4E79;--hdrfg:#F2F8FF;--herobg:#17375E;--herofg:#F2F8FF;--today:#BFE0FF;}
+html[data-theme="spring"]{--bg:#F3FAEC;--fg:#1C3318;--muted:#43603C;--card:#FFFFFF;--line:#A9D18E;--accent:#2C7A30;--accent2:#E0699B;--tint:#DFF1D2;--hdrbg:#2E7D32;--hdrfg:#FFFFFF;--herobg:#276B2B;--herofg:#FFFFFF;--today:#FFD9E8;}
+html[data-theme="summer"]{--bg:#FFFAE0;--fg:#2E2400;--muted:#5A4A10;--card:#FFFFFF;--line:#E8CB60;--accent:#005F8F;--accent2:#FFB300;--tint:#FFEDA8;--hdrbg:#00689B;--hdrfg:#FFFFFF;--herobg:#B8400C;--herofg:#FFFFFF;--today:#C9ECFF;}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;background:#FFF3DC}
+[hidden]{display:none !important}
+body{margin:0;background:#FFF3DC;background:var(--bg);color:#35190A;color:var(--fg);font:20px/1.5 "Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-family:Roboto,"Segoe UI","Helvetica Neue",Arial,sans-serif}
+a{color:#A33A0C;color:var(--accent);}
+main{max-width:1180px;margin:0 auto;padding:18px 16px 48px}
+h1,h2,h3,h4,p{margin-top:0}
+/* header with live clock */
+.hdr{background:#7B1E2B;background:var(--hdrbg);color:#FFF3DC;color:var(--hdrfg);border-bottom:8px solid #E8A317;border-bottom:8px solid var(--accent2);padding:10px 16px 16px}
+.hdr-in{max-width:1180px;margin:0 auto}
+.deco{font-size:28px;line-height:1.4;letter-spacing:.5em;white-space:nowrap;overflow:hidden;text-align:center;margin:0 0 4px}
+.hdr-row{display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;-webkit-box-align:center;-ms-flex-align:center;align-items:center}
+.hdr-left{padding-right:16px}
+.hdr h1{font-size:2.6rem;line-height:1.1;margin:.1em 0 .1em;color:@hdrfg}
+.theme-tag{font-size:1.15rem;margin:0;color:#FFF3DC;color:var(--hdrfg);font-weight:600}
+.mode{display:inline-block;background:#E8A317;background:var(--accent2);color:#2A1600;border-radius:999px;padding:.15em .9em;font-weight:700;font-size:.95rem;margin:0 0 .3em}
+.clock-box{text-align:right}
+.clock{font-size:5.2rem;line-height:1;font-weight:800;letter-spacing:.02em;min-height:1em}
+.datefull{font-size:1.6rem;font-weight:700;margin-top:.1em}
+.sub{color:#5E3A1E;color:var(--muted);margin:.2em 0 .9em;font-size:1.05rem}
+/* hero: tonight */
+.tonight{background:#A8420F;background:var(--herobg);color:#FFF8EC;color:var(--herofg);border:6px solid #E8A317;border:6px solid var(--accent2);border-radius:24px;padding:20px 26px 24px;margin:0 0 22px}
+.tonight .kicker{margin:0;font-weight:800;font-size:1.35rem;text-transform:uppercase;letter-spacing:.1em;color:@herofg}
+.tonight h2{font-size:1.15rem;color:#FFF8EC;color:var(--herofg);margin:.1em 0 0;font-weight:600}
+.tonight .dish{font-size:2.7rem;line-height:1.15;font-weight:800;margin:.15em 0}
+.tonight .meta{color:#FFF8EC;color:var(--herofg);font-size:1.15rem}
+.tonight .none{font-size:2.3rem;font-weight:800;margin:.3em 0 .1em}
+.tonight .next{font-size:1.25rem;margin:0}
+.tonight .note,.tonight .tweak{background:rgba(255,255,255,.18);color:@herofg}
+.tonight .btn{background:#FFF8EC;background:var(--herofg);color:#A8420F;color:var(--herobg);border-color:@herofg}
+.tonight .cook{background:#E8A317;background:var(--accent2);color:#2A1600}
+.tonight .badge{color:@herofg}
+.tonight legend,.tonight .hint,.tonight .c{color:@herofg}
+.tonight fieldset{border-color:@herofg}
+.tonight textarea{background:#fff;color:#222}
+/* week at a glance */
+.sec-h{font-size:1.5rem;margin:26px 0 8px;color:@fg}
+.tiles{list-style:none;padding:0;margin:0 -6px;display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap}
+.tile{width:50%;padding:6px}
+.tile a{display:block;height:100%;min-height:150px;text-decoration:none;color:#35190A;color:var(--fg);background:#FFFBF3;background:var(--card);border:3px solid #D9A85F;border:3px solid var(--line);border-radius:18px;padding:12px 14px;position:relative}
+.t-day{display:block;font-size:1.2rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:@accent}
+.t-date{display:block;font-size:1.05rem;color:@muted}
+.t-dish{display:block;font-size:1.3rem;font-weight:700;line-height:1.25;margin-top:.3em}
+.t-meta{display:block;font-size:1.05rem;color:#5E3A1E;color:var(--muted);margin-top:.2em}
+.t-now{display:none;position:absolute;top:10px;right:10px;background:#E8A317;background:var(--accent2);color:#2A1600;font-weight:800;font-size:1rem;border-radius:999px;padding:.05em .7em;text-transform:uppercase}
+.tile.today a{background:#FFE08A;background:var(--today);border-color:#E8A317;border-color:var(--accent2);border-width:5px}
+.tile.today .t-now{display:block}
+.tile.past,.dw.past{opacity:.55}
+/* day details */
+.days{list-style:none;padding:0;margin:0 -8px;display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap}
+.dw{width:100%;padding:8px}
+.day,.card{background:#FFFBF3;background:var(--card);border:2px solid #D9A85F;border:2px solid var(--line);border-radius:18px;padding:16px 18px;height:100%}
+.dw.today .day{border-color:#E8A317;border-color:var(--accent2);border-width:5px;background:@today}
+.day h2{font-size:1.05rem;text-transform:uppercase;letter-spacing:.05em;color:#5E3A1E;color:var(--muted);margin:0}
+.dish{font-size:1.5rem;font-weight:700;line-height:1.25;margin:.25em 0}
+.meta{color:#5E3A1E;color:var(--muted);margin:0 0 .5em;font-size:1.05rem}
+.est{color:#5E3A1E;color:var(--muted);margin:0 0 .3em;font-size:1.05rem;font-weight:600}.est-q{font-weight:400}
+.tonight .est{color:@herofg}
+.note,.tweak{background:#FBE2B0;background:var(--tint);border-radius:12px;padding:.5em .75em;margin:.5em 0}
+.links{display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;margin:.5em -4px 0}
+.links>*{margin:4px}
+.btn{display:inline-block;padding:.6em 1em;border:2px solid #D9A85F;border:2px solid var(--line);border-radius:12px;color:#A33A0C;color:var(--accent);background:#FFFBF3;background:var(--card);text-decoration:none;font-weight:700;font-size:1.05rem;min-height:48px;line-height:1.3}
+.cook{display:inline-block;margin:.35em .4em 0 0;background:#FBE2B0;background:var(--tint);color:#A33A0C;color:var(--accent);border:1px solid #E8A317;border:1px solid var(--accent2);border-radius:999px;padding:.1em .75em;font-weight:700;font-size:1rem}
+.badge{display:inline-block;margin:.4em 0 0;font-weight:700;font-size:1.05rem}
+.rate{margin-top:.6em}.rate summary{list-style:none;cursor:pointer;display:inline-block}.rate summary::-webkit-details-marker{display:none}
+.rate-body{margin-top:.6em}
+.rate-body>*{margin-bottom:.5em}
+fieldset{border:2px solid #D9A85F;border:2px solid var(--line);border-radius:12px;margin:0 0 .5em;padding:.4em .8em;display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap}
+legend{color:#5E3A1E;color:var(--muted);font-size:1rem}
+fieldset label{min-height:48px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin-right:1.2em;font-size:1.05rem}
+input[type=radio]{width:26px;height:26px;margin:0 .45em 0 0}
+.c{display:block;color:#5E3A1E;color:var(--muted);font-size:1.05rem}
+textarea{display:block;font:inherit;color:#35190A;color:var(--fg);background:#FFF3DC;background:var(--bg);border:2px solid #D9A85F;border:2px solid var(--line);border-radius:12px;padding:.5em;width:100%;margin-top:.3em}
+.hint{color:#5E3A1E;color:var(--muted);font-size:1rem;margin:0}
+.send{margin-top:.3em}
+/* festive panel */
+.festive{background:#FBE2B0;background:var(--tint);border:4px dashed #E8A317;border:4px dashed var(--accent2);border-radius:22px;padding:16px 18px 12px;margin:0 0 22px}
+.fest-h{font-size:1.6rem;margin:0 0 .1em;color:@fg}
+.ideas{list-style:none;padding:0;margin:0 -6px;display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap}
+.idea{width:100%;padding:6px}
+.idea-in{background:#FFFBF3;background:var(--card);border:2px solid #D9A85F;border:2px solid var(--line);border-radius:16px;padding:12px 16px;height:100%}
+.idea.pick{width:100%}
+.idea.pick .idea-in{border:5px solid #E8A317;border:5px solid var(--accent2);background:@today}
+.idea h3{font-size:1.3rem;margin:0 0 .2em}
+.idea.pick h3{font-size:1.7rem}
+.idea p{margin:0 0 .4em}
+.pick-tag{display:none;background:#E8A317;background:var(--accent2);color:#2A1600;font-weight:800;border-radius:999px;padding:.05em .8em;font-size:1rem;margin-bottom:.4em;text-transform:uppercase}
+.idea.pick .pick-tag{display:inline-block}
+/* extras, cards */
+.extras{margin-top:30px}.extras-h{font-size:1.5rem;margin:0 0 .2em}
+.cards{margin-top:12px}
+.card{margin-bottom:14px;height:auto}
+.card h3{font-size:1.4rem;margin:0 0 .4em}.card h4{margin:1em 0 .3em}
+dl{margin:0}dt{color:#5E3A1E;color:var(--muted);float:left;clear:left;margin-right:.8em}dd{margin:0 0 .3em}dd:after{content:"";display:block;clear:both}
+ol li,ul li{margin:.25em 0}
+footer{color:#5E3A1E;color:var(--muted);font-size:1rem;margin-top:28px}
+@media (min-width:560px){.tile{width:33.333%}}
+@media (min-width:700px){.dw{width:50%}.idea{width:50%}}
+@media (min-width:900px){.tile{width:25%}.idea{width:33.333%}.idea.pick{width:100%}}
+@media (min-width:1100px){.dw{width:33.333%}}
+@media (max-width:640px){.hdr h1{font-size:2rem}.clock{font-size:3.6rem}.datefull{font-size:1.3rem}.clock-box{text-align:left;margin-top:.4em}.tonight .dish{font-size:2.1rem}.deco{font-size:22px}}
+@media print{.deco{display:none}}
+
+
+.fam-nav{margin:0 0 14px;font-size:1rem}
+.fam-grid{display:grid;gap:16px;grid-template-columns:1fr}
+@media(min-width:760px){.fam-grid{grid-template-columns:1fr 1fr}}
+.fcard{background:#FFFBF3;background:var(--card);border:3px solid #D9A85F;border:3px solid var(--line);border-radius:22px;padding:16px 18px}
+.fcard h2{font-size:1.35rem;margin-bottom:8px}
+.big{font-size:1.5rem;font-weight:700;margin:4px 0 8px}
+.bins{list-style:none;margin:0;padding:0}
+.bins li{display:flex;align-items:center;gap:12px;padding:8px 0;border-top:2px dashed #D9A85F;border-top:2px dashed var(--line)}
+.bins li:first-child{border-top:0}
+.dot{flex:0 0 38px;height:38px;border-radius:10px;border:3px solid rgba(0,0,0,.35)}
+.d-black{background:#222}.d-blue{background:#1E6FD9}.d-pink{background:#F06BAA}.d-food{background:#7A4A1E}.d-garden{background:#3C9A3C}
+.when{display:block;font-size:.95rem;opacity:.85}
+.nudge{background:#FBE2B0;background:var(--tint);border-radius:14px;padding:10px 12px;font-weight:600;margin:8px 0}
+.fox{font-size:.95rem}
+.rota{width:100%;border-collapse:collapse;font-size:1rem;margin-top:8px}
+.rota td{padding:5px 4px;border-top:1px solid #D9A85F;border-top:1px solid var(--line)}
+.meals{list-style:none;margin:0;padding:0}
+.meals li{padding:8px 10px;border-radius:12px;margin:2px 0}
+.meals li.today{background:#FFE08A;background:var(--today);font-weight:700}
+.meals li.past{opacity:.55}
+.meals .md{display:block;font-size:.9rem;opacity:.85}
+.count{font-size:2.6rem;font-weight:800;line-height:1.1;margin:6px 0}
+.btn{display:inline-block;padding:10px 16px;border-radius:999px;background:#A33A0C;background:var(--accent);color:#fff;text-decoration:none;border:0;font:inherit;font-size:1rem;cursor:pointer;margin:4px 6px 4px 0}
+.ans{font-size:1.25rem;font-weight:700;margin:8px 0}
+
+</style></head>
+<body>
+<header class="hdr"><div class="hdr-in">
+<p class="deco" id="deco" aria-hidden="true">🎃 👻 🦇 🕷️ 🕸️   🕸️ 🕷️ 🦇 👻 🎃   🎃 👻 🦇 🕷️ 🕸️</p>
+<div class="hdr-row">
+<div class="hdr-left"><h1>Our Family Page</h1><p class="theme-tag">Bins, teas, countdowns and giggles</p></div>
+<div class="clock-box"><div class="clock" id="clock"></div><div class="datefull" id="datefull">Tuesday 27 October</div></div>
+</div></div></header>
+<main>
+<p class="fam-nav">
+<a href="/">🍽️ Meal plan</a>
+<a href="/hub/">🏠 Hub</a>
+<a href="/training/">🏋️ Training</a>
+</p>
+<div class="fam-grid">
+
+<section class="fcard" id="bins"><h2>🗑️ Bin day helper</h2>
+<p class="nudge" id="bin-nudge" hidden></p>
+<p class="big" id="bin-week">Wheelie bins this week</p>
+<ul class="bins" id="bin-list">
+<li><span class="dot d-food"></span><span><strong>Food bin</strong> every Tuesday<span class="when">Put it out on Tuesday morning, never the night before 🦊</span></span></li>
+<li><span class="dot d-garden"></span><span><strong>Garden waste</strong> every Wednesday</span></li>
+</ul>
+<p class="fox">🦊 Foxes love the food bin, so it only goes out in the morning!</p>
+<table class="rota" id="rota" aria-label="Wheelie bin rota"><tbody></tbody></table>
+<noscript><p>Wheelie bins alternate each Tuesday: black and blue-lid on 3 Nov, 17 Nov and 1 Dec; pink-lid on 10 Nov, 24 Nov and 8 Dec.</p></noscript>
+</section>
+
+<section class="fcard" id="meals"><h2>🍽️ This week's teas</h2>
+<p class="sub">Week of Monday 26 October 2026</p>
+<ol class="meals"><li data-date="2026-10-26"><span class="md">Monday</span>Creamy salmon, leek &amp; potato traybake</li><li data-date="2026-10-27"><span class="md">Tuesday</span>Hidden-veg spaghetti bolognese</li><li data-date="2026-10-28"><span class="md">Wednesday</span>Chicken &amp; leek pie (pastry lid only)</li><li data-date="2026-10-29"><span class="md">Thursday</span>Sausage &amp; bean casserole</li><li data-date="2026-10-30"><span class="md">Friday</span>Homemade flatbread pizzas</li><li data-date="2026-10-31"><span class="md">Saturday</span>Big family lasagne with salad</li><li data-date="2026-11-01"><span class="md">Sunday</span>Steak (grown-ups) &amp; breaded chicken (kids) with sweet potato wedges</li></ol>
+<p><a href="/">Recipes and details</a></p>
+</section>
+
+<section class="fcard" id="events"><h2>🎉 Coming up</h2>
+<div class="event" data-date="2026-11-07"><p class="big">🎆 Fireworks party at home</p><p>Saturday 7 November</p><p class="count">11 sleeps to go!</p></div>
+</section>
+
+<section class="fcard" id="fun"><h2>😄 Joke of the day</h2>
+<p class="big" id="joke-q">Why did the banana go to the doctor?</p>
+<button class="btn" id="joke-btn" type="button">Tell me!</button>
+<p class="ans" id="joke-a" hidden>It wasn&#x27;t peeling well!</p>
+<h2 style="margin-top:16px">🤔 Would you rather…</h2>
+<p class="big" id="wyr">Would you rather eat only peas or only carrots for a week?</p>
+<button class="btn" id="wyr-btn" type="button">Another one!</button>
+</section>
+
+</div>
+<footer>Updated 27 Oct 2026.</footer>
+</main>
+<script>
+// Pure date logic (no DOM). Keep in step with theme_for() / festive_for() in build.py.
+var WFT = (function () {
+  var WIN = { halloween: ["10", "25", 4], xmas1: ["12", "11", 4], xmas2: ["12", "18", 4] };
+  var NAMES = { autumn: 1, halloween: 1, christmas: 1, winter: 1, spring: 1, summer: 1 };
+  function parse(iso) {
+    var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || "");
+    if (!m) return null;
+    var y = parseInt(m[1], 10), mo = parseInt(m[2], 10), d = parseInt(m[3], 10);
+    var t = new Date(Date.UTC(y, mo - 1, d));
+    if (t.getUTCFullYear() !== y || t.getUTCMonth() !== mo - 1 || t.getUTCDate() !== d) return null;
+    return { y: y, m: mo, d: d, t: t.getTime() };
+  }
+  function days(a, b) { return Math.round((b.t - a.t) / 86400000); }
+  function themeFor(iso) {
+    var p = parse(iso); if (!p) return "autumn";
+    if (p.m === 12 && p.d >= 11 && p.d <= 25) return "christmas";
+    if (p.m === 10 && p.d >= 25 && p.d <= 31) return "halloween";
+    if (p.m >= 9 && p.m <= 11) return "autumn";
+    if (p.m === 12 || p.m <= 2) return "winter";
+    if (p.m <= 5) return "spring";
+    return "summer";
+  }
+  function festiveWindow(iso) {
+    var p = parse(iso); if (!p) return "";
+    if (p.m === 10 && p.d >= 25 && p.d <= 31) return "halloween";
+    if (p.m === 12 && p.d >= 11 && p.d <= 17) return "xmas1";
+    if (p.m === 12 && p.d >= 18 && p.d <= 25) return "xmas2";
+    return "";
+  }
+  // Index of the idea to highlight on a date inside window win (n ideas).
+  function ideaIndex(iso, win, n) {
+    var p = parse(iso), w = WIN[win]; if (!p || !w || !n) return 0;
+    var start = parse(p.y + "-" + w[0] + "-" + w[1]);
+    var k = days(start, p) % n; return k < 0 ? k + n : k;
+  }
+  // Theme override from ?theme=: a festive theme maps to the festive window for the date.
+  function windowForTheme(theme, iso) {
+    var p = parse(iso);
+    if (theme === "halloween") return "halloween";
+    if (theme === "christmas") return (p && p.m === 12 && p.d >= 18) ? "xmas2" : "xmas1";
+    return "";
+  }
+  function daysUntil(iso, mo, d) {
+    var p = parse(iso); if (!p) return 0;
+    return days(p, parse(p.y + "-" + (mo < 10 ? "0" : "") + mo + "-" + (d < 10 ? "0" : "") + d));
+  }
+  return { parse: parse, themeFor: themeFor, festiveWindow: festiveWindow, ideaIndex: ideaIndex,
+           windowForTheme: windowForTheme, daysUntil: daysUntil, NAMES: NAMES };
+})();
+
+</script>
+<script>
+// ES5 only. No network, cookies or storage.
+(function () {
+  var DAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  var MON = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  var MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  var THEMES = {"autumn": {"emoji": ["\ud83c\udf42", "\ud83c\udf41", "\ud83c\udf30", "\ud83c\udf44", "\ud83c\udf4e"]}, "halloween": {"emoji": ["\ud83c\udf83", "\ud83d\udc7b", "\ud83e\udd87", "\ud83d\udd77\ufe0f", "\ud83d\udd78\ufe0f"]}, "christmas": {"emoji": ["\ud83c\udf84", "\u2744\ufe0f", "\u2b50", "\ud83d\udd14", "\ud83c\udf81"]}, "winter": {"emoji": ["\u2744\ufe0f", "\u26c4", "\ud83e\udde3", "\u2615", "\ud83e\udde4"]}, "spring": {"emoji": ["\ud83c\udf37", "\ud83d\udc23", "\ud83c\udf31", "\ud83c\udf3c", "\ud83e\udd8b"]}, "summer": {"emoji": ["\u2600\ufe0f", "\ud83c\udf49", "\ud83c\udf3b", "\ud83c\udf66", "\ud83d\udd76\ufe0f"]}};
+  var JOKES = [["What do you call a sleeping dinosaur?", "A dino-snore!"], ["Why did the cookie go to the doctor?", "Because it felt crummy!"], ["What do you call a bear with no teeth?", "A gummy bear!"], ["Why are ghosts bad at telling lies?", "Because you can see right through them!"], ["What does a cloud wear under its coat?", "Thunderwear!"], ["Why did the banana go to the doctor?", "It wasn't peeling well!"], ["What do you call a fish with no eyes?", "A fsh!"], ["What's orange and sounds like a parrot?", "A carrot!"], ["Why can't you give Elsa a balloon?", "Because she'll let it go!"], ["What do you call a pig that does karate?", "A pork chop!"], ["How do you make a tissue dance?", "Put a little boogie in it!"], ["What did the big flower say to the little flower?", "Hi, bud!"], ["Why do bees have sticky hair?", "Because they use honeycombs!"], ["What kind of tree fits in your hand?", "A palm tree!"]], WOULD = ["Would you rather have pancakes or pizza for breakfast?", "Would you rather be able to fly or be invisible?", "Would you rather have a pet dragon or a pet unicorn?", "Would you rather live in a treehouse or a castle?", "Would you rather swim with dolphins or ride a giant tortoise?", "Would you rather eat only peas or only carrots for a week?", "Would you rather be a superhero or a wizard?"];
+  var ANCHOR = WFT.parse("2026-11-03");   // a black + blue week
+  function pad(n) { return (n < 10 ? "0" : "") + n; }
+  function byId(i) { return document.getElementById(i); }
+  function qs(name) {
+    var q = (location.search || "").replace(/^\?/, "").split("&");
+    for (var i = 0; i < q.length; i++) { var kv = q[i].split("="); if (kv[0] === name) return decodeURIComponent(kv[1] || ""); }
+    return "";
+  }
+  function london() {
+    var now = new Date(), iso = now.getFullYear() + "-" + pad(now.getMonth() + 1) + "-" + pad(now.getDate()), hh = now.getHours(), mm = now.getMinutes();
+    try {
+      var f = new Intl.DateTimeFormat("en-GB", { timeZone: "Europe/London", year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", hour12: false });
+      var m = /(\d{1,2})\D+(\d{1,2})\D+(\d{4})\D+(\d{1,2})\D+(\d{2})/.exec(f.format(now));
+      if (m) { iso = m[3] + "-" + pad(parseInt(m[2], 10)) + "-" + pad(parseInt(m[1], 10)); hh = parseInt(m[4], 10) % 24; mm = parseInt(m[5], 10); }
+    } catch (e) {}
+    return { iso: iso, hh: hh, mm: mm };
+  }
+  var dp = qs("date"), override = WFT.parse(dp) ? dp : "";
+  var hp = parseInt(qs("hour"), 10);
+  var L0 = london(), iso = override || L0.iso;
+  var hour = (override && hp >= 0 && hp < 24) ? hp : L0.hh;
+  var P = WFT.parse(iso), dow = new Date(P.t).getUTCDay();
+  function addDays(p, n) { var d = new Date(p.t + n * 86400000); return WFT.parse(d.getUTCFullYear() + "-" + pad(d.getUTCMonth() + 1) + "-" + pad(d.getUTCDate())); }
+  function short(p) { var d = new Date(p.t); return DAYS[d.getUTCDay()].slice(0, 3) + " " + p.d + " " + MON[p.m - 1]; }
+  // Wheelie bins for the collection Tuesday p: even weeks from the anchor = black + blue, odd = pink.
+  function wheelie(p) {
+    var w = Math.round((p.t - ANCHOR.t) / (7 * 86400000));
+    return (w % 2 === 0) ? { html: '<span class="dot d-black"></span><span class="dot d-blue"></span>', txt: "Black (rubbish) and blue-lid (cardboard)", cls: "bb" }
+                         : { html: '<span class="dot d-pink"></span>', txt: "Pink-lid (plastic bottles and tins)", cls: "pk" };
+  }
+  // Collection Tuesday for this Mon-Sun week (after Tuesday, show next week's too).
+  var tue = addDays(P, 1 - ((dow + 6) % 7));            // Tuesday of this Mon-Sun week
+  var nextTue = addDays(tue, 7);
+  var shown = (((dow + 6) % 7) > 1) ? nextTue : tue;     // Wed-Sun: look ahead to next Tuesday
+  var wb = wheelie(shown);
+  var list = byId("bin-list");
+  var li = document.createElement("li");
+  li.innerHTML = wb.html + '<span><strong>' + wb.txt + '</strong><span class="when">Collected ' + short(shown) + '. Put out on Monday evening.</span></span>';
+  list.insertBefore(li, list.firstChild);
+  byId("bin-week").textContent = (shown === tue ? "This week's bins" : "Next week's bins") + " (Tuesday " + shown.d + " " + MONTHS[shown.m - 1] + ")";
+  var n = "";
+  if (dow === 1 && hour >= 15) n = "Tonight: put out the " + wb.txt.toLowerCase() + " bins. Not the food bin yet!";
+  else if (dow === 1) n = "Tonight is wheelie bin night: " + wb.txt.toLowerCase() + ".";
+  else if (dow === 2 && hour < 12) n = "This morning: food bin out now, plus the " + wb.txt.toLowerCase() + " bins if they're not out.";
+  else if (dow === 3 && hour < 12) n = "Today: garden waste bin day.";
+  else if (dow === 2) n = "Tomorrow is garden waste day.";
+  if (n) { var ne = byId("bin-nudge"); ne.textContent = n; ne.hidden = false; }
+  var rows = "";
+  for (var k = 0; k < 4; k++) { var t = addDays(shown, 7 * k), w = wheelie(t); rows += "<tr><td>" + short(t) + "</td><td>" + w.html + "</td><td>" + w.txt + " + food</td></tr>"; }
+  byId("rota").tBodies[0].innerHTML = rows;
+
+  // Meals: mark today
+  var ms = document.querySelectorAll(".meals li");
+  for (var i = 0; i < ms.length; i++) { var d = ms[i].getAttribute("data-date"); ms[i].className = d < iso ? "past" : (d === iso ? "today" : ""); }
+  // Event countdowns
+  var ev = document.querySelectorAll(".event");
+  for (var j = 0; j < ev.length; j++) {
+    var ed = WFT.parse(ev[j].getAttribute("data-date")); var c = Math.round((ed.t - P.t) / 86400000);
+    var ce = ev[j].querySelector(".count");
+    if (c < 0) ev[j].hidden = true;
+    else ce.textContent = c === 0 ? "It's today! 🎉" : (c + (c === 1 ? " sleep to go!" : " sleeps to go!"));
+  }
+  if (ev.length && !document.querySelector(".event:not([hidden])")) { var np = document.createElement("p"); np.textContent = "Nothing on the list just now."; byId("events").appendChild(np); }
+  // Theme
+  var th = WFT.themeFor(iso); document.documentElement.setAttribute("data-theme", th);
+  var em = THEMES[th].emoji; byId("deco").textContent = em.join(" ") + "   " + em.slice().reverse().join(" ") + "   " + em.join(" ");
+  byId("datefull").textContent = DAYS[dow] + " " + P.d + " " + MONTHS[P.m - 1];
+  function tick() { var L = london(); byId("clock").textContent = pad(L.hh) + ":" + pad(L.mm); }
+  tick(); setInterval(tick, 20000);
+  // Fun
+  var dayN = Math.round(P.t / 86400000), jk = JOKES[dayN % JOKES.length];
+  byId("joke-q").textContent = jk[0]; byId("joke-a").textContent = jk[1];
+  byId("joke-btn").onclick = function () { byId("joke-a").hidden = false; };
+  var wi = dayN % WOULD.length; byId("wyr").textContent = WOULD[wi];
+  byId("wyr-btn").onclick = function () { wi = (wi + 1) % WOULD.length; byId("wyr").textContent = WOULD[wi]; };
+})();
+</script>
+</body></html>

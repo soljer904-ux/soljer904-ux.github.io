@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en-GB" data-theme="halloween"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="refresh" content="1800">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; img-src 'none'; connect-src 'none'; form-action 'none'; base-uri 'none'">
+<meta name="robots" content="noindex, nofollow, noarchive"><meta name="referrer" content="no-referrer">
+<title>Family Hub</title>
+<style>
+:root{--bg:#FFF3DC;--fg:#35190A;--muted:#5E3A1E;--card:#FFFBF3;--line:#D9A85F;--accent:#A33A0C;--accent2:#E8A317;--tint:#FBE2B0;--hdrbg:#7B1E2B;--hdrfg:#FFF3DC;--herobg:#A8420F;--herofg:#FFF8EC;--today:#FFE08A;}
+html[data-theme="autumn"]{--bg:#FFF3DC;--fg:#35190A;--muted:#5E3A1E;--card:#FFFBF3;--line:#D9A85F;--accent:#A33A0C;--accent2:#E8A317;--tint:#FBE2B0;--hdrbg:#7B1E2B;--hdrfg:#FFF3DC;--herobg:#A8420F;--herofg:#FFF8EC;--today:#FFE08A;}
+html[data-theme="halloween"]{--bg:#150F20;--fg:#F7F0FF;--muted:#D3C6EA;--card:#251A3A;--line:#6A47A3;--accent:#FFA23A;--accent2:#FF7A00;--tint:#36264F;--hdrbg:#07040C;--hdrfg:#FFA23A;--herobg:#4C1D7D;--herofg:#FFFFFF;--today:#5A3200;}
+html[data-theme="christmas"]{--bg:#F7F1E0;--fg:#1B2A1E;--muted:#41524A;--card:#FFFDF6;--line:#C9B27A;--accent:#0F6B3A;--accent2:#D4A017;--tint:#E3F0E2;--hdrbg:#A4161A;--hdrfg:#FFF8E1;--herobg:#0F5132;--herofg:#FFFDF3;--today:#FFE9A6;}
+html[data-theme="winter"]{--bg:#EAF3FB;--fg:#10243E;--muted:#3B536E;--card:#FFFFFF;--line:#9BBFE0;--accent:#1B5AA6;--accent2:#6FB1E6;--tint:#D5E7F7;--hdrbg:#1F4E79;--hdrfg:#F2F8FF;--herobg:#17375E;--herofg:#F2F8FF;--today:#BFE0FF;}
+html[data-theme="spring"]{--bg:#F3FAEC;--fg:#1C3318;--muted:#43603C;--card:#FFFFFF;--line:#A9D18E;--accent:#2C7A30;--accent2:#E0699B;--tint:#DFF1D2;--hdrbg:#2E7D32;--hdrfg:#FFFFFF;--herobg:#276B2B;--herofg:#FFFFFF;--today:#FFD9E8;}
+html[data-theme="summer"]{--bg:#FFFAE0;--fg:#2E2400;--muted:#5A4A10;--card:#FFFFFF;--line:#E8CB60;--accent:#005F8F;--accent2:#FFB300;--tint:#FFEDA8;--hdrbg:#00689B;--hdrfg:#FFFFFF;--herobg:#B8400C;--herofg:#FFFFFF;--today:#C9ECFF;}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;background:#FFF3DC}
+[hidden]{display:none !important}
+body{margin:0;background:#FFF3DC;background:var(--bg);color:#35190A;color:var(--fg);font:20px/1.5 "Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-family:Roboto,"Segoe UI","Helvetica Neue",Arial,sans-serif}
+a{color:#A33A0C;color:var(--accent);}
+main{max-width:1180px;margin:0 auto;padding:18px 16px 48px}
+h1,h2,h3,h4,p{margin-top:0}
+/* header with live clock */
+.hdr{background:#7B1E2B;background:var(--hdrbg);color:#FFF3DC;color:var(--hdrfg);border-bottom:8px solid #E8A317;border-bottom:8px solid var(--accent2);padding:10px 16px 16px}
+.hdr-in{max-width:1180px;margin:0 auto}
+.deco{font-size:28px;line-height:1.4;letter-spacing:.5em;white-space:nowrap;overflow:hidden;text-align:center;margin:0 0 4px}
+.hdr-row{display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;-webkit-box-align:center;-ms-flex-align:center;align-items:center}
+.hdr-left{padding-right:16px}
+.hdr h1{font-size:2.6rem;line-height:1.1;margin:.1em 0 .1em;color:@hdrfg}
+.theme-tag{font-size:1.15rem;margin:0;color:#FFF3DC;color:var(--hdrfg);font-weight:600}
+.mode{display:inline-block;background:#E8A317;background:var(--accent2);color:#2A1600;border-radius:999px;padding:.15em .9em;font-weight:700;font-size:.95rem;margin:0 0 .3em}
+.clock-box{text-align:right}
+.clock{font-size:5.2rem;line-height:1;font-weight:800;letter-spacing:.02em;min-height:1em}
+.datefull{font-size:1.6rem;font-weight:700;margin-top:.1em}
+.sub{color:#5E3A1E;color:var(--muted);margin:.2em 0 .9em;font-size:1.05rem}
+/* hero: tonight */
+.tonight{background:#A8420F;background:var(--herobg);color:#FFF8EC;color:var(--herofg);border:6px solid #E8A317;border:6px solid var(--accent2);border-radius:24px;padding:20px 26px 24px;margin:0 0 22px}
+.tonight .kicker{margin:0;font-weight:800;font-size:1.35rem;text-transform:uppercase;letter-spacing:.1em;color:@herofg}
+.tonight h2{font-size:1.15rem;color:#FFF8EC;color:var(--herofg);margin:.1em 0 0;font-weight:600}
+.tonight .dish{font-size:2.7rem;line-height:1.15;font-weight:800;margin:.15em 0}
+.tonight .meta{color:#FFF8EC;color:var(--herofg);font-size:1.15rem}
+.tonight .none{font-size:2.3rem;font-weight:800;margin:.3em 0 .1em}
+.tonight .next{font-size:1.25rem;margin:0}
+.tonight .note,.tonight .tweak{background:rgba(255,255,255,.18);color:@herofg}
+.tonight .btn{background:#FFF8EC;background:var(--herofg);color:#A8420F;color:var(--herobg);border-color:@herofg}
+.tonight .cook{background:#E8A317;background:var(--accent2);color:#2A1600}
+.tonight .badge{color:@herofg}
+.tonight legend,.tonight .hint,.tonight .c{color:@herofg}
+.tonight fieldset{border-color:@herofg}
+.tonight textarea{background:#fff;color:#222}
+/* week at a glance */
+.sec-h{font-size:1.5rem;margin:26px 0 8px;color:@fg}
+.tiles{list-style:none;padding:0;margin:0 -6px;display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap}
+.tile{width:50%;padding:6px}
+.tile a{display:block;height:100%;min-height:150px;text-decoration:none;color:#35190A;color:var(--fg);background:#FFFBF3;background:var(--card);border:3px solid #D9A85F;border:3px solid var(--line);border-radius:18px;padding:12px 14px;position:relative}
+.t-day{display:block;font-size:1.2rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:@accent}
+.t-date{display:block;font-size:1.05rem;color:@muted}
+.t-dish{display:block;font-size:1.3rem;font-weight:700;line-height:1.25;margin-top:.3em}
+.t-meta{display:block;font-size:1.05rem;color:#5E3A1E;color:var(--muted);margin-top:.2em}
+.t-now{display:none;position:absolute;top:10px;right:10px;background:#E8A317;background:var(--accent2);color:#2A1600;font-weight:800;font-size:1rem;border-radius:999px;padding:.05em .7em;text-transform:uppercase}
+.tile.today a{background:#FFE08A;background:var(--today);border-color:#E8A317;border-color:var(--accent2);border-width:5px}
+.tile.today .t-now{display:block}
+.tile.past,.dw.past{opacity:.55}
+/* day details */
+.days{list-style:none;padding:0;margin:0 -8px;display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap}
+.dw{width:100%;padding:8px}
+.day,.card{background:#FFFBF3;background:var(--card);border:2px solid #D9A85F;border:2px solid var(--line);border-radius:18px;padding:16px 18px;height:100%}
+.dw.today .day{border-color:#E8A317;border-color:var(--accent2);border-width:5px;background:@today}
+.day h2{font-size:1.05rem;text-transform:uppercase;letter-spacing:.05em;color:#5E3A1E;color:var(--muted);margin:0}
+.dish{font-size:1.5rem;font-weight:700;line-height:1.25;margin:.25em 0}
+.meta{color:#5E3A1E;color:var(--muted);margin:0 0 .5em;font-size:1.05rem}
+.est{color:#5E3A1E;color:var(--muted);margin:0 0 .3em;font-size:1.05rem;font-weight:600}.est-q{font-weight:400}
+.tonight .est{color:@herofg}
+.note,.tweak{background:#FBE2B0;background:var(--tint);border-radius:12px;padding:.5em .75em;margin:.5em 0}
+.links{display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;margin:.5em -4px 0}
+.links>*{margin:4px}
+.btn{display:inline-block;padding:.6em 1em;border:2px solid #D9A85F;border:2px solid var(--line);border-radius:12px;color:#A33A0C;color:var(--accent);background:#FFFBF3;background:var(--card);text-decoration:none;font-weight:700;font-size:1.05rem;min-height:48px;line-height:1.3}
+.cook{display:inline-block;margin:.35em .4em 0 0;background:#FBE2B0;background:var(--tint);color:#A33A0C;color:var(--accent);border:1px solid #E8A317;border:1px solid var(--accent2);border-radius:999px;padding:.1em .75em;font-weight:700;font-size:1rem}
+.badge{display:inline-block;margin:.4em 0 0;font-weight:700;font-size:1.05rem}
+.rate{margin-top:.6em}.rate summary{list-style:none;cursor:pointer;display:inline-block}.rate summary::-webkit-details-marker{display:none}
+.rate-body{margin-top:.6em}
+.rate-body>*{margin-bottom:.5em}
+fieldset{border:2px solid #D9A85F;border:2px solid var(--line);border-radius:12px;margin:0 0 .5em;padding:.4em .8em;display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap}
+legend{color:#5E3A1E;color:var(--muted);font-size:1rem}
+fieldset label{min-height:48px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin-right:1.2em;font-size:1.05rem}
+input[type=radio]{width:26px;height:26px;margin:0 .45em 0 0}
+.c{display:block;color:#5E3A1E;color:var(--muted);font-size:1.05rem}
+textarea{display:block;font:inherit;color:#35190A;color:var(--fg);background:#FFF3DC;background:var(--bg);border:2px solid #D9A85F;border:2px solid var(--line);border-radius:12px;padding:.5em;width:100%;margin-top:.3em}
+.hint{color:#5E3A1E;color:var(--muted);font-size:1rem;margin:0}
+.send{margin-top:.3em}
+/* festive panel */
+.festive{background:#FBE2B0;background:var(--tint);border:4px dashed #E8A317;border:4px dashed var(--accent2);border-radius:22px;padding:16px 18px 12px;margin:0 0 22px}
+.fest-h{font-size:1.6rem;margin:0 0 .1em;color:@fg}
+.ideas{list-style:none;padding:0;margin:0 -6px;display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap}
+.idea{width:100%;padding:6px}
+.idea-in{background:#FFFBF3;background:var(--card);border:2px solid #D9A85F;border:2px solid var(--line);border-radius:16px;padding:12px 16px;height:100%}
+.idea.pick{width:100%}
+.idea.pick .idea-in{border:5px solid #E8A317;border:5px solid var(--accent2);background:@today}
+.idea h3{font-size:1.3rem;margin:0 0 .2em}
+.idea.pick h3{font-size:1.7rem}
+.idea p{margin:0 0 .4em}
+.pick-tag{display:none;background:#E8A317;background:var(--accent2);color:#2A1600;font-weight:800;border-radius:999px;padding:.05em .8em;font-size:1rem;margin-bottom:.4em;text-transform:uppercase}
+.idea.pick .pick-tag{display:inline-block}
+/* extras, cards */
+.extras{margin-top:30px}.extras-h{font-size:1.5rem;margin:0 0 .2em}
+.cards{margin-top:12px}
+.card{margin-bottom:14px;height:auto}
+.card h3{font-size:1.4rem;margin:0 0 .4em}.card h4{margin:1em 0 .3em}
+dl{margin:0}dt{color:#5E3A1E;color:var(--muted);float:left;clear:left;margin-right:.8em}dd{margin:0 0 .3em}dd:after{content:"";display:block;clear:both}
+ol li,ul li{margin:.25em 0}
+footer{color:#5E3A1E;color:var(--muted);font-size:1rem;margin-top:28px}
+@media (min-width:560px){.tile{width:33.333%}}
+@media (min-width:700px){.dw{width:50%}.idea{width:50%}}
+@media (min-width:900px){.tile{width:25%}.idea{width:33.333%}.idea.pick{width:100%}}
+@media (min-width:1100px){.dw{width:33.333%}}
+@media (max-width:640px){.hdr h1{font-size:2rem}.clock{font-size:3.6rem}.datefull{font-size:1.3rem}.clock-box{text-align:left;margin-top:.4em}.tonight .dish{font-size:2.1rem}.deco{font-size:22px}}
+@media print{.deco{display:none}}
+
+
+.fam-nav{margin:0 0 14px;font-size:1rem}
+.fam-nav a{margin-right:14px;display:inline-block}
+.fcard{background:#FFFBF3;background:var(--card);border:3px solid #D9A85F;border:3px solid var(--line);border-radius:22px;padding:16px 18px;margin:0 0 16px}
+.fcard h2{font-size:1.35rem;margin:0 0 8px}
+.fcard h3{font-size:1.15rem;margin:14px 0 6px}
+.links-grid{display:grid;gap:10px;grid-template-columns:1fr}
+@media(min-width:640px){.links-grid{grid-template-columns:1fr 1fr}}
+.lcard{display:block;text-decoration:none;color:inherit;background:#FFF3DC;background:var(--bg);border:2px solid #D9A85F;border:2px solid var(--line);border-radius:16px;padding:14px 16px;min-height:72px}
+.lcard strong{display:block;font-size:1.15rem;color:#A33A0C;color:var(--accent);margin-bottom:2px}
+.lcard span{display:block;font-size:.95rem;opacity:.85}
+.rowlist{list-style:none;margin:0;padding:0}
+.rowlist li{padding:10px 0;border-top:2px dashed #D9A85F;border-top:2px dashed var(--line)}
+.rowlist li:first-child{border-top:0}
+.rowlist .t{font-weight:700}
+.rowlist .d{display:block;font-size:.95rem;opacity:.85}
+.rota{width:100%;border-collapse:collapse;font-size:1rem;margin-top:4px}
+.rota th,.rota td{padding:8px 6px;border-top:1px solid #D9A85F;border-top:1px solid var(--line);text-align:left;vertical-align:top}
+.rota th{font-size:.9rem;text-transform:uppercase;letter-spacing:.04em;opacity:.8}
+.note{background:#FBE2B0;background:var(--tint);border-radius:14px;padding:10px 12px;font-weight:600;margin:8px 0}
+
+</style></head>
+<body>
+<header class="hdr"><div class="hdr-in">
+<p class="deco" id="deco" aria-hidden="true">🎃 👻 🦇 🕷️ 🕸️   🕸️ 🕷️ 🦇 👻 🎃   🎃 👻 🦇 🕷️ 🕸️</p>
+<div class="hdr-row">
+<div class="hdr-left"><h1>Family Hub</h1><p class="theme-tag">Quick links for phone and tablet</p></div>
+<div class="clock-box"><div class="clock" id="clock"></div><div class="datefull" id="datefull">Tuesday 27 October</div></div>
+</div></div></header>
+<main>
+<p class="fam-nav">
+<a href="/">🍽️ Meal plan</a>
+<a href="/family/">👨‍👩‍👧‍👦 Family page</a>
+<a href="/training/">🏋️ Training</a>
+</p>
+
+<section class="fcard" id="quick">
+<h2>Quick links</h2>
+<div class="links-grid">
+<a class="lcard" href="/"><strong>What's for Tea?</strong><span>This week's meal plan and recipes</span></a>
+<a class="lcard" href="/family/"><strong>Family page</strong><span>Bins, teas, countdowns and a joke</span></a>
+<a class="lcard" href="/training/"><strong>Training portal</strong><span>Weekly plan and interval timer</span></a>
+<a class="lcard" href="/hub/"><strong>This hub</strong><span>Bookmark for quick access</span></a>
+</div>
+</section>
+
+<section class="fcard" id="listening">
+<h2>Listening</h2>
+<h3>Audiobooks on Spotify</h3>
+<div class="links-grid">
+<a class="lcard" href="https://open.spotify.com/show/26fYzlJR7hh5rZZHYW9BpN" target="_blank" rel="noopener"><strong>Liar's Poker</strong><span>Michael Lewis · read by the author</span></a>
+<a class="lcard" href="https://open.spotify.com/show/6fmnkPJRJlvviWakl57HnN" target="_blank" rel="noopener"><strong>The Wolf of Wall Street</strong><span>Jordan Belfort</span></a>
+<a class="lcard" href="https://open.spotify.com/show/3AF0085IetY8d0d6iFMvVe" target="_blank" rel="noopener"><strong>Empire of Pain</strong><span>Patrick Radden Keefe · read by the author</span></a>
+</div>
+<ul class="rowlist">
+<li><span class="t">Good Cop, Bad War</span><span class="d">Neil Woods · search Spotify</span></li>
+<li><span class="t">Say Nothing</span><span class="d">Patrick Radden Keefe · search Spotify</span></li>
+<li><span class="t">The Big Short</span><span class="d">Michael Lewis · search Spotify</span></li>
+<li><span class="t">Billion Dollar Whale</span><span class="d">Tom Wright and Bradley Hope · search Spotify</span></li>
+<li><span class="t">Bad Blood</span><span class="d">John Carreyrou · search Spotify</span></li>
+</ul>
+<h3>Morning podcasts</h3>
+<div class="links-grid">
+<a class="lcard" href="https://open.spotify.com/show/1Ysx8g1Iw42gESAtegrFaH" target="_blank" rel="noopener"><strong>The Rest Is Politics</strong><span>Wed and Thu at midnight</span></a>
+<a class="lcard" href="https://open.spotify.com/show/0Z0KhuivFm1Ry4WIpWspPv" target="_blank" rel="noopener"><strong>Leading</strong><span>Interview spin-off · Mondays</span></a>
+<a class="lcard" href="https://open.spotify.com/show/2qZ0xpaBBwf3bTYhA10KZY" target="_blank" rel="noopener"><strong>Times Radio News Briefing</strong><span>About 3 minutes · by 3:30am</span></a>
+<a class="lcard" href="https://open.spotify.com/show/1410RabA4XOqO6IV8p0gYF" target="_blank" rel="noopener"><strong>FT News Briefing</strong><span>About 12 minutes · at 5am</span></a>
+</div>
+</section>
+
+<section class="fcard" id="routines">
+<h2>Routines</h2>
+<p class="note">UK time. Ask Eve if something looks off.</p>
+<table class="rota" aria-label="Routines">
+<thead><tr><th>Routine</th><th>When</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td>Morning commute check</td><td>Mon, Tue, Thu ~5:40am</td><td>Traffic and weather for the drive</td></tr>
+<tr><td>Evening commute check</td><td>Mon, Tue, Thu ~4:40pm</td><td>Traffic for the drive home</td></tr>
+<tr><td>Weekly family meal plan</td><td>Saturdays ~9am</td><td>Plans the week and updates What's for Tea?</td></tr>
+<tr><td>Lakeland basket ready</td><td>Fri 30 Oct, 9am (one-off)</td><td>Rebuilds the freezer box basket · no checkout</td></tr>
+<tr><td>Lidl steak and mince</td><td>Sat 31 Oct, 10am (one-off)</td><td>Reminder for steaks and mince at Lidl</td></tr>
+</tbody>
+</table>
+</section>
+
+<section class="fcard" id="team">
+<h2>Your team</h2>
+<ul class="rowlist">
+<li><span class="t">Eve</span><span class="d">Chief of staff: coordinates the bots, meal plans and this hub</span></li>
+<li><span class="t">Ember</span><span class="d">Executive assistant: email, calendar and follow-ups</span></li>
+<li><span class="t">Shopping</span><span class="d">Weekly Tesco shop and other buying</span></li>
+<li><span class="t">Family Finances</span><span class="d">Budget, spending, debts and savings</span></li>
+<li><span class="t">Dashboard Builder</span><span class="d">Builds dashboards from the other bots' data</span></li>
+<li><span class="t">Hearthwright</span><span class="d">House upkeep, repairs and home projects</span></li>
+<li><span class="t">Atlas</span><span class="d">Fitness coach: training, stretching and food</span></li>
+<li><span class="t">Life Coach</span><span class="d">Goals and habits across work, family, health and money</span></li>
+<li><span class="t">Compass</span><span class="d">Holidays, days out and work travel</span></li>
+<li><span class="t">Day Trading</span><span class="d">Research and risk for the trading side hustle</span></li>
+</ul>
+</section>
+
+<footer>Updated 27 Oct 2026. Ask Eve for files that live on her computer (shopping lists, history, home plans).</footer>
+</main>
+<script>
+// Pure date logic (no DOM). Keep in step with theme_for() / festive_for() in build.py.
+var WFT = (function () {
+  var WIN = { halloween: ["10", "25", 4], xmas1: ["12", "11", 4], xmas2: ["12", "18", 4] };
+  var NAMES = { autumn: 1, halloween: 1, christmas: 1, winter: 1, spring: 1, summer: 1 };
+  function parse(iso) {
+    var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || "");
+    if (!m) return null;
+    var y = parseInt(m[1], 10), mo = parseInt(m[2], 10), d = parseInt(m[3], 10);
+    var t = new Date(Date.UTC(y, mo - 1, d));
+    if (t.getUTCFullYear() !== y || t.getUTCMonth() !== mo - 1 || t.getUTCDate() !== d) return null;
+    return { y: y, m: mo, d: d, t: t.getTime() };
+  }
+  function days(a, b) { return Math.round((b.t - a.t) / 86400000); }
+  function themeFor(iso) {
+    var p = parse(iso); if (!p) return "autumn";
+    if (p.m === 12 && p.d >= 11 && p.d <= 25) return "christmas";
+    if (p.m === 10 && p.d >= 25 && p.d <= 31) return "halloween";
+    if (p.m >= 9 && p.m <= 11) return "autumn";
+    if (p.m === 12 || p.m <= 2) return "winter";
+    if (p.m <= 5) return "spring";
+    return "summer";
+  }
+  function festiveWindow(iso) {
+    var p = parse(iso); if (!p) return "";
+    if (p.m === 10 && p.d >= 25 && p.d <= 31) return "halloween";
+    if (p.m === 12 && p.d >= 11 && p.d <= 17) return "xmas1";
+    if (p.m === 12 && p.d >= 18 && p.d <= 25) return "xmas2";
+    return "";
+  }
+  // Index of the idea to highlight on a date inside window win (n ideas).
+  function ideaIndex(iso, win, n) {
+    var p = parse(iso), w = WIN[win]; if (!p || !w || !n) return 0;
+    var start = parse(p.y + "-" + w[0] + "-" + w[1]);
+    var k = days(start, p) % n; return k < 0 ? k + n : k;
+  }
+  // Theme override from ?theme=: a festive theme maps to the festive window for the date.
+  function windowForTheme(theme, iso) {
+    var p = parse(iso);
+    if (theme === "halloween") return "halloween";
+    if (theme === "christmas") return (p && p.m === 12 && p.d >= 18) ? "xmas2" : "xmas1";
+    return "";
+  }
+  function daysUntil(iso, mo, d) {
+    var p = parse(iso); if (!p) return 0;
+    return days(p, parse(p.y + "-" + (mo < 10 ? "0" : "") + mo + "-" + (d < 10 ? "0" : "") + d));
+  }
+  return { parse: parse, themeFor: themeFor, festiveWindow: festiveWindow, ideaIndex: ideaIndex,
+           windowForTheme: windowForTheme, daysUntil: daysUntil, NAMES: NAMES };
+})();
+
+</script>
+<script>
+(function () {
+  var DAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  var MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  var THEMES = {"autumn": {"emoji": ["\ud83c\udf42", "\ud83c\udf41", "\ud83c\udf30", "\ud83c\udf44", "\ud83c\udf4e"]}, "halloween": {"emoji": ["\ud83c\udf83", "\ud83d\udc7b", "\ud83e\udd87", "\ud83d\udd77\ufe0f", "\ud83d\udd78\ufe0f"]}, "christmas": {"emoji": ["\ud83c\udf84", "\u2744\ufe0f", "\u2b50", "\ud83d\udd14", "\ud83c\udf81"]}, "winter": {"emoji": ["\u2744\ufe0f", "\u26c4", "\ud83e\udde3", "\u2615", "\ud83e\udde4"]}, "spring": {"emoji": ["\ud83c\udf37", "\ud83d\udc23", "\ud83c\udf31", "\ud83c\udf3c", "\ud83e\udd8b"]}, "summer": {"emoji": ["\u2600\ufe0f", "\ud83c\udf49", "\ud83c\udf3b", "\ud83c\udf66", "\ud83d\udd76\ufe0f"]}};
+  function pad(n) { return (n < 10 ? "0" : "") + n; }
+  function byId(i) { return document.getElementById(i); }
+  function qs(name) {
+    var q = (location.search || "").replace(/^\?/, "").split("&");
+    for (var i = 0; i < q.length; i++) { var kv = q[i].split("="); if (kv[0] === name) return decodeURIComponent(kv[1] || ""); }
+    return "";
+  }
+  function london() {
+    var now = new Date(), iso = now.getFullYear() + "-" + pad(now.getMonth() + 1) + "-" + pad(now.getDate()), hh = now.getHours(), mm = now.getMinutes();
+    try {
+      var f = new Intl.DateTimeFormat("en-GB", { timeZone: "Europe/London", year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", hour12: false });
+      var m = /(\d{1,2})\D+(\d{1,2})\D+(\d{4})\D+(\d{1,2})\D+(\d{2})/.exec(f.format(now));
+      if (m) { iso = m[3] + "-" + pad(parseInt(m[2], 10)) + "-" + pad(parseInt(m[1], 10)); hh = parseInt(m[4], 10) % 24; mm = parseInt(m[5], 10); }
+    } catch (err) {}
+    return { iso: iso, hh: hh, mm: mm };
+  }
+  var dp = qs("date"), override = WFT.parse(dp) ? dp : "";
+  var L0 = london(), iso = override || L0.iso;
+  var P = WFT.parse(iso), dow = new Date(P.t).getUTCDay();
+  var th = WFT.themeFor(iso); document.documentElement.setAttribute("data-theme", th);
+  var em = THEMES[th].emoji; byId("deco").textContent = em.join(" ") + "   " + em.slice().reverse().join(" ") + "   " + em.join(" ");
+  byId("datefull").textContent = DAYS[dow] + " " + P.d + " " + MONTHS[P.m - 1];
+  function tick() { var L = london(); byId("clock").textContent = pad(L.hh) + ":" + pad(L.mm); }
+  tick(); setInterval(tick, 20000);
+})();
+</script>
+</body></html>

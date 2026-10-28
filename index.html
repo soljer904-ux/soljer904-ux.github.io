@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="en-GB" data-theme="halloween"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="refresh" content="1800">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; img-src 'none'; connect-src 'none'; form-action 'none'; base-uri 'none'">
+<meta name="robots" content="noindex, nofollow, noarchive"><meta name="referrer" content="no-referrer">
+<title>What's for Tea? Week of 26 Oct 2026</title>
+<style>
+:root{--bg:#FFF3DC;--fg:#35190A;--muted:#5E3A1E;--card:#FFFBF3;--line:#D9A85F;--accent:#A33A0C;--accent2:#E8A317;--tint:#FBE2B0;--hdrbg:#7B1E2B;--hdrfg:#FFF3DC;--herobg:#A8420F;--herofg:#FFF8EC;--today:#FFE08A;}
+html[data-theme="autumn"]{--bg:#FFF3DC;--fg:#35190A;--muted:#5E3A1E;--card:#FFFBF3;--line:#D9A85F;--accent:#A33A0C;--accent2:#E8A317;--tint:#FBE2B0;--hdrbg:#7B1E2B;--hdrfg:#FFF3DC;--herobg:#A8420F;--herofg:#FFF8EC;--today:#FFE08A;}
+html[data-theme="halloween"]{--bg:#150F20;--fg:#F7F0FF;--muted:#D3C6EA;--card:#251A3A;--line:#6A47A3;--accent:#FFA23A;--accent2:#FF7A00;--tint:#36264F;--hdrbg:#07040C;--hdrfg:#FFA23A;--herobg:#4C1D7D;--herofg:#FFFFFF;--today:#5A3200;}
+html[data-theme="christmas"]{--bg:#F7F1E0;--fg:#1B2A1E;--muted:#41524A;--card:#FFFDF6;--line:#C9B27A;--accent:#0F6B3A;--accent2:#D4A017;--tint:#E3F0E2;--hdrbg:#A4161A;--hdrfg:#FFF8E1;--herobg:#0F5132;--herofg:#FFFDF3;--today:#FFE9A6;}
+html[data-theme="winter"]{--bg:#EAF3FB;--fg:#10243E;--muted:#3B536E;--card:#FFFFFF;--line:#9BBFE0;--accent:#1B5AA6;--accent2:#6FB1E6;--tint:#D5E7F7;--hdrbg:#1F4E79;--hdrfg:#F2F8FF;--herobg:#17375E;--herofg:#F2F8FF;--today:#BFE0FF;}
+html[data-theme="spring"]{--bg:#F3FAEC;--fg:#1C3318;--muted:#43603C;--card:#FFFFFF;--line:#A9D18E;--accent:#2C7A30;--accent2:#E0699B;--tint:#DFF1D2;--hdrbg:#2E7D32;--hdrfg:#FFFFFF;--herobg:#276B2B;--herofg:#FFFFFF;--today:#FFD9E8;}
+html[data-theme="summer"]{--bg:#FFFAE0;--fg:#2E2400;--muted:#5A4A10;--card:#FFFFFF;--line:#E8CB60;--accent:#005F8F;--accent2:#FFB300;--tint:#FFEDA8;--hdrbg:#00689B;--hdrfg:#FFFFFF;--herobg:#B8400C;--herofg:#FFFFFF;--today:#C9ECFF;}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;background:#FFF3DC}
+[hidden]{display:none !important}
+body{margin:0;background:#FFF3DC;background:var(--bg);color:#35190A;color:var(--fg);font:20px/1.5 "Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-family:Roboto,"Segoe UI","Helvetica Neue",Arial,sans-serif}
+a{color:#A33A0C;color:var(--accent);}
+main{max-width:1180px;margin:0 auto;padding:18px 16px 48px}
+h1,h2,h3,h4,p{margin-top:0}
+/* header with live clock */
+.hdr{background:#7B1E2B;background:var(--hdrbg);color:#FFF3DC;color:var(--hdrfg);border-bottom:8px solid #E8A317;border-bottom:8px solid var(--accent2);padding:10px 16px 16px}
+.hdr-in{max-width:1180px;margin:0 auto}
+.deco{font-size:28px;line-height:1.4;letter-spacing:.5em;white-space:nowrap;overflow:hidden;text-align:center;margin:0 0 4px}
+.hdr-row{display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;-webkit-box-align:center;-ms-flex-align:center;align-items:center}
+.hdr-left{padding-right:16px}
+.hdr h1{font-size:2.6rem;line-height:1.1;margin:.1em 0 .1em;color:@hdrfg}
+.theme-tag{font-size:1.15rem;margin:0;color:#FFF3DC;color:var(--hdrfg);font-weight:600}
+.mode{display:inline-block;background:#E8A317;background:var(--accent2);color:#2A1600;border-radius:999px;padding:.15em .9em;font-weight:700;font-size:.95rem;margin:0 0 .3em}
+.clock-box{text-align:right}
+.clock{font-size:5.2rem;line-height:1;font-weight:800;letter-spacing:.02em;min-height:1em}
+.datefull{font-size:1.6rem;font-weight:700;margin-top:.1em}
+.sub{color:#5E3A1E;color:var(--muted);margin:.2em 0 .9em;font-size:1.05rem}
+/* hero: tonight */
+.tonight{background:#A8420F;background:var(--herobg);color:#FFF8EC;color:var(--herofg);border:6px solid #E8A317;border:6px solid var(--accent2);border-radius:24px;padding:20px 26px 24px;margin:0 0 22px}
+.tonight .kicker{margin:0;font-weight:800;font-size:1.35rem;text-transform:uppercase;letter-spacing:.1em;color:@herofg}
+.tonight h2{font-size:1.15rem;color:#FFF8EC;color:var(--herofg);margin:.1em 0 0;font-weight:600}
+.tonight .dish{font-size:2.7rem;line-height:1.15;font-weight:800;margin:.15em 0}
+.tonight .meta{color:#FFF8EC;color:var(--herofg);font-size:1.15rem}
+.tonight .none{font-size:2.3rem;font-weight:800;margin:.3em 0 .1em}
+.tonight .next{font-size:1.25rem;margin:0}
+.tonight .note,.tonight .tweak{background:rgba(255,255,255,.18);color:@herofg}
+.tonight .btn{background:#FFF8EC;background:var(--herofg);color:#A8420F;color:var(--herobg);border-color:@herofg}
+.tonight .cook{background:#E8A317;background:var(--accent2);color:#2A1600}
+.tonight .badge{color:@herofg}
+.tonight legend,.tonight .hint,.tonight .c{color:@herofg}
+.tonight fieldset{border-color:@herofg}
+.tonight textarea{background:#fff;color:#222}
+/* week at a glance */
+.sec-h{font-size:1.5rem;margin:26px 0 8px;color:@fg}
+.tiles{list-style:none;padding:0;margin:0 -6px;display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap}
+.tile{width:50%;padding:6px}
+.tile a{display:block;height:100%;min-height:150px;text-decoration:none;color:#35190A;color:var(--fg);background:#FFFBF3;background:var(--card);border:3px solid #D9A85F;border:3px solid var(--line);border-radius:18px;padding:12px 14px;position:relative}
+.t-day{display:block;font-size:1.2rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:@accent}
+.t-date{display:block;font-size:1.05rem;color:@muted}
+.t-dish{display:block;font-size:1.3rem;font-weight:700;line-height:1.25;margin-top:.3em}
+.t-meta{display:block;font-size:1.05rem;color:#5E3A1E;color:var(--muted);margin-top:.2em}
+.t-now{display:none;position:absolute;top:10px;right:10px;background:#E8A317;background:var(--accent2);color:#2A1600;font-weight:800;font-size:1rem;border-radius:999px;padding:.05em .7em;text-transform:uppercase}
+.tile.today a{background:#FFE08A;background:var(--today);border-color:#E8A317;border-color:var(--accent2);border-width:5px}
+.tile.today .t-now{display:block}
+.tile.past,.dw.past{opacity:.55}
+/* day details */
+.days{list-style:none;padding:0;margin:0 -8px;display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap}
+.dw{width:100%;padding:8px}
+.day,.card{background:#FFFBF3;background:var(--card);border:2px solid #D9A85F;border:2px solid var(--line);border-radius:18px;padding:16px 18px;height:100%}
+.dw.today .day{border-color:#E8A317;border-color:var(--accent2);border-width:5px;background:@today}
+.day h2{font-size:1.05rem;text-transform:uppercase;letter-spacing:.05em;color:#5E3A1E;color:var(--muted);margin:0}
+.dish{font-size:1.5rem;font-weight:700;line-height:1.25;margin:.25em 0}
+.meta{color:#5E3A1E;color:var(--muted);margin:0 0 .5em;font-size:1.05rem}
+.est{color:#5E3A1E;color:var(--muted);margin:0 0 .3em;font-size:1.05rem;font-weight:600}.est-q{font-weight:400}
+.tonight .est{color:@herofg}
+.note,.tweak{background:#FBE2B0;background:var(--tint);border-radius:12px;padding:.5em .75em;margin:.5em 0}
+.links{display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;margin:.5em -4px 0}
+.links>*{margin:4px}
+.btn{display:inline-block;padding:.6em 1em;border:2px solid #D9A85F;border:2px solid var(--line);border-radius:12px;color:#A33A0C;color:var(--accent);background:#FFFBF3;background:var(--card);text-decoration:none;font-weight:700;font-size:1.05rem;min-height:48px;line-height:1.3}
+.cook{display:inline-block;margin:.35em .4em 0 0;background:#FBE2B0;background:var(--tint);color:#A33A0C;color:var(--accent);border:1px solid #E8A317;border:1px solid var(--accent2);border-radius:999px;padding:.1em .75em;font-weight:700;font-size:1rem}
+.badge{display:inline-block;margin:.4em 0 0;font-weight:700;font-size:1.05rem}
+.rate{margin-top:.6em}.rate summary{list-style:none;cursor:pointer;display:inline-block}.rate summary::-webkit-details-marker{display:none}
+.rate-body{margin-top:.6em}
+.rate-body>*{margin-bottom:.5em}
+fieldset{border:2px solid #D9A85F;border:2px solid var(--line);border-radius:12px;margin:0 0 .5em;padding:.4em .8em;display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap}
+legend{color:#5E3A1E;color:var(--muted);font-size:1rem}
+fieldset label{min-height:48px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin-right:1.2em;font-size:1.05rem}
+input[type=radio]{width:26px;height:26px;margin:0 .45em 0 0}
+.c{display:block;color:#5E3A1E;color:var(--muted);font-size:1.05rem}
+textarea{display:block;font:inherit;color:#35190A;color:var(--fg);background:#FFF3DC;background:var(--bg);border:2px solid #D9A85F;border:2px solid var(--line);border-radius:12px;padding:.5em;width:100%;margin-top:.3em}
+.hint{color:#5E3A1E;color:var(--muted);font-size:1rem;margin:0}
+.send{margin-top:.3em}
+/* festive panel */
+.festive{background:#FBE2B0;background:var(--tint);border:4px dashed #E8A317;border:4px dashed var(--accent2);border-radius:22px;padding:16px 18px 12px;margin:0 0 22px}
+.fest-h{font-size:1.6rem;margin:0 0 .1em;color:@fg}
+.ideas{list-style:none;padding:0;margin:0 -6px;display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap}
+.idea{width:100%;padding:6px}
+.idea-in{background:#FFFBF3;background:var(--card);border:2px solid #D9A85F;border:2px solid var(--line);border-radius:16px;padding:12px 16px;height:100%}
+.idea.pick{width:100%}
+.idea.pick .idea-in{border:5px solid #E8A317;border:5px solid var(--accent2);background:@today}
+.idea h3{font-size:1.3rem;margin:0 0 .2em}
+.idea.pick h3{font-size:1.7rem}
+.idea p{margin:0 0 .4em}
+.pick-tag{display:none;background:#E8A317;background:var(--accent2);color:#2A1600;font-weight:800;border-radius:999px;padding:.05em .8em;font-size:1rem;margin-bottom:.4em;text-transform:uppercase}
+.idea.pick .pick-tag{display:inline-block}
+/* extras, cards */
+.extras{margin-top:30px}.extras-h{font-size:1.5rem;margin:0 0 .2em}
+.cards{margin-top:12px}
+.card{margin-bottom:14px;height:auto}
+.card h3{font-size:1.4rem;margin:0 0 .4em}.card h4{margin:1em 0 .3em}
+dl{margin:0}dt{color:#5E3A1E;color:var(--muted);float:left;clear:left;margin-right:.8em}dd{margin:0 0 .3em}dd:after{content:"";display:block;clear:both}
+ol li,ul li{margin:.25em 0}
+footer{color:#5E3A1E;color:var(--muted);font-size:1rem;margin-top:28px}
+@media (min-width:560px){.tile{width:33.333%}}
+@media (min-width:700px){.dw{width:50%}.idea{width:50%}}
+@media (min-width:900px){.tile{width:25%}.idea{width:33.333%}.idea.pick{width:100%}}
+@media (min-width:1100px){.dw{width:33.333%}}
+@media (max-width:640px){.hdr h1{font-size:2rem}.clock{font-size:3.6rem}.datefull{font-size:1.3rem}.clock-box{text-align:left;margin-top:.4em}.tonight .dish{font-size:2.1rem}.deco{font-size:22px}}
+@media print{.deco{display:none}}
+
+</style></head>
+<body>
+<header class="hdr"><div class="hdr-in">
+<p class="deco" id="deco" aria-hidden="true">🎃 👻 🦇 🕷️ 🕸️   🕸️ 🕷️ 🦇 👻 🎃   🎃 👻 🦇 🕷️ 🕸️</p>
+<div class="hdr-row">
+<div class="hdr-left"><h1>What's for Tea?</h1><p class="theme-tag" id="theme-tag">4 days until Halloween</p></div>
+<div class="clock-box"><div class="clock" id="clock"></div><div class="datefull" id="datefull">Tuesday 27 October</div></div>
+</div></div></header>
+<main id="top">
+<p class="sub"><strong>Monday to Sunday</strong> · Week of Monday 26 October 2026</p>
+<p class="sub fam-link"><a href="/family/">👨‍👩‍👧‍👦 Family page</a> · <a href="/hub/">🏠 Hub</a> · <a href="/training/">🏋️ Training</a></p>
+<section class="tonight" id="tonight"><p class="kicker">🍽️ Tonight</p><div class="hero-slot" data-date="2026-10-25" hidden><h2>Sunday 25 October</h2>
+<p class="dish">Steak &amp; chips (grown-ups) · Leftover toad in the hole with mash &amp; peas (kids)</p><p class="meta">30 min · Beef</p><p class="est">≈ 570 kcal · 44g protein · 45g carbs · 22g fat <span class="est-q">(adult portion, estimate)</span></p><p class="est">≈ £15.20 for the family <span class="est-q">(~£3.04 a head, estimate)</span></p><p class="note">An easy Sunday tea: pan-fried steak with triple cooked oven chips for the grown-ups, and last night&#x27;s toad in the hole warmed through for the kids with creamy mash and peas.</p>
+<div class="links"><a class="btn" href="#card-sunday-steak-and-toad-leftovers">Recipe card</a></div><details class="rate"><summary class="btn">Rate this</summary>
+<div class="rate-body" data-dish-id="sunday-steak-and-toad-leftovers" data-dish="Steak &amp; chips (grown-ups) · Leftover toad in the hole with mash &amp; peas (kids)" data-week="2026-10-19">
+<fieldset><legend>Rating</legend><label><input type="radio" name="r-ht" value="up"> Thumbs up</label><label><input type="radio" name="r-ht" value="down"> Thumbs down</label></fieldset>
+<fieldset><legend>From</legend><label><input type="radio" name="g-ht" value="kids"> Kids</label><label><input type="radio" name="g-ht" value="adults"> Adults</label><label><input type="radio" name="g-ht" value="everyone" checked> Everyone</label></fieldset>
+<label class="c">Comment (optional)<textarea rows="2" maxlength="300" placeholder="e.g. too spicy, kids wouldn't eat it"></textarea></label>
+<a class="btn send" href="mailto:ember-sol+tea@mail.grokbot.com?subject=Rating%3A%20Steak%20%26%20chips%20%28grown-ups%29%20%C2%B7%20Leftover%20toad%20in%20the%20hole%20with%20mash%20%26%20peas%20%28kids%29&amp;body=dish_id%3A%20sunday-steak-and-toad-leftovers%0Adish%3A%20Steak%20%26%20chips%20%28grown-ups%29%20%C2%B7%20Leftover%20toad%20in%20the%20hole%20with%20mash%20%26%20peas%20%28kids%29%0Arating%3A%20up%7Cdown%0Agroup%3A%20kids%7Cadults%7Ceveryone%0Acomment%3A%20%0Aweek%3A%202026-10-19%0A">Open email to send</a>
+<p class="hint">Nothing is saved on this page. This opens your email app with the rating filled in.</p></div></details></div><div class="hero-slot" data-date="2026-10-26" hidden><h2>Monday 26 October</h2>
+<p class="dish">Creamy salmon, leek &amp; potato traybake</p><p class="meta">40 min · Fish</p><p class="est">≈ 630 kcal · 39g protein · 35g carbs · 36g fat <span class="est-q">(adult portion, estimate)</span></p><p class="est">≈ £15.05 for the family <span class="est-q">(~£3.01 a head, estimate)</span></p><p class="note">Golden roast baby potatoes in a mild, creamy leek sauce with salmon on top, served with peas and broccoli. Made with reduced-fat crème fraîche instead of double cream, and scaled up for 5.</p><p class="tweak"><strong>Kids:</strong> Flake the salmon into the creamy sauce and potatoes for the twins.</p>
+<div class="links"><a class="btn" href="https://www.bbcgoodfood.com/recipes/creamy-salmon-leek-potato-traybake" rel="noopener noreferrer nofollow">Recipe</a><a class="btn" href="#card-creamy-salmon-potato-traybake">Recipe card</a></div><details class="rate"><summary class="btn">Rate this</summary>
+<div class="rate-body" data-dish-id="creamy-salmon-potato-traybake" data-dish="Creamy salmon, leek &amp; potato traybake" data-week="2026-10-26">
+<fieldset><legend>Rating</legend><label><input type="radio" name="r-h0" value="up"> Thumbs up</label><label><input type="radio" name="r-h0" value="down"> Thumbs down</label></fieldset>
+<fieldset><legend>From</legend><label><input type="radio" name="g-h0" value="kids"> Kids</label><label><input type="radio" name="g-h0" value="adults"> Adults</label><label><input type="radio" name="g-h0" value="everyone" checked> Everyone</label></fieldset>
+<label class="c">Comment (optional)<textarea rows="2" maxlength="300" placeholder="e.g. too spicy, kids wouldn't eat it"></textarea></label>
+<a class="btn send" href="mailto:ember-sol+tea@mail.grokbot.com?subject=Rating%3A%20Creamy%20salmon%2C%20leek%20%26%20potato%20traybake&amp;body=dish_id%3A%20creamy-salmon-potato-traybake%0Adish%3A%20Creamy%20salmon%2C%20leek%20%26%20potato%20traybake%0Arating%3A%20up%7Cdown%0Agroup%3A%20kids%7Cadults%7Ceveryone%0Acomment%3A%20%0Aweek%3A%202026-10-26%0A">Open email to send</a>
+<p class="hint">Nothing is saved on this page. This opens your email app with the rating filled in.</p></div></details></div><div class="hero-slot" data-date="2026-10-27"><h2>Tuesday 27 October</h2><span class="cook">Mel&#x27;s night</span>
+<p class="dish">Hidden-veg spaghetti bolognese</p><p class="meta">40 min · Mince</p><p class="est">≈ 610 kcal · 45g protein · 67g carbs · 17g fat <span class="est-q">(adult portion, estimate)</span></p><p class="est">≈ £7.60 for the family <span class="est-q">(~£1.52 a head, estimate)</span></p>
+<div class="links"><a class="btn" href="#card-bolognese">Recipe card</a></div><details class="rate"><summary class="btn">Rate this</summary>
+<div class="rate-body" data-dish-id="bolognese" data-dish="Hidden-veg spaghetti bolognese" data-week="2026-10-26">
+<fieldset><legend>Rating</legend><label><input type="radio" name="r-h1" value="up"> Thumbs up</label><label><input type="radio" name="r-h1" value="down"> Thumbs down</label></fieldset>
+<fieldset><legend>From</legend><label><input type="radio" name="g-h1" value="kids"> Kids</label><label><input type="radio" name="g-h1" value="adults"> Adults</label><label><input type="radio" name="g-h1" value="everyone" checked> Everyone</label></fieldset>
+<label class="c">Comment (optional)<textarea rows="2" maxlength="300" placeholder="e.g. too spicy, kids wouldn't eat it"></textarea></label>
+<a class="btn send" href="mailto:ember-sol+tea@mail.grokbot.com?subject=Rating%3A%20Hidden-veg%20spaghetti%20bolognese&amp;body=dish_id%3A%20bolognese%0Adish%3A%20Hidden-veg%20spaghetti%20bolognese%0Arating%3A%20up%7Cdown%0Agroup%3A%20kids%7Cadults%7Ceveryone%0Acomment%3A%20%0Aweek%3A%202026-10-26%0A">Open email to send</a>
+<p class="hint">Nothing is saved on this page. This opens your email app with the rating filled in.</p></div></details></div><div class="hero-slot" data-date="2026-10-28" hidden><h2>Wednesday 28 October</h2><span class="cook">Mel&#x27;s night</span>
+<p class="dish">Chicken &amp; leek pie (pastry lid only)</p><p class="meta">50 min · Chicken</p><p class="est">≈ 710 kcal · 56g protein · 51g carbs · 31g fat <span class="est-q">(adult portion, estimate)</span></p><p class="est">≈ £8.15 for the family <span class="est-q">(~£1.63 a head, estimate)</span></p><p class="note">Busy evening (6:30pm activity): this one&#x27;s fine. Make the filling in the morning, then just add the pastry lid and bake for 25 min.</p>
+<div class="links"><a class="btn" href="#card-pie">Recipe card</a></div><details class="rate"><summary class="btn">Rate this</summary>
+<div class="rate-body" data-dish-id="pie" data-dish="Chicken &amp; leek pie (pastry lid only)" data-week="2026-10-26">
+<fieldset><legend>Rating</legend><label><input type="radio" name="r-h2" value="up"> Thumbs up</label><label><input type="radio" name="r-h2" value="down"> Thumbs down</label></fieldset>
+<fieldset><legend>From</legend><label><input type="radio" name="g-h2" value="kids"> Kids</label><label><input type="radio" name="g-h2" value="adults"> Adults</label><label><input type="radio" name="g-h2" value="everyone" checked> Everyone</label></fieldset>
+<label class="c">Comment (optional)<textarea rows="2" maxlength="300" placeholder="e.g. too spicy, kids wouldn't eat it"></textarea></label>
+<a class="btn send" href="mailto:ember-sol+tea@mail.grokbot.com?subject=Rating%3A%20Chicken%20%26%20leek%20pie%20%28pastry%20lid%20only%29&amp;body=dish_id%3A%20pie%0Adish%3A%20Chicken%20%26%20leek%20pie%20%28pastry%20lid%20only%29%0Arating%3A%20up%7Cdown%0Agroup%3A%20kids%7Cadults%7Ceveryone%0Acomment%3A%20%0Aweek%3A%202026-10-26%0A">Open email to send</a>
+<p class="hint">Nothing is saved on this page. This opens your email app with the rating filled in.</p></div></details></div><div class="hero-slot" data-date="2026-10-29" hidden><h2>Thursday 29 October</h2><span class="cook">Mel&#x27;s night</span>
+<p class="dish">Sausage &amp; bean casserole</p><p class="meta">50 min (or slow cooker 6 hr low) · Other</p><p class="est">≈ 650 kcal · 35g protein · 50g carbs · 34g fat <span class="est-q">(adult portion, estimate)</span></p><p class="est">≈ £6.85 for the family <span class="est-q">(~£1.37 a head, estimate)</span></p>
+<div class="links"><a class="btn" href="https://www.bbcgoodfood.com/recipes/sausage-bean-casserole" rel="noopener noreferrer nofollow">BBC Good Food: sausage &amp; bean casserole</a><a class="btn" href="#card-casserole">Recipe card</a></div><details class="rate"><summary class="btn">Rate this</summary>
+<div class="rate-body" data-dish-id="casserole" data-dish="Sausage &amp; bean casserole" data-week="2026-10-26">
+<fieldset><legend>Rating</legend><label><input type="radio" name="r-h3" value="up"> Thumbs up</label><label><input type="radio" name="r-h3" value="down"> Thumbs down</label></fieldset>
+<fieldset><legend>From</legend><label><input type="radio" name="g-h3" value="kids"> Kids</label><label><input type="radio" name="g-h3" value="adults"> Adults</label><label><input type="radio" name="g-h3" value="everyone" checked> Everyone</label></fieldset>
+<label class="c">Comment (optional)<textarea rows="2" maxlength="300" placeholder="e.g. too spicy, kids wouldn't eat it"></textarea></label>
+<a class="btn send" href="mailto:ember-sol+tea@mail.grokbot.com?subject=Rating%3A%20Sausage%20%26%20bean%20casserole&amp;body=dish_id%3A%20casserole%0Adish%3A%20Sausage%20%26%20bean%20casserole%0Arating%3A%20up%7Cdown%0Agroup%3A%20kids%7Cadults%7Ceveryone%0Acomment%3A%20%0Aweek%3A%202026-10-26%0A">Open email to send</a>
+<p class="hint">Nothing is saved on this page. This opens your email app with the rating filled in.</p></div></details></div><div class="hero-slot" data-date="2026-10-30" hidden><h2>Friday 30 October</h2>
+<p class="dish">Homemade flatbread pizzas</p><p class="meta">20 min · Other</p><p class="est">≈ 460 kcal · 28g protein · 41g carbs · 19g fat <span class="est-q">(adult portion, estimate)</span></p><p class="est">≈ £5.80 for the family <span class="est-q">(~£1.16 a head, estimate)</span></p><p class="note">Early, easy tea tonight: about 20 minutes start to finish, and the kids can add their own toppings.</p><p class="note">Fakeaway pizza night, made from scratch on flatbreads with a quick passata sauce.</p>
+<div class="links"><a class="btn" href="https://www.bbcgoodfood.com/recipes/flatbread-pizzas" rel="noopener noreferrer nofollow">Recipe</a><a class="btn" href="#card-flatbread-pizzas">Recipe card</a></div><details class="rate"><summary class="btn">Rate this</summary>
+<div class="rate-body" data-dish-id="flatbread-pizzas" data-dish="Homemade flatbread pizzas" data-week="2026-10-26">
+<fieldset><legend>Rating</legend><label><input type="radio" name="r-h4" value="up"> Thumbs up</label><label><input type="radio" name="r-h4" value="down"> Thumbs down</label></fieldset>
+<fieldset><legend>From</legend><label><input type="radio" name="g-h4" value="kids"> Kids</label><label><input type="radio" name="g-h4" value="adults"> Adults</label><label><input type="radio" name="g-h4" value="everyone" checked> Everyone</label></fieldset>
+<label class="c">Comment (optional)<textarea rows="2" maxlength="300" placeholder="e.g. too spicy, kids wouldn't eat it"></textarea></label>
+<a class="btn send" href="mailto:ember-sol+tea@mail.grokbot.com?subject=Rating%3A%20Homemade%20flatbread%20pizzas&amp;body=dish_id%3A%20flatbread-pizzas%0Adish%3A%20Homemade%20flatbread%20pizzas%0Arating%3A%20up%7Cdown%0Agroup%3A%20kids%7Cadults%7Ceveryone%0Acomment%3A%20%0Aweek%3A%202026-10-26%0A">Open email to send</a>
+<p class="hint">Nothing is saved on this page. This opens your email app with the rating filled in.</p></div></details></div><div class="hero-slot" data-date="2026-10-31" hidden><h2>Saturday 31 October</h2>
+<p class="dish">Big family lasagne with salad</p><p class="meta">2 hr 15 min (make ahead, then 50 min to bake) · Mince</p><p class="est">≈ 610 kcal · 46g protein · 55g carbs · 22g fat <span class="est-q">(adult portion, estimate)</span></p><p class="est">≈ £23.35 for the whole batch, 10 portions <span class="est-q">(~£2.33 a portion, estimate)</span></p><p class="note">Feeds 8: make it in the morning or the day before and just bake it for an early tea.</p><p class="note">From-scratch lasagne for a crowd: lean beef ragù packed with hidden veg, a homemade white sauce and a golden cheesy top, with a big crunchy salad. Makes 10–12 portions, so there&#x27;s some left over.</p>
+<div class="links"><a class="btn" href="https://www.bbcgoodfood.com/recipes/classic-lasagne-0" rel="noopener noreferrer nofollow">Recipe</a><a class="btn" href="#card-big-family-lasagne">Recipe card</a></div><details class="rate"><summary class="btn">Rate this</summary>
+<div class="rate-body" data-dish-id="big-family-lasagne" data-dish="Big family lasagne with salad" data-week="2026-10-26">
+<fieldset><legend>Rating</legend><label><input type="radio" name="r-h5" value="up"> Thumbs up</label><label><input type="radio" name="r-h5" value="down"> Thumbs down</label></fieldset>
+<fieldset><legend>From</legend><label><input type="radio" name="g-h5" value="kids"> Kids</label><label><input type="radio" name="g-h5" value="adults"> Adults</label><label><input type="radio" name="g-h5" value="everyone" checked> Everyone</label></fieldset>
+<label class="c">Comment (optional)<textarea rows="2" maxlength="300" placeholder="e.g. too spicy, kids wouldn't eat it"></textarea></label>
+<a class="btn send" href="mailto:ember-sol+tea@mail.grokbot.com?subject=Rating%3A%20Big%20family%20lasagne%20with%20salad&amp;body=dish_id%3A%20big-family-lasagne%0Adish%3A%20Big%20family%20lasagne%20with%20salad%0Arating%3A%20up%7Cdown%0Agroup%3A%20kids%7Cadults%7Ceveryone%0Acomment%3A%20%0Aweek%3A%202026-10-26%0A">Open email to send</a>
+<p class="hint">Nothing is saved on this page. This opens your email app with the rating filled in.</p></div></details></div><div class="hero-slot" data-date="2026-11-01" hidden><h2>Sunday 1 November</h2>
+<p class="dish">Steak (grown-ups) &amp; breaded chicken (kids) with sweet potato wedges</p><p class="meta">40 min · Beef</p><p class="est">≈ 690 kcal · 52g protein · 53g carbs · 30g fat <span class="est-q">(adult portion, estimate)</span></p><p class="est">≈ £17.90 for the family <span class="est-q">(~£3.58 a head, estimate)</span></p><p class="note">Busy day, so a quick dinner: get the wedges and chicken in the oven first; the steak only takes about 10 minutes.</p><p class="note">Lidl steak, pan-fried, for the grown-ups; shop-bought breaded chicken for the kids; oven-baked sweet potato wedges, Tenderstem broccoli and a side salad.</p><p class="tweak"><strong>Kids:</strong> Kids have shop-bought breaded chicken (oven-baked) with the sweet potato wedges and veg; steak is for the grown-ups.</p>
+<div class="links"><a class="btn" href="https://www.bbcgoodfood.com/howto/guide/how-cook-perfect-steak" rel="noopener noreferrer nofollow">Recipe</a><a class="btn" href="#card-steak-night">Recipe card</a></div><details class="rate"><summary class="btn">Rate this</summary>
+<div class="rate-body" data-dish-id="steak-night" data-dish="Steak (grown-ups) &amp; breaded chicken (kids) with sweet potato wedges" data-week="2026-10-26">
+<fieldset><legend>Rating</legend><label><input type="radio" name="r-h6" value="up"> Thumbs up</label><label><input type="radio" name="r-h6" value="down"> Thumbs down</label></fieldset>
+<fieldset><legend>From</legend><label><input type="radio" name="g-h6" value="kids"> Kids</label><label><input type="radio" name="g-h6" value="adults"> Adults</label><label><input type="radio" name="g-h6" value="everyone" checked> Everyone</label></fieldset>
+<label class="c">Comment (optional)<textarea rows="2" maxlength="300" placeholder="e.g. too spicy, kids wouldn't eat it"></textarea></label>
+<a class="btn send" href="mailto:ember-sol+tea@mail.grokbot.com?subject=Rating%3A%20Steak%20%28grown-ups%29%20%26%20breaded%20chicken%20%28kids%29%20with%20sweet%20potato%20wedges&amp;body=dish_id%3A%20steak-night%0Adish%3A%20Steak%20%28grown-ups%29%20%26%20breaded%20chicken%20%28kids%29%20with%20sweet%20potato%20wedges%0Arating%3A%20up%7Cdown%0Agroup%3A%20kids%7Cadults%7Ceveryone%0Acomment%3A%20%0Aweek%3A%202026-10-26%0A">Open email to send</a>
+<p class="hint">Nothing is saved on this page. This opens your email app with the rating filled in.</p></div></details></div><div id="hero-none" hidden><p class="none">No dinner planned today</p></div><p class="next" id="hero-next" hidden></p></section>
+<section class="festive" data-window="halloween"><h2 class="fest-h">🎃 Festive idea: Halloween</h2><p class="sub">Fancy something festive? Today's pick is highlighted, and the others are there if you want a change or another night.</p><ol class="ideas"><li class="idea pick" data-i="2"><div class="idea-in"><span class="pick-tag">Today's pick</span><h3>Eyeball spaghetti &amp; meatballs</h3><p>Baked meatballs on spaghetti in a homemade tomato sauce. Top each with a mini mozzarella ball and a slice of olive for the eyeball. The recipe makes a big batch, so halve it or freeze half.</p><p class="meta">⏱ 1 hr · serves 5</p><a class="btn" href="https://www.bbcgoodfood.com/recipes/spaghetti-meatballs" rel="noopener noreferrer nofollow">Recipe</a></div></li><li class="idea" data-i="0"><div class="idea-in"><span class="pick-tag">Today's pick</span><h3>Witches&#x27; brew pea &amp; bacon soup</h3><p>Bright green pea soup topped with crispy bacon. Serve with cheese on toast &#x27;broomsticks&#x27;.</p><p class="meta">⏱ 32 min · serves 5</p><a class="btn" href="https://www.bbcgoodfood.com/recipes/witches-brew-pea-bacon-chowder" rel="noopener noreferrer nofollow">Recipe</a></div></li><li class="idea" data-i="1"><div class="idea-in"><span class="pick-tag">Today's pick</span><h3>Mini monster burgers</h3><p>Little beef burgers with cheese &#x27;teeth&#x27;, cucumber tongues and olive eyes. Add oven wedges and salad sticks. Sit the olive eyes on top rather than using cocktail sticks for the little ones.</p><p class="meta">⏱ 30 min · serves 5</p><a class="btn" href="https://www.bbcgoodfood.com/recipes/mini-monster-burgers" rel="noopener noreferrer nofollow">Recipe</a></div></li><li class="idea" data-i="3"><div class="idea-in"><span class="pick-tag">Today's pick</span><h3>Spider pizzas</h3><p>Homemade pizza bases with passata, mozzarella and parmesan. Olives and salami become the spiders. Let the kids build their own.</p><p class="meta">⏱ 32 min · serves 5</p><a class="btn" href="https://www.bbcgoodfood.com/recipes/halloween-spider-pizzas" rel="noopener noreferrer nofollow">Recipe</a></div></li></ol></section><section class="festive" data-window="xmas1" hidden><h2 class="fest-h">🎄 Festive idea: Christmas</h2><p class="sub">Fancy something festive? Today's pick is highlighted, and the others are there if you want a change or another night.</p><ol class="ideas"><li class="idea" data-i="0"><div class="idea-in"><span class="pick-tag">Today's pick</span><h3>Christmas tree pizza tart</h3><p>A tree cut from ready-rolled puff pastry, topped with passata and garlic, mozzarella and chopped ham or chipolatas. Twist the pastry offcuts into &#x27;tinsel&#x27;.</p><p class="meta">⏱ 30 min · serves 5</p><a class="btn" href="https://www.bbcgoodfood.com/recipes/christmas-tree-pizza-tart" rel="noopener noreferrer nofollow">Recipe</a></div></li><li class="idea" data-i="1"><div class="idea-in"><span class="pick-tag">Today's pick</span><h3>Quick roast Christmas chicken &amp; sticky veg</h3><p>A whole chicken roasted fast with orange butter, with honey-glazed carrots and parsnips and Brussels sprouts. Plenty left over for sandwiches.</p><p class="meta">⏱ 1 hr 30 · serves 5</p><a class="btn" href="https://www.bbcgoodfood.com/recipes/quick-roast-christmas-chicken-sticky-veg" rel="noopener noreferrer nofollow">Recipe</a></div></li><li class="idea" data-i="2"><div class="idea-in"><span class="pick-tag">Today's pick</span><h3>Turkey twist pie</h3><p>Sliced turkey, ricotta and roasted veg wrapped in crisp filo and twisted into a wreath. Only four ingredients.</p><p class="meta">⏱ 55 min · serves 5</p><a class="btn" href="https://www.bbcgoodfood.com/recipes/turkey-twist-pie" rel="noopener noreferrer nofollow">Recipe</a></div></li><li class="idea" data-i="3"><div class="idea-in"><span class="pick-tag">Today's pick</span><h3>Christmas dinner sausage rolls</h3><p>Turkey mince and chipolata sausage rolls with stuffing and cranberry, baked until golden. Serve with a pile of green veg.</p><p class="meta">⏱ 50 min · serves 5</p><a class="btn" href="https://www.bbcgoodfood.com/recipes/christmas-dinner-sausage-roll" rel="noopener noreferrer nofollow">Recipe</a></div></li></ol></section><section class="festive" data-window="xmas2" hidden><h2 class="fest-h">🎄 Festive idea: Christmas</h2><p class="sub">Fancy something festive? Today's pick is highlighted, and the others are there if you want a change or another night.</p><ol class="ideas"><li class="idea" data-i="0"><div class="idea-in"><span class="pick-tag">Today's pick</span><h3>Cheesy sprout pasta bake</h3><p>Penne in a homemade cheese sauce with roasted sprouts. Stir in shredded cooked ham or chicken for extra protein.</p><p class="meta">⏱ 50 min · serves 5</p><a class="btn" href="https://www.bbcgoodfood.com/recipes/cheesy-sprout-pasta-bake" rel="noopener noreferrer nofollow">Recipe</a></div></li><li class="idea" data-i="1"><div class="idea-in"><span class="pick-tag">Today's pick</span><h3>Turkey minestrone</h3><p>A warming veg, bean and orzo soup with shredded cooked turkey or chicken. Good with crusty bread.</p><p class="meta">⏱ 1 hr 5 · serves 5</p><a class="btn" href="https://www.bbcgoodfood.com/recipes/turkey-minestrone" rel="noopener noreferrer nofollow">Recipe</a></div></li><li class="idea" data-i="2"><div class="idea-in"><span class="pick-tag">Today's pick</span><h3>Family fish cakes</h3><p>Soft fish and potato cakes with sweetcorn and cheddar, pan-fried until golden. Serve with peas.</p><p class="meta">⏱ 45 min · serves 5</p><a class="btn" href="https://www.bbcgoodfood.com/recipes/family-meals-easy-fish-cakes" rel="noopener noreferrer nofollow">Recipe</a></div></li><li class="idea" data-i="3"><div class="idea-in"><span class="pick-tag">Today's pick</span><h3>Thyme &amp; garlic turkey crown</h3><p>A simple roast turkey crown rubbed with thyme, garlic, lemon and butter. Roast with potatoes and your favourite veg.</p><p class="meta">⏱ 2 hr · serves 5</p><a class="btn" href="https://www.bbcgoodfood.com/recipes/thyme-garlic-turkey-crown" rel="noopener noreferrer nofollow">Recipe</a></div></li></ol></section>
+<h2 class="sec-h">The week at a glance</h2>
+<ol class="tiles"><li class="tile past" data-date="2026-10-26" data-dish="Creamy salmon, leek &amp; potato traybake"><a href="#day-2026-10-26"><span class="t-now">Today</span><span class="t-day">Monday</span><span class="t-date">26 October</span><span class="t-dish">Creamy salmon, leek &amp; potato traybake</span><span class="t-meta">40 min</span></a></li><li class="tile today" data-date="2026-10-27" data-dish="Hidden-veg spaghetti bolognese"><a href="#day-2026-10-27"><span class="t-now">Today</span><span class="t-day">Tuesday</span><span class="t-date">27 October</span><span class="t-dish">Hidden-veg spaghetti bolognese</span><span class="t-meta">40 min</span><span class="cook">Mel&#x27;s night</span></a></li><li class="tile future" data-date="2026-10-28" data-dish="Chicken &amp; leek pie (pastry lid only)"><a href="#day-2026-10-28"><span class="t-now">Today</span><span class="t-day">Wednesday</span><span class="t-date">28 October</span><span class="t-dish">Chicken &amp; leek pie (pastry lid only)</span><span class="t-meta">50 min</span><span class="cook">Mel&#x27;s night</span></a></li><li class="tile future" data-date="2026-10-29" data-dish="Sausage &amp; bean casserole"><a href="#day-2026-10-29"><span class="t-now">Today</span><span class="t-day">Thursday</span><span class="t-date">29 October</span><span class="t-dish">Sausage &amp; bean casserole</span><span class="t-meta">50 min (or slow cooker 6 hr low)</span><span class="cook">Mel&#x27;s night</span></a></li><li class="tile future" data-date="2026-10-30" data-dish="Homemade flatbread pizzas"><a href="#day-2026-10-30"><span class="t-now">Today</span><span class="t-day">Friday</span><span class="t-date">30 October</span><span class="t-dish">Homemade flatbread pizzas</span><span class="t-meta">20 min</span></a></li><li class="tile future" data-date="2026-10-31" data-dish="Big family lasagne with salad"><a href="#day-2026-10-31"><span class="t-now">Today</span><span class="t-day">Saturday</span><span class="t-date">31 October</span><span class="t-dish">Big family lasagne with salad</span><span class="t-meta">2 hr 15 min (make ahead, then 50 min to bake)</span></a></li><li class="tile future" data-date="2026-11-01" data-dish="Steak (grown-ups) &amp; breaded chicken (kids) with sweet potato wedges"><a href="#day-2026-11-01"><span class="t-now">Today</span><span class="t-day">Sunday</span><span class="t-date">1 November</span><span class="t-dish">Steak (grown-ups) &amp; breaded chicken (kids) with sweet potato wedges</span><span class="t-meta">40 min</span></a></li></ol>
+<h2 class="sec-h">Dinner details</h2>
+<p class="sub est-total"><strong>Estimated food cost for this week's dinners: ≈ £84.70</strong>. Rough estimates from typical Tesco and Lidl prices, cooked from scratch; store-cupboard basics not included. Nutrition figures are per adult portion and are estimates too.</p><ol class="days"><li class="dw past" id="day-2026-10-26" data-date="2026-10-26"><div class="day"><h2>Monday 26 October</h2>
+<p class="dish">Creamy salmon, leek &amp; potato traybake</p><p class="meta">40 min · Fish</p><p class="est">≈ 630 kcal · 39g protein · 35g carbs · 36g fat <span class="est-q">(adult portion, estimate)</span></p><p class="est">≈ £15.05 for the family <span class="est-q">(~£3.01 a head, estimate)</span></p><p class="note">Golden roast baby potatoes in a mild, creamy leek sauce with salmon on top, served with peas and broccoli. Made with reduced-fat crème fraîche instead of double cream, and scaled up for 5.</p><p class="tweak"><strong>Kids:</strong> Flake the salmon into the creamy sauce and potatoes for the twins.</p>
+<div class="links"><a class="btn" href="https://www.bbcgoodfood.com/recipes/creamy-salmon-leek-potato-traybake" rel="noopener noreferrer nofollow">Recipe</a><a class="btn" href="#card-creamy-salmon-potato-traybake">Recipe card</a></div><details class="rate"><summary class="btn">Rate this</summary>
+<div class="rate-body" data-dish-id="creamy-salmon-potato-traybake" data-dish="Creamy salmon, leek &amp; potato traybake" data-week="2026-10-26">
+<fieldset><legend>Rating</legend><label><input type="radio" name="r-0" value="up"> Thumbs up</label><label><input type="radio" name="r-0" value="down"> Thumbs down</label></fieldset>
+<fieldset><legend>From</legend><label><input type="radio" name="g-0" value="kids"> Kids</label><label><input type="radio" name="g-0" value="adults"> Adults</label><label><input type="radio" name="g-0" value="everyone" checked> Everyone</label></fieldset>
+<label class="c">Comment (optional)<textarea rows="2" maxlength="300" placeholder="e.g. too spicy, kids wouldn't eat it"></textarea></label>
+<a class="btn send" href="mailto:ember-sol+tea@mail.grokbot.com?subject=Rating%3A%20Creamy%20salmon%2C%20leek%20%26%20potato%20traybake&amp;body=dish_id%3A%20creamy-salmon-potato-traybake%0Adish%3A%20Creamy%20salmon%2C%20leek%20%26%20potato%20traybake%0Arating%3A%20up%7Cdown%0Agroup%3A%20kids%7Cadults%7Ceveryone%0Acomment%3A%20%0Aweek%3A%202026-10-26%0A">Open email to send</a>
+<p class="hint">Nothing is saved on this page. This opens your email app with the rating filled in.</p></div></details></div></li><li class="dw today" id="day-2026-10-27" data-date="2026-10-27"><div class="day"><h2>Tuesday 27 October</h2><span class="cook">Mel&#x27;s night</span>
+<p class="dish">Hidden-veg spaghetti bolognese</p><p class="meta">40 min · Mince</p><p class="est">≈ 610 kcal · 45g protein · 67g carbs · 17g fat <span class="est-q">(adult portion, estimate)</span></p><p class="est">≈ £7.60 for the family <span class="est-q">(~£1.52 a head, estimate)</span></p>
+<div class="links"><a class="btn" href="#card-bolognese">Recipe card</a></div><details class="rate"><summary class="btn">Rate this</summary>
+<div class="rate-body" data-dish-id="bolognese" data-dish="Hidden-veg spaghetti bolognese" data-week="2026-10-26">
+<fieldset><legend>Rating</legend><label><input type="radio" name="r-1" value="up"> Thumbs up</label><label><input type="radio" name="r-1" value="down"> Thumbs down</label></fieldset>
+<fieldset><legend>From</legend><label><input type="radio" name="g-1" value="kids"> Kids</label><label><input type="radio" name="g-1" value="adults"> Adults</label><label><input type="radio" name="g-1" value="everyone" checked> Everyone</label></fieldset>
+<label class="c">Comment (optional)<textarea rows="2" maxlength="300" placeholder="e.g. too spicy, kids wouldn't eat it"></textarea></label>
+<a class="btn send" href="mailto:ember-sol+tea@mail.grokbot.com?subject=Rating%3A%20Hidden-veg%20spaghetti%20bolognese&amp;body=dish_id%3A%20bolognese%0Adish%3A%20Hidden-veg%20spaghetti%20bolognese%0Arating%3A%20up%7Cdown%0Agroup%3A%20kids%7Cadults%7Ceveryone%0Acomment%3A%20%0Aweek%3A%202026-10-26%0A">Open email to send</a>
+<p class="hint">Nothing is saved on this page. This opens your email app with the rating filled in.</p></div></details></div></li><li class="dw future" id="day-2026-10-28" data-date="2026-10-28"><div class="day"><h2>Wednesday 28 October</h2><span class="cook">Mel&#x27;s night</span>
+<p class="dish">Chicken &amp; leek pie (pastry lid only)</p><p class="meta">50 min · Chicken</p><p class="est">≈ 710 kcal · 56g protein · 51g carbs · 31g fat <span class="est-q">(adult portion, estimate)</span></p><p class="est">≈ £8.15 for the family <span class="est-q">(~£1.63 a head, estimate)</span></p><p class="note">Busy evening (6:30pm activity): this one&#x27;s fine. Make the filling in the morning, then just add the pastry lid and bake for 25 min.</p>
+<div class="links"><a class="btn" href="#card-pie">Recipe card</a></div><details class="rate"><summary class="btn">Rate this</summary>
+<div class="rate-body" data-dish-id="pie" data-dish="Chicken &amp; leek pie (pastry lid only)" data-week="2026-10-26">
+<fieldset><legend>Rating</legend><label><input type="radio" name="r-2" value="up"> Thumbs up</label><label><input type="radio" name="r-2" value="down"> Thumbs down</label></fieldset>
+<fieldset><legend>From</legend><label><input type="radio" name="g-2" value="kids"> Kids</label><label><input type="radio" name="g-2" value="adults"> Adults</label><label><input type="radio" name="g-2" value="everyone" checked> Everyone</label></fieldset>
+<label class="c">Comment (optional)<textarea rows="2" maxlength="300" placeholder="e.g. too spicy, kids wouldn't eat it"></textarea></label>
+<a class="btn send" href="mailto:ember-sol+tea@mail.grokbot.com?subject=Rating%3A%20Chicken%20%26%20leek%20pie%20%28pastry%20lid%20only%29&amp;body=dish_id%3A%20pie%0Adish%3A%20Chicken%20%26%20leek%20pie%20%28pastry%20lid%20only%29%0Arating%3A%20up%7Cdown%0Agroup%3A%20kids%7Cadults%7Ceveryone%0Acomment%3A%20%0Aweek%3A%202026-10-26%0A">Open email to send</a>
+<p class="hint">Nothing is saved on this page. This opens your email app with the rating filled in.</p></div></details></div></li><li class="dw future" id="day-2026-10-29" data-date="2026-10-29"><div class="day"><h2>Thursday 29 October</h2><span class="cook">Mel&#x27;s night</span>
+<p class="dish">Sausage &amp; bean casserole</p><p class="meta">50 min (or slow cooker 6 hr low) · Other</p><p class="est">≈ 650 kcal · 35g protein · 50g carbs · 34g fat <span class="est-q">(adult portion, estimate)</span></p><p class="est">≈ £6.85 for the family <span class="est-q">(~£1.37 a head, estimate)</span></p>
+<div class="links"><a class="btn" href="https://www.bbcgoodfood.com/recipes/sausage-bean-casserole" rel="noopener noreferrer nofollow">BBC Good Food: sausage &amp; bean casserole</a><a class="btn" href="#card-casserole">Recipe card</a></div><details class="rate"><summary class="btn">Rate this</summary>
+<div class="rate-body" data-dish-id="casserole" data-dish="Sausage &amp; bean casserole" data-week="2026-10-26">
+<fieldset><legend>Rating</legend><label><input type="radio" name="r-3" value="up"> Thumbs up</label><label><input type="radio" name="r-3" value="down"> Thumbs down</label></fieldset>
+<fieldset><legend>From</legend><label><input type="radio" name="g-3" value="kids"> Kids</label><label><input type="radio" name="g-3" value="adults"> Adults</label><label><input type="radio" name="g-3" value="everyone" checked> Everyone</label></fieldset>
+<label class="c">Comment (optional)<textarea rows="2" maxlength="300" placeholder="e.g. too spicy, kids wouldn't eat it"></textarea></label>
+<a class="btn send" href="mailto:ember-sol+tea@mail.grokbot.com?subject=Rating%3A%20Sausage%20%26%20bean%20casserole&amp;body=dish_id%3A%20casserole%0Adish%3A%20Sausage%20%26%20bean%20casserole%0Arating%3A%20up%7Cdown%0Agroup%3A%20kids%7Cadults%7Ceveryone%0Acomment%3A%20%0Aweek%3A%202026-10-26%0A">Open email to send</a>
+<p class="hint">Nothing is saved on this page. This opens your email app with the rating filled in.</p></div></details></div></li><li class="dw future" id="day-2026-10-30" data-date="2026-10-30"><div class="day"><h2>Friday 30 October</h2>
+<p class="dish">Homemade flatbread pizzas</p><p class="meta">20 min · Other</p><p class="est">≈ 460 kcal · 28g protein · 41g carbs · 19g fat <span class="est-q">(adult portion, estimate)</span></p><p class="est">≈ £5.80 for the family <span class="est-q">(~£1.16 a head, estimate)</span></p><p class="note">Early, easy tea tonight: about 20 minutes start to finish, and the kids can add their own toppings.</p><p class="note">Fakeaway pizza night, made from scratch on flatbreads with a quick passata sauce.</p>
+<div class="links"><a class="btn" href="https://www.bbcgoodfood.com/recipes/flatbread-pizzas" rel="noopener noreferrer nofollow">Recipe</a><a class="btn" href="#card-flatbread-pizzas">Recipe card</a></div><details class="rate"><summary class="btn">Rate this</summary>
+<div class="rate-body" data-dish-id="flatbread-pizzas" data-dish="Homemade flatbread pizzas" data-week="2026-10-26">
+<fieldset><legend>Rating</legend><label><input type="radio" name="r-4" value="up"> Thumbs up</label><label><input type="radio" name="r-4" value="down"> Thumbs down</label></fieldset>
+<fieldset><legend>From</legend><label><input type="radio" name="g-4" value="kids"> Kids</label><label><input type="radio" name="g-4" value="adults"> Adults</label><label><input type="radio" name="g-4" value="everyone" checked> Everyone</label></fieldset>
+<label class="c">Comment (optional)<textarea rows="2" maxlength="300" placeholder="e.g. too spicy, kids wouldn't eat it"></textarea></label>
+<a class="btn send" href="mailto:ember-sol+tea@mail.grokbot.com?subject=Rating%3A%20Homemade%20flatbread%20pizzas&amp;body=dish_id%3A%20flatbread-pizzas%0Adish%3A%20Homemade%20flatbread%20pizzas%0Arating%3A%20up%7Cdown%0Agroup%3A%20kids%7Cadults%7Ceveryone%0Acomment%3A%20%0Aweek%3A%202026-10-26%0A">Open email to send</a>
+<p class="hint">Nothing is saved on this page. This opens your email app with the rating filled in.</p></div></details></div></li><li class="dw future" id="day-2026-10-31" data-date="2026-10-31"><div class="day"><h2>Saturday 31 October</h2>
+<p class="dish">Big family lasagne with salad</p><p class="meta">2 hr 15 min (make ahead, then 50 min to bake) · Mince</p><p class="est">≈ 610 kcal · 46g protein · 55g carbs · 22g fat <span class="est-q">(adult portion, estimate)</span></p><p class="est">≈ £23.35 for the whole batch, 10 portions <span class="est-q">(~£2.33 a portion, estimate)</span></p><p class="note">Feeds 8: make it in the morning or the day before and just bake it for an early tea.</p><p class="note">From-scratch lasagne for a crowd: lean beef ragù packed with hidden veg, a homemade white sauce and a golden cheesy top, with a big crunchy salad. Makes 10–12 portions, so there&#x27;s some left over.</p>
+<div class="links"><a class="btn" href="https://www.bbcgoodfood.com/recipes/classic-lasagne-0" rel="noopener noreferrer nofollow">Recipe</a><a class="btn" href="#card-big-family-lasagne">Recipe card</a></div><details class="rate"><summary class="btn">Rate this</summary>
+<div class="rate-body" data-dish-id="big-family-lasagne" data-dish="Big family lasagne with salad" data-week="2026-10-26">
+<fieldset><legend>Rating</legend><label><input type="radio" name="r-5" value="up"> Thumbs up</label><label><input type="radio" name="r-5" value="down"> Thumbs down</label></fieldset>
+<fieldset><legend>From</legend><label><input type="radio" name="g-5" value="kids"> Kids</label><label><input type="radio" name="g-5" value="adults"> Adults</label><label><input type="radio" name="g-5" value="everyone" checked> Everyone</label></fieldset>
+<label class="c">Comment (optional)<textarea rows="2" maxlength="300" placeholder="e.g. too spicy, kids wouldn't eat it"></textarea></label>
+<a class="btn send" href="mailto:ember-sol+tea@mail.grokbot.com?subject=Rating%3A%20Big%20family%20lasagne%20with%20salad&amp;body=dish_id%3A%20big-family-lasagne%0Adish%3A%20Big%20family%20lasagne%20with%20salad%0Arating%3A%20up%7Cdown%0Agroup%3A%20kids%7Cadults%7Ceveryone%0Acomment%3A%20%0Aweek%3A%202026-10-26%0A">Open email to send</a>
+<p class="hint">Nothing is saved on this page. This opens your email app with the rating filled in.</p></div></details></div></li><li class="dw future" id="day-2026-11-01" data-date="2026-11-01"><div class="day"><h2>Sunday 1 November</h2>
+<p class="dish">Steak (grown-ups) &amp; breaded chicken (kids) with sweet potato wedges</p><p class="meta">40 min · Beef</p><p class="est">≈ 690 kcal · 52g protein · 53g carbs · 30g fat <span class="est-q">(adult portion, estimate)</span></p><p class="est">≈ £17.90 for the family <span class="est-q">(~£3.58 a head, estimate)</span></p><p class="note">Busy day, so a quick dinner: get the wedges and chicken in the oven first; the steak only takes about 10 minutes.</p><p class="note">Lidl steak, pan-fried, for the grown-ups; shop-bought breaded chicken for the kids; oven-baked sweet potato wedges, Tenderstem broccoli and a side salad.</p><p class="tweak"><strong>Kids:</strong> Kids have shop-bought breaded chicken (oven-baked) with the sweet potato wedges and veg; steak is for the grown-ups.</p>
+<div class="links"><a class="btn" href="https://www.bbcgoodfood.com/howto/guide/how-cook-perfect-steak" rel="noopener noreferrer nofollow">Recipe</a><a class="btn" href="#card-steak-night">Recipe card</a></div><details class="rate"><summary class="btn">Rate this</summary>
+<div class="rate-body" data-dish-id="steak-night" data-dish="Steak (grown-ups) &amp; breaded chicken (kids) with sweet potato wedges" data-week="2026-10-26">
+<fieldset><legend>Rating</legend><label><input type="radio" name="r-6" value="up"> Thumbs up</label><label><input type="radio" name="r-6" value="down"> Thumbs down</label></fieldset>
+<fieldset><legend>From</legend><label><input type="radio" name="g-6" value="kids"> Kids</label><label><input type="radio" name="g-6" value="adults"> Adults</label><label><input type="radio" name="g-6" value="everyone" checked> Everyone</label></fieldset>
+<label class="c">Comment (optional)<textarea rows="2" maxlength="300" placeholder="e.g. too spicy, kids wouldn't eat it"></textarea></label>
+<a class="btn send" href="mailto:ember-sol+tea@mail.grokbot.com?subject=Rating%3A%20Steak%20%28grown-ups%29%20%26%20breaded%20chicken%20%28kids%29%20with%20sweet%20potato%20wedges&amp;body=dish_id%3A%20steak-night%0Adish%3A%20Steak%20%28grown-ups%29%20%26%20breaded%20chicken%20%28kids%29%20with%20sweet%20potato%20wedges%0Arating%3A%20up%7Cdown%0Agroup%3A%20kids%7Cadults%7Ceveryone%0Acomment%3A%20%0Aweek%3A%202026-10-26%0A">Open email to send</a>
+<p class="hint">Nothing is saved on this page. This opens your email app with the rating filled in.</p></div></details></div></li></ol>
+<section class="extras" id="extras"><h2 class="extras-h">Extra ideas this week</h2><p class="sub">The kids asked for more breaded chicken, so the goujons and schnitzel are oven-baked extras for another night. The apple and oat muffins are an easy weekday snack and a good way to use up apples.</p><ol class="days"><li class="dw"><div class="day"><h2>Extra idea</h2>
+<p class="dish">Oven-baked chicken goujons</p><p class="meta">35 min · Chicken</p><p class="est">≈ 560 kcal · 55g protein · 63g carbs · 9g fat <span class="est-q">(adult portion, estimate)</span></p><p class="est">≈ £7.30 for the family <span class="est-q">(~£1.46 a head, estimate)</span></p>
+<div class="links"><a class="btn" href="https://www.bbc.co.uk/food/recipes/chickengoujons_82608" rel="noopener noreferrer nofollow">BBC Food: baked chicken goujons</a><a class="btn" href="#card-goujons">Recipe card</a></div><details class="rate"><summary class="btn">Rate this</summary>
+<div class="rate-body" data-dish-id="goujons" data-dish="Oven-baked chicken goujons" data-week="2026-10-26">
+<fieldset><legend>Rating</legend><label><input type="radio" name="r-x0" value="up"> Thumbs up</label><label><input type="radio" name="r-x0" value="down"> Thumbs down</label></fieldset>
+<fieldset><legend>From</legend><label><input type="radio" name="g-x0" value="kids"> Kids</label><label><input type="radio" name="g-x0" value="adults"> Adults</label><label><input type="radio" name="g-x0" value="everyone" checked> Everyone</label></fieldset>
+<label class="c">Comment (optional)<textarea rows="2" maxlength="300" placeholder="e.g. too spicy, kids wouldn't eat it"></textarea></label>
+<a class="btn send" href="mailto:ember-sol+tea@mail.grokbot.com?subject=Rating%3A%20Oven-baked%20chicken%20goujons&amp;body=dish_id%3A%20goujons%0Adish%3A%20Oven-baked%20chicken%20goujons%0Arating%3A%20up%7Cdown%0Agroup%3A%20kids%7Cadults%7Ceveryone%0Acomment%3A%20%0Aweek%3A%202026-10-26%0A">Open email to send</a>
+<p class="hint">Nothing is saved on this page. This opens your email app with the rating filled in.</p></div></details></div></li><li class="dw"><div class="day"><h2>Extra idea</h2>
+<p class="dish">Oven-baked chicken schnitzel</p><p class="meta">40 min · Chicken</p><p class="est">≈ 480 kcal · 52g protein · 46g carbs · 9g fat <span class="est-q">(adult portion, estimate)</span></p><p class="est">≈ £7.80 for the family <span class="est-q">(~£1.56 a head, estimate)</span></p>
+<div class="links"><a class="btn" href="https://www.recipesmadeeasy.co.uk/oven-baked-chicken-schnitzel/" rel="noopener noreferrer nofollow">Recipes Made Easy: oven-baked chicken schnitzel</a><a class="btn" href="#card-schnitzel">Recipe card</a></div><details class="rate"><summary class="btn">Rate this</summary>
+<div class="rate-body" data-dish-id="schnitzel" data-dish="Oven-baked chicken schnitzel" data-week="2026-10-26">
+<fieldset><legend>Rating</legend><label><input type="radio" name="r-x1" value="up"> Thumbs up</label><label><input type="radio" name="r-x1" value="down"> Thumbs down</label></fieldset>
+<fieldset><legend>From</legend><label><input type="radio" name="g-x1" value="kids"> Kids</label><label><input type="radio" name="g-x1" value="adults"> Adults</label><label><input type="radio" name="g-x1" value="everyone" checked> Everyone</label></fieldset>
+<label class="c">Comment (optional)<textarea rows="2" maxlength="300" placeholder="e.g. too spicy, kids wouldn't eat it"></textarea></label>
+<a class="btn send" href="mailto:ember-sol+tea@mail.grokbot.com?subject=Rating%3A%20Oven-baked%20chicken%20schnitzel&amp;body=dish_id%3A%20schnitzel%0Adish%3A%20Oven-baked%20chicken%20schnitzel%0Arating%3A%20up%7Cdown%0Agroup%3A%20kids%7Cadults%7Ceveryone%0Acomment%3A%20%0Aweek%3A%202026-10-26%0A">Open email to send</a>
+<p class="hint">Nothing is saved on this page. This opens your email app with the rating filled in.</p></div></details></div></li><li class="dw"><div class="day"><h2>Extra idea</h2>
+<p class="dish">Apple &amp; oat muffins (snack)</p><p class="meta">40 min · Snack</p><p class="note">Makes 12. About 90 kcal each. Great for lunchboxes or after school.</p>
+<div class="links"><a class="btn" href="https://www.instagram.com/reel/De2B8oSCm-v/" rel="noopener noreferrer nofollow">Recipe</a><a class="btn" href="#card-apple-oat-muffins">Recipe card</a></div><details class="rate"><summary class="btn">Rate this</summary>
+<div class="rate-body" data-dish-id="apple-oat-muffins" data-dish="Apple &amp; oat muffins (snack)" data-week="2026-10-26">
+<fieldset><legend>Rating</legend><label><input type="radio" name="r-x2" value="up"> Thumbs up</label><label><input type="radio" name="r-x2" value="down"> Thumbs down</label></fieldset>
+<fieldset><legend>From</legend><label><input type="radio" name="g-x2" value="kids"> Kids</label><label><input type="radio" name="g-x2" value="adults"> Adults</label><label><input type="radio" name="g-x2" value="everyone" checked> Everyone</label></fieldset>
+<label class="c">Comment (optional)<textarea rows="2" maxlength="300" placeholder="e.g. too spicy, kids wouldn't eat it"></textarea></label>
+<a class="btn send" href="mailto:ember-sol+tea@mail.grokbot.com?subject=Rating%3A%20Apple%20%26%20oat%20muffins%20%28snack%29&amp;body=dish_id%3A%20apple-oat-muffins%0Adish%3A%20Apple%20%26%20oat%20muffins%20%28snack%29%0Arating%3A%20up%7Cdown%0Agroup%3A%20kids%7Cadults%7Ceveryone%0Acomment%3A%20%0Aweek%3A%202026-10-26%0A">Open email to send</a>
+<p class="hint">Nothing is saved on this page. This opens your email app with the rating filled in.</p></div></details></div></li></ol></section>
+<h2 class="sec-h">Recipe cards</h2>
+<div class="cards"><section class="card" id="card-bolognese"><h3>Hidden-veg spaghetti bolognese</h3><dl><dt>Serves</dt><dd>5 (2 adults, 3 children)</dd><dt>Time</dt><dd>40 min</dd><dt>Lighter adult plate</dt><dd>Adults: a big ladle of sauce over a small nest of pasta (or courgette ribbons) with a side salad. The sauce is the protein, so be generous with it.</dd><dt>Adult add-on</dt><dd>Chilli flakes stirred into adult bowls.</dd><dt>Tip</dt><dd>Make double and freeze half. It&#x27;s the family&#x27;s most-cooked meal.</dd></dl>
+<h4>Ingredients</h4><ul><li>500g lean beef mince (5% fat)</li><li>1 onion</li><li>1 carrot</li><li>1 courgette</li><li>2 garlic cloves</li><li>2 x 400g tins chopped tomatoes</li><li>1 tbsp tomato purée</li><li>1 beef stock cube</li><li>1 tsp dried oregano</li><li>1 tbsp olive oil</li><li>300g spaghetti</li><li>Grated cheddar to serve</li></ul><h4>Method</h4><ol><li>Finely chop the onion, grate the carrot and courgette, crush the garlic.</li><li>Heat the oil in a large pan and soften the onion for 5 min.</li><li>Add the mince and break it up with a wooden spoon. Cook 5–6 min until browned all over.</li><li>Stir in the garlic, carrot and courgette and cook 2 min.</li><li>Add the tomatoes, purée, crumbled stock cube and oregano. Simmer 20 min with the lid off, stirring now and then.</li><li>Meanwhile cook the spaghetti as the packet says. Snap it shorter or cut it up for the twins.</li><li>Serve topped with a little cheese.</li></ol><p><a href="#top">Back to the week</a></p></section><section class="card" id="card-creamy-salmon-potato-traybake"><h3>Creamy salmon, leek &amp; potato traybake</h3><dl><dt>Serves</dt><dd>5 (2 adults, 3 children)</dd><dt>Time</dt><dd>40 min</dd><dt>Type</dt><dd>Fish</dd><dt>Tip</dt><dd>Lighter plate: a whole fillet with plenty of peas and broccoli, and fewer potatoes.</dd></dl>
+<h4>Ingredients</h4><ul><li>500g baby potatoes, thickly sliced</li><li>2 tbsp olive oil</li><li>2 leeks, halved, washed and sliced</li><li>2 garlic cloves, crushed</li><li>200ml reduced-fat crème fraîche (instead of the recipe&#x27;s double cream)</li><li>2 tbsp chives, chopped (fresh or dried)</li><li>5 skinless salmon fillets</li><li>To serve: frozen peas and broccoli</li></ul><h4>Method</h4><ol><li>Heat the oven to 200°C (180°C fan). Boil the potatoes for 8 min, drain and leave to steam-dry for a few minutes.</li><li>Toss the potatoes with half the oil and some seasoning in a large roasting tin and roast for 20 min, tossing halfway.</li><li>Meanwhile, fry the leeks in the rest of the oil over a medium heat for 5 min until soft, then stir in the garlic for 1 min.</li><li>Turn the heat down low and stir in the crème fraîche with about 150ml hot water until smooth and just bubbling (keep it gentle so it doesn&#x27;t split). Stir through the chives.</li><li>Heat the grill to high. Pour the creamy leeks over the potatoes, sit the salmon on top and grill for 7–8 min until the salmon flakes easily.</li><li>Meanwhile, cook the peas and broccoli, and serve on the side.</li></ol><p class="note">Golden roast baby potatoes in a mild, creamy leek sauce with salmon on top, served with peas and broccoli. Made with reduced-fat crème fraîche instead of double cream, and scaled up for 5.</p><p><a class="btn" href="https://www.bbcgoodfood.com/recipes/creamy-salmon-leek-potato-traybake" rel="noopener noreferrer nofollow">Full recipe</a></p><p><a href="#top">Back to the week</a></p></section><section class="card" id="card-pie"><h3>Chicken &amp; leek pie (pastry lid only)</h3><dl><dt>Serves</dt><dd>5 (2 adults, 3 children)</dd><dt>Time</dt><dd>50 min</dd><dt>Lighter adult plate</dt><dd>Adults: a big scoop of filling with a small piece of pastry, and a pile of greens. Skip the potatoes.</dd><dt>Tip</dt><dd>The filling can be made in the morning and kept in the fridge. Just add the pastry and bake later.</dd></dl>
+<h4>Ingredients</h4><ul><li>4 chicken breasts (about 600g), diced</li><li>2 leeks, sliced</li><li>150g mushrooms, sliced</li><li>1 tbsp olive oil</li><li>2 tbsp plain flour</li><li>1 chicken stock cube in 200ml boiling water</li><li>300ml semi-skimmed milk</li><li>1 tsp dried thyme</li><li>150g frozen peas</li><li>1 sheet (320g) ready-rolled puff pastry</li><li>1 egg, beaten</li><li>Broccoli or green beans to serve</li></ul><h4>Method</h4><ol><li>Heat the oven to 200°C (180°C fan).</li><li>Fry the chicken in the oil in a large pan for 5 min until white all over.</li><li>Add the leeks and mushrooms and cook 5 min until soft.</li><li>Sprinkle in the flour and stir for 1 min.</li><li>Slowly stir in the stock, then the milk. Simmer 5 min, stirring, until thick. Add the thyme and peas.</li><li>Tip into an ovenproof dish. Lay the pastry over the top, trim the edges, brush with egg and cut a small slit.</li><li>Bake 25 min until golden. Serve with greens (and mash or new potatoes for the kids).</li></ol><p><a href="#top">Back to the week</a></p></section><section class="card" id="card-casserole"><h3>Sausage &amp; bean casserole</h3><dl><dt>Serves</dt><dd>5 (2 adults, 3 children)</dd><dt>Time</dt><dd>50 min (or slow cooker 6 hr low)</dd><dt>Lighter adult plate</dt><dd>Adults: a bowl of casserole with extra greens and no mash. The beans and sausages carry the protein.</dd><dt>Adult add-on</dt><dd>A pinch of chilli flakes.</dd></dl>
+<h4>Ingredients</h4><ul><li>8 chicken sausages</li><li>1 tbsp olive oil</li><li>1 onion, chopped</li><li>2 carrots, diced</li><li>1 red pepper, diced</li><li>1 sweet potato, peeled and cubed</li><li>2 garlic cloves, crushed</li><li>1 tsp smoked paprika (mild)</li><li>1 tsp dried thyme</li><li>400g tin chopped tomatoes</li><li>400g tin butter beans or cannellini beans, drained</li><li>1 chicken stock cube in 300ml boiling water</li></ul><h4>Method</h4><ol><li>Brown the sausages in the oil in a big lidded pan for 5 min. Lift out and cut each in half.</li><li>Soften the onion, carrot and pepper in the same pan for 5 min.</li><li>Stir in the garlic and paprika for 1 min.</li><li>Add the sweet potato, tomatoes, beans, stock, thyme and sausages.</li><li>Lid on and simmer gently for 30 min until the sweet potato is soft. Or put everything in the slow cooker on low for 6 hr.</li><li>Serve with mash or crusty bread for the kids.</li></ol><p><a href="#top">Back to the week</a></p></section><section class="card" id="card-flatbread-pizzas"><h3>Homemade flatbread pizzas</h3><dl><dt>Serves</dt><dd>5 (2 adults, 3 children)</dd><dt>Time</dt><dd>20 min</dd><dt>Type</dt><dd>Other</dd><dt>Tip</dt><dd>Lighter plate: a thinner wrap base loaded with veg and chicken, with a big salad on the side.</dd></dl>
+<h4>Ingredients</h4><ul><li>5 flatbreads or large wholemeal wraps</li><li>200ml passata</li><li>1 garlic clove, crushed</li><li>1 tsp dried oregano</li><li>2 balls mozzarella, torn (or 150g grated)</li><li>Toppings: sliced ham or cooked chicken, peppers, sweetcorn, cherry tomatoes, mushrooms</li><li>Rocket or a big side salad</li></ul><h4>Method</h4><ol><li>Heat the oven to 220°C (200°C fan) and put two trays in to heat.</li><li>Simmer the passata with the garlic and oregano for 5 min until a bit thicker.</li><li>Spread a thin layer of sauce on each flatbread, then add mozzarella and toppings.</li><li>Slide onto the hot trays and bake 8–10 min until bubbling and crisp at the edges.</li><li>Cut into strips for the twins and serve with salad.</li></ol><p class="note">Fakeaway pizza night, made from scratch on flatbreads with a quick passata sauce.</p><p><a class="btn" href="https://www.bbcgoodfood.com/recipes/flatbread-pizzas" rel="noopener noreferrer nofollow">Full recipe</a></p><p><a href="#top">Back to the week</a></p></section><section class="card" id="card-big-family-lasagne"><h3>Big family lasagne with salad</h3><dl><dt>Serves</dt><dd>5 (2 adults, 3 children)</dd><dt>Time</dt><dd>2 hr 15 min (make ahead, then 50 min to bake)</dd><dt>Type</dt><dd>Mince</dd><dt>Tip</dt><dd>Lighter plate: a smaller square of lasagne with a big pile of salad.</dd></dl>
+<h4>Ingredients</h4><ul><li>1.2kg lean beef mince (5% fat)</li><li>2 onions, finely chopped</li><li>2 carrots, finely grated</li><li>2 celery sticks, finely chopped</li><li>1 courgette, finely grated</li><li>3 garlic cloves, crushed</li><li>2 x 400g tins chopped tomatoes</li><li>500g passata</li><li>2 tbsp tomato purée</li><li>1 beef stock cube made up with 200ml hot water</li><li>2 tsp dried oregano and 2 bay leaves</li><li>About 400g dried lasagne sheets</li><li>White sauce: 1.2 litres semi-skimmed milk, 70g butter, 70g plain flour, a grating of nutmeg</li><li>100g mature cheddar, grated, plus 30g parmesan, grated</li><li>1 x 125g ball mozzarella, torn</li><li>Big salad: 2 bags mixed leaves, 250g cherry tomatoes, 1 cucumber, 2 peppers, 2 carrots cut into ribbons</li></ul><h4>Method</h4><ol><li>Ragù: brown the mince in a large pan in two batches, then tip out any fat. Add the onions, carrots, celery and courgette and cook 8–10 min until soft, then add the garlic for 1 min.</li><li>Stir in the tomato purée, chopped tomatoes, passata, stock, oregano and bay. Simmer gently, partly covered, for 45 min until thick. Take out the bay leaves.</li><li>White sauce: melt the butter, stir in the flour for 1 min, then whisk in the milk a little at a time. Simmer, whisking, 5 min until it coats a spoon. Season with nutmeg and stir in half the cheddar.</li><li>Assemble in a large deep roasting tin (about 30 x 40cm) or two medium dishes: a thin layer of ragù, then sheets, ragù, white sauce. Repeat to make 3 layers, finishing with white sauce, then the mozzarella, the rest of the cheddar and the parmesan.</li><li>Make ahead: cool, cover and chill (morning or the day before). To serve, bake at 190°C (170°C fan) for 45–50 min (about 10 min less if not chilled) until bubbling and golden. Rest 10 min before cutting.</li><li>Toss the salad just before serving and cut smaller squares for the little ones.</li></ol><p class="note">From-scratch lasagne for a crowd: lean beef ragù packed with hidden veg, a homemade white sauce and a golden cheesy top, with a big crunchy salad. Makes 10–12 portions, so there&#x27;s some left over.</p><p><a class="btn" href="https://www.bbcgoodfood.com/recipes/classic-lasagne-0" rel="noopener noreferrer nofollow">Full recipe</a></p><p><a href="#top">Back to the week</a></p></section><section class="card" id="card-steak-night"><h3>Steak (grown-ups) &amp; breaded chicken (kids) with sweet potato wedges</h3><dl><dt>Serves</dt><dd>5 (2 adults, 3 children)</dd><dt>Time</dt><dd>40 min</dd><dt>Type</dt><dd>Beef</dd><dt>Tip</dt><dd>Lighter plate: a smaller steak, extra salad and broccoli, and a few wedges.</dd></dl>
+<h4>Ingredients</h4><ul><li>2 Lidl steaks (sirloin or rump, about 400g total), for the grown-ups</li><li>1 pack shop-bought breaded chicken mini fillets or goujons (about 400g), for the kids</li><li>3 large sweet potatoes, cut into wedges</li><li>1 tbsp olive oil</li><li>Tenderstem broccoli</li><li>Salad leaves, cherry tomatoes, cucumber</li><li>Butter and a garlic clove for basting (optional)</li></ul><h4>Method</h4><ol><li>Heat the oven to 220°C (200°C fan). Toss the wedges in the oil, season and roast 30–35 min, turning once.</li><li>Put the breaded chicken in the oven for the time on the pack, timed to finish with the wedges.</li><li>Take the steaks out of the fridge 20 min before cooking. Pat dry and season.</li><li>Heat a heavy pan until very hot. Cook the steaks 2–3 min each side for medium-rare, adding butter and garlic to baste at the end.</li><li>Rest 5 min while you steam the broccoli and toss the salad. Check the chicken is piping hot all the way through before serving.</li></ol><p class="note">Lidl steak, pan-fried, for the grown-ups; shop-bought breaded chicken for the kids; oven-baked sweet potato wedges, Tenderstem broccoli and a side salad.</p><p><a class="btn" href="https://www.bbcgoodfood.com/howto/guide/how-cook-perfect-steak" rel="noopener noreferrer nofollow">Full recipe</a></p><p><a href="#top">Back to the week</a></p></section><section class="card" id="card-goujons"><h3>Oven-baked chicken goujons</h3><dl><dt>Serves</dt><dd>5 (2 adults, 3 children)</dd><dt>Time</dt><dd>35 min</dd><dt>Lighter adult plate</dt><dd>Adults: a generous portion of goujons with lots of salad and veg, a few wedges, and the yoghurt dip.</dd><dt>Tip</dt><dd>Baked, not fried. Make extra crumbed strips and freeze them raw on the tray, then bag up for another night (bake from frozen, 25 min).</dd></dl>
+<h4>Ingredients</h4><ul><li>4 chicken breasts, cut into finger-width strips</li><li>3 slices of bread (a day or two old), whizzed into crumbs, or 100g panko</li><li>1 tsp mild paprika (optional, for colour)</li><li>3 tbsp plain flour</li><li>2 eggs, beaten</li><li>1 tbsp olive oil</li><li>600g potatoes, cut into wedges (skin on)</li><li>Sides: frozen peas and sweetcorn</li><li>Sides: cucumber, cherry tomatoes and carrot sticks</li><li>Dip: 150g Greek yoghurt with a squeeze of lemon</li></ul><h4>Method</h4><ol><li>Heat the oven to 220°C (200°C fan). Toss the wedges in a little of the oil and roast on a tray for 35 min, turning once.</li><li>Whizz the bread into crumbs (or use panko) and mix with the paprika and a pinch of salt. Mix the remaining oil through the crumbs with your fingers.</li><li>Put the flour, egg and crumbs in three bowls. Dip each chicken strip in flour, then egg, then crumbs, and lay on a lined tray with gaps between them.</li><li>Bake for 18–20 min, turning once, until golden. Cut the thickest one open to check there&#x27;s no pink.</li><li>Meanwhile cook the peas and sweetcorn, and chop the cucumber, tomatoes and carrots.</li><li>Serve the goujons with the wedges, veg and yoghurt dip.</li></ol><p><a href="#top">Back to the week</a></p></section><section class="card" id="card-schnitzel"><h3>Oven-baked chicken schnitzel</h3><dl><dt>Serves</dt><dd>5 (2 adults, 3 children)</dd><dt>Time</dt><dd>40 min</dd><dt>Lighter adult plate</dt><dd>Adults: a whole schnitzel with plenty of salad and greens and just a few new potatoes.</dd><dt>Tip</dt><dd>Bashing the chicken thin is the trick: it cooks quickly and evenly. You can crumb them in the morning and keep them covered in the fridge until tea time.</dd></dl>
+<h4>Ingredients</h4><ul><li>4 chicken breasts</li><li>100g panko or homemade breadcrumbs (3 slices of bread, whizzed)</li><li>1 tsp dried mixed herbs</li><li>Zest of 1 lemon (lemon wedges to serve)</li><li>3 tbsp plain flour</li><li>2 eggs, beaten</li><li>1 tbsp olive oil</li><li>500g baby new potatoes</li><li>2 heads broccoli or 300g green beans</li><li>Salad: 1 little gem lettuce, cucumber and cherry tomatoes</li></ul><h4>Method</h4><ol><li>Heat the oven to 220°C (200°C fan) and put a lightly oiled baking tray in to heat.</li><li>Boil the new potatoes for 15–20 min until tender.</li><li>Lay each chicken breast between two sheets of baking paper and bash with a rolling pin until about 1cm thick all over.</li><li>Mix the crumbs with the herbs, lemon zest and a pinch of salt. Put the flour, egg and crumbs in three bowls. Dip each breast in flour, then egg, then crumbs.</li><li>Put the chicken on the hot tray, drizzle with the oil and bake 10 min, turn, then 8–10 min more until golden and cooked through.</li><li>Steam the broccoli or beans and chop the salad. Slice the schnitzels into strips for the little ones and serve with lemon wedges.</li></ol><p><a href="#top">Back to the week</a></p></section><section class="card" id="card-apple-oat-muffins"><h3>Apple &amp; oat muffins (snack)</h3><dl><dt>Serves</dt><dd>5 (2 adults, 3 children)</dd><dt>Time</dt><dd>40 min</dd><dt>Type</dt><dd>Snack</dd><dt>Tip</dt><dd>Keeps 3 days in a tin, or freeze and defrost overnight.</dd></dl>
+<h4>Ingredients</h4><ul><li>2 apples, grated (about 200g)</li><li>2 large eggs</li><li>160g rolled oats</li><li>About 30g honey</li><li>A splash of milk if the mix is too dry</li></ul><h4>Method</h4><ol><li>Heat the oven to 180°C (160°C fan) and grease or line a 12-hole muffin tin.</li><li>Grate the apples and mix them with the eggs, oats and honey until it holds together. Add a splash of milk if it looks dry.</li><li>Spoon into the tin and bake for about 30 minutes until set and golden.</li><li>Cool slightly before serving.</li></ol><p class="note">Makes 12. About 90 kcal each. Great for lunchboxes or after school.</p><p><a class="btn" href="https://www.instagram.com/reel/De2B8oSCm-v/" rel="noopener noreferrer nofollow">Full recipe</a></p><p><a href="#top">Back to the week</a></p></section></div>
+<footer>Updated 27 Oct 2026.</footer>
+</main>
+<script>
+// Pure date logic (no DOM). Keep in step with theme_for() / festive_for() in build.py.
+var WFT = (function () {
+  var WIN = { halloween: ["10", "25", 4], xmas1: ["12", "11", 4], xmas2: ["12", "18", 4] };
+  var NAMES = { autumn: 1, halloween: 1, christmas: 1, winter: 1, spring: 1, summer: 1 };
+  function parse(iso) {
+    var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || "");
+    if (!m) return null;
+    var y = parseInt(m[1], 10), mo = parseInt(m[2], 10), d = parseInt(m[3], 10);
+    var t = new Date(Date.UTC(y, mo - 1, d));
+    if (t.getUTCFullYear() !== y || t.getUTCMonth() !== mo - 1 || t.getUTCDate() !== d) return null;
+    return { y: y, m: mo, d: d, t: t.getTime() };
+  }
+  function days(a, b) { return Math.round((b.t - a.t) / 86400000); }
+  function themeFor(iso) {
+    var p = parse(iso); if (!p) return "autumn";
+    if (p.m === 12 && p.d >= 11 && p.d <= 25) return "christmas";
+    if (p.m === 10 && p.d >= 25 && p.d <= 31) return "halloween";
+    if (p.m >= 9 && p.m <= 11) return "autumn";
+    if (p.m === 12 || p.m <= 2) return "winter";
+    if (p.m <= 5) return "spring";
+    return "summer";
+  }
+  function festiveWindow(iso) {
+    var p = parse(iso); if (!p) return "";
+    if (p.m === 10 && p.d >= 25 && p.d <= 31) return "halloween";
+    if (p.m === 12 && p.d >= 11 && p.d <= 17) return "xmas1";
+    if (p.m === 12 && p.d >= 18 && p.d <= 25) return "xmas2";
+    return "";
+  }
+  // Index of the idea to highlight on a date inside window win (n ideas).
+  function ideaIndex(iso, win, n) {
+    var p = parse(iso), w = WIN[win]; if (!p || !w || !n) return 0;
+    var start = parse(p.y + "-" + w[0] + "-" + w[1]);
+    var k = days(start, p) % n; return k < 0 ? k + n : k;
+  }
+  // Theme override from ?theme=: a festive theme maps to the festive window for the date.
+  function windowForTheme(theme, iso) {
+    var p = parse(iso);
+    if (theme === "halloween") return "halloween";
+    if (theme === "christmas") return (p && p.m === 12 && p.d >= 18) ? "xmas2" : "xmas1";
+    return "";
+  }
+  function daysUntil(iso, mo, d) {
+    var p = parse(iso); if (!p) return 0;
+    return days(p, parse(p.y + "-" + (mo < 10 ? "0" : "") + mo + "-" + (d < 10 ? "0" : "") + d));
+  }
+  return { parse: parse, themeFor: themeFor, festiveWindow: festiveWindow, ideaIndex: ideaIndex,
+           windowForTheme: windowForTheme, daysUntil: daysUntil, NAMES: NAMES };
+})();
+
+</script>
+<script>
+// Everything here is ES5 (plain var and function only). No network, cookies or storage.
+(function () {
+  var DAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  var MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  var THEMES = {"autumn": {"emoji": ["\ud83c\udf42", "\ud83c\udf41", "\ud83c\udf30", "\ud83c\udf44", "\ud83c\udf4e"], "tag": "Harvest-time dinners"}, "halloween": {"emoji": ["\ud83c\udf83", "\ud83d\udc7b", "\ud83e\udd87", "\ud83d\udd77\ufe0f", "\ud83d\udd78\ufe0f"], "tag": "Spooky season dinners"}, "christmas": {"emoji": ["\ud83c\udf84", "\u2744\ufe0f", "\u2b50", "\ud83d\udd14", "\ud83c\udf81"], "tag": "Festive season dinners"}, "winter": {"emoji": ["\u2744\ufe0f", "\u26c4", "\ud83e\udde3", "\u2615", "\ud83e\udde4"], "tag": "Cosy winter dinners"}, "spring": {"emoji": ["\ud83c\udf37", "\ud83d\udc23", "\ud83c\udf31", "\ud83c\udf3c", "\ud83e\udd8b"], "tag": "Fresh spring dinners"}, "summer": {"emoji": ["\u2600\ufe0f", "\ud83c\udf49", "\ud83c\udf3b", "\ud83c\udf66", "\ud83d\udd76\ufe0f"], "tag": "Sunny summer dinners"}};
+  var root = document.documentElement;
+  function pad(n) { return (n < 10 ? "0" : "") + n; }
+  function byId(i) { return document.getElementById(i); }
+  function setText(el, t) { if (el) el.textContent = t; }
+  function qs(name) {
+    try {
+      var q = (location.search || "").replace(/^\?/, "").split("&");
+      for (var i = 0; i < q.length; i++) {
+        var kv = q[i].split("=");
+        if (kv[0] === name) return decodeURIComponent(kv[1] || "");
+      }
+    } catch (e) {}
+    return "";
+  }
+  // Europe/London date and time, falling back to the device clock if Intl/timeZone is unavailable.
+  function london() {
+    var now = new Date();
+    var iso = now.getFullYear() + "-" + pad(now.getMonth() + 1) + "-" + pad(now.getDate());
+    var hh = now.getHours(), mm = now.getMinutes();
+    try {
+      var f = new Intl.DateTimeFormat("en-GB", { timeZone: "Europe/London", year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", hour12: false });
+      var m = /(\d{1,2})\D+(\d{1,2})\D+(\d{4})\D+(\d{1,2})\D+(\d{2})/.exec(f.format(now));
+      if (m) { iso = m[3] + "-" + pad(parseInt(m[2], 10)) + "-" + pad(parseInt(m[1], 10)); hh = parseInt(m[4], 10) % 24; mm = parseInt(m[5], 10); }
+    } catch (e) {}
+    return { iso: iso, hh: hh, mm: mm };
+  }
+  var dateParam = qs("date");
+  var override = WFT.parse(dateParam) ? dateParam : "";            // preview only; ignored unless a valid date
+  var themeParam = qs("theme");
+  if (!WFT.NAMES[themeParam]) themeParam = "";                     // whitelist, never written to the page as-is
+  var loadedIso = london().iso;
+  function today() { return override || loadedIso; }
+
+  function longDate(iso) {
+    var p = WFT.parse(iso); if (!p) return "";
+    return DAYS[new Date(p.t).getUTCDay()] + " " + p.d + " " + MONTHS[p.m - 1];
+  }
+  function mark(sel, iso) {
+    var els = document.querySelectorAll(sel);
+    for (var i = 0; i < els.length; i++) {
+      var d = els[i].getAttribute("data-date") || "";
+      var cls = d < iso ? "past" : (d === iso ? "today" : "future");
+      els[i].className = els[i].className.replace(/\s*\b(past|today|future)\b/g, "") + " " + cls;
+    }
+  }
+  function applyTheme(iso) {
+    var name = themeParam || WFT.themeFor(iso);
+    var t = THEMES[name] || THEMES.autumn;
+    root.setAttribute("data-theme", THEMES[name] ? name : "autumn");
+    var deco = byId("deco");
+    if (deco) deco.textContent = t.emoji.join(" ") + "   " + t.emoji.slice().reverse().join(" ") + "   " + t.emoji.join(" ");
+    var tag = t.tag;
+    if (name === "christmas") {
+      var n = WFT.daysUntil(iso, 12, 25);
+      tag = (n >= 1 && n <= 14) ? n + " sleep" + (n === 1 ? "" : "s") + " until Christmas" : (n === 0 ? "Merry Christmas!" : t.tag);
+    } else if (name === "halloween") {
+      var h = WFT.daysUntil(iso, 10, 31);
+      tag = (h > 0 && h <= 7) ? h + " day" + (h === 1 ? "" : "s") + " until Halloween" : (h === 0 ? "Happy Halloween!" : t.tag);
+    }
+    setText(byId("theme-tag"), tag);
+    return name;
+  }
+  function applyFestive(iso, name) {
+    var win = themeParam ? WFT.windowForTheme(themeParam, iso) : WFT.festiveWindow(iso);
+    var secs = document.querySelectorAll(".festive");
+    for (var i = 0; i < secs.length; i++) {
+      var sec = secs[i], on = sec.getAttribute("data-window") === win;
+      sec.hidden = !on;
+      if (!on) continue;
+      var list = sec.querySelector(".ideas"), items = list.querySelectorAll(".idea");
+      var pick = WFT.ideaIndex(iso, win, items.length), arr = [], j;
+      for (j = 0; j < items.length; j++) {
+        var isPick = j === pick;
+        items[j].className = "idea" + (isPick ? " pick" : "");
+        if (isPick) arr.unshift(items[j]); else arr.push(items[j]);
+      }
+      for (j = 0; j < arr.length; j++) list.appendChild(arr[j]);
+    }
+  }
+  function applyTonight(iso) {
+    var slots = document.querySelectorAll(".hero-slot"), found = false;
+    for (var i = 0; i < slots.length; i++) {
+      var on = slots[i].getAttribute("data-date") === iso;
+      slots[i].hidden = !on; if (on) found = true;
+    }
+    var none = byId("hero-none"); if (none) none.hidden = found;
+    var nextEl = byId("hero-next"), text = "";
+    if (!found) {
+      var tiles = document.querySelectorAll(".tile"), best = null;
+      for (var k = 0; k < tiles.length; k++) {
+        var d = tiles[k].getAttribute("data-date");
+        if (d > iso && (!best || d < best.getAttribute("data-date"))) best = tiles[k];
+      }
+      if (best) text = "Next dinner: " + longDate(best.getAttribute("data-date")) + " \u00b7 " + best.getAttribute("data-dish");
+    }
+    if (nextEl) { setText(nextEl, text); nextEl.hidden = !text; }
+  }
+  function applyAll() {
+    var iso = today();
+    var name = applyTheme(iso);
+    applyFestive(iso, name);
+    applyTonight(iso);
+    mark(".tile", iso); mark(".dw", iso);
+    setText(byId("datefull"), longDate(iso));
+  }
+  function tick() {
+    var L = london();
+    setText(byId("clock"), pad(L.hh) + ":" + pad(L.mm));
+    // Reload shortly after midnight (London) so the next day's dinner and theme appear. Not when previewing a fixed date.
+    if (!override && L.iso !== loadedIso) { location.reload(); }
+  }
+  applyAll(); tick();
+  setInterval(tick, 20000);
+})();
+// Builds the rating email on tap. Stores nothing, makes no network requests.
+document.addEventListener("click", function (ev) {
+  var a = ev.target.closest && ev.target.closest("a.send"); if (!a) return;
+  var box = a.closest(".rate-body"); var pick = function (p) { var i = box.querySelector('input[name^="' + p + '"]:checked'); return i ? i.value : ""; };
+  var id = box.dataset.dishId, r = pick("r-"), g = pick("g-") || "everyone";
+  if (!r) { ev.preventDefault(); alert("Choose thumbs up or thumbs down first."); return; }
+  var c = box.querySelector("textarea").value.replace(/\s+/g, " ").trim();
+  var body = ["dish_id: " + id, "dish: " + box.dataset.dish, "rating: " + r, "group: " + g, "comment: " + c, "week: " + box.dataset.week].join("\n") + "\n";
+  a.href = "mailto:ember-sol+tea@mail.grokbot.com?subject=" + encodeURIComponent("Rating: " + box.dataset.dish) + "&body=" + encodeURIComponent(body);
+});
+
+</script>
+</body></html>
