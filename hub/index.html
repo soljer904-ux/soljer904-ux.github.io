@@ -128,8 +128,8 @@ html[data-theme="summer"]{--glass:rgba(255,255,255,.55);--glass2:rgba(255,250,22
 /* ===== Liquid glass prototype overlay ===== */
 html{background:transparent !important}
 body{background:transparent !important;color:var(--ink, var(--fg));position:relative;min-height:100vh;overflow-x:hidden}
-body > *:not(.scene):not(.theme-switch):not(.proto-banner){position:relative;z-index:1}
-.theme-switch,.proto-banner{position:fixed}
+body > *:not(.scene):not(.proto-banner){position:relative;z-index:1}
+.proto-banner{position:fixed}
 
 /* Fixed full-bleed animated scene (Roadster-style blend) */
 .scene{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
@@ -250,7 +250,7 @@ html[data-theme="halloween"] .t-day,html[data-theme="halloween"] .lcard strong,h
 .tile:nth-child(6),.dw:nth-child(6){animation-delay:.22s}
 .tile:nth-child(7),.dw:nth-child(7){animation-delay:.26s}
 
-/* Theme switcher + prototype banner */
+/* Prototype banner (no theme dock) */
 .proto-banner{
   position:fixed !important;top:0;left:0;right:0;z-index:40;text-align:center;
   font-size:.8rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
@@ -258,22 +258,7 @@ html[data-theme="halloween"] .t-day,html[data-theme="halloween"] .lcard strong,h
   background:rgba(20,20,30,.55);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
   border-bottom:1px solid rgba(255,255,255,.2);
 }
-.theme-switch{
-  position:fixed !important;right:12px;bottom:14px;z-index:50;display:flex;flex-wrap:wrap;gap:6px;align-items:center;
-  max-width:min(96vw,420px);padding:8px 10px;border-radius:999px;
-  background:var(--glass);border:1px solid var(--gline);
-  -webkit-backdrop-filter:blur(18px) saturate(1.4);backdrop-filter:blur(18px) saturate(1.4);
-  box-shadow:var(--gshadow);
-}
-.ts-label{font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--ink);padding:0 4px}
-.ts-btn{
-  min-width:40px;min-height:40px;border-radius:999px;border:1px solid var(--gline);
-  background:rgba(255,255,255,.2);font-size:1.15rem;cursor:pointer;padding:4px 8px;line-height:1;
-  -webkit-tap-highlight-color:transparent;color:var(--ink);font-weight:700;font-size:.85rem;
-}
-.ts-btn[data-theme-set]:not([data-theme-set=""]){font-size:1.2rem}
-.ts-btn.on{background:var(--accent);color:#fff;border-color:var(--accent)}
-body{padding-top:28px;padding-bottom:78px}
+body{padding-top:28px;padding-bottom:24px}
 
 /* Training timer glass polish */
 .tab.on{background:var(--accent) !important;color:#fff !important;border-color:var(--accent) !important}
@@ -291,16 +276,38 @@ html[data-theme="halloween"] .tonight .cook,
 html[data-theme="halloween"] .tonight .mode{background:rgba(255,162,58,.95) !important;color:#1a0a00 !important}
 .tile.today .t-now,.pick-tag{background:var(--accent2) !important;color:#1a1000 !important}
 
-/* Keep switcher compact on phone */
-@media (max-width:640px){
-  .theme-switch{left:10px;right:10px;bottom:10px;justify-content:center;border-radius:22px;max-width:none}
-  .ts-label{display:none}
+
   .ts-btn{min-width:36px;min-height:36px;padding:4px 6px}
 }
 
+
+/* Thumb rating buttons */
+.thumbs{display:flex;flex-wrap:wrap;gap:10px;border:0;padding:.2em 0;margin:0 0 .5em}
+.thumbs legend{padding:0;margin:0 0 .4em;color:var(--ink);font-size:1rem;font-weight:700}
+.thumb{
+  position:relative;display:inline-flex;align-items:center;justify-content:center;
+  min-width:48px;min-height:48px;padding:8px 14px;margin:0;cursor:pointer;
+  border-radius:16px;border:1px solid var(--gline);
+  background:var(--glass);
+  -webkit-backdrop-filter:blur(12px) saturate(1.3);backdrop-filter:blur(12px) saturate(1.3);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.35);
+  -webkit-tap-highlight-color:transparent;font-size:1.55rem;line-height:1;
+  transition:transform .2s ease, background .2s ease, box-shadow .2s ease;
+}
+.thumb input{position:absolute;opacity:0;width:1px;height:1px;margin:0;pointer-events:none}
+.thumb:hover{transform:translateY(-2px)}
+.thumb:focus-within{outline:2px solid var(--accent);outline-offset:2px}
+.thumb.is-on,.thumb:has(input:checked){
+  background:color-mix(in srgb, var(--accent2) 55%, var(--glass));
+  border-color:var(--accent2);
+  box-shadow:0 6px 18px color-mix(in srgb, var(--accent2) 35%, transparent), inset 0 1px 0 rgba(255,255,255,.45);
+}
+.tonight .thumb{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.35);color:#fff}
+.tonight .thumb.is-on,.tonight .thumb:has(input:checked){background:rgba(255,255,255,.9);color:#1a1020}
+
 /* Fallback when backdrop-filter unsupported */
 @supports not ((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){
-  .tonight,.day,.card,.tile a,.festive,.idea-in,.fcard,.lcard,.note,.tweak,.nudge,.theme-switch,.sub a,.fam-nav a,.btn,.tab,.btns button{
+  .tonight,.day,.card,.tile a,.festive,.idea-in,.fcard,.lcard,.note,.tweak,.nudge,.sub a,.fam-nav a,.btn,.tab,.btns button{
     background:var(--card) !important;
   }
   .hdr{background:var(--hdrbg) !important}
@@ -343,16 +350,6 @@ html[data-theme="halloween"] .tonight .mode{background:rgba(255,162,58,.95) !imp
 <div class="scene-vignette"></div>
 </div>
 
-<nav class="theme-switch" aria-label="Preview seasonal theme">
-<span class="ts-label">Theme</span>
-<button type="button" class="ts-btn" data-theme-set="halloween" title="Halloween">🎃</button>
-<button type="button" class="ts-btn" data-theme-set="christmas" title="Christmas">🎄</button>
-<button type="button" class="ts-btn" data-theme-set="autumn" title="Autumn">🍂</button>
-<button type="button" class="ts-btn" data-theme-set="winter" title="Winter">❄️</button>
-<button type="button" class="ts-btn" data-theme-set="spring" title="Spring">🌷</button>
-<button type="button" class="ts-btn" data-theme-set="summer" title="Summer">☀️</button>
-<button type="button" class="ts-btn ts-auto" data-theme-set="" title="Auto (by date)">Auto</button>
-</nav>
 <p class="proto-banner">Liquid glass prototype · not the live site</p>
 
 <header class="hdr"><div class="hdr-in">
@@ -438,7 +435,7 @@ html[data-theme="halloween"] .tonight .mode{background:rgba(255,162,58,.95) !imp
 <script>
 // Pure date logic (no DOM). Keep in step with theme_for() / festive_for() in build.py.
 var WFT = (function () {
-  var WIN = { halloween: ["10", "25", 4], xmas1: ["12", "11", 4], xmas2: ["12", "18", 4] };
+  var WIN = { halloween: ["10", "25", 4], xmas1: ["12", "01", 4], xmas2: ["12", "18", 4] };
   var NAMES = { autumn: 1, halloween: 1, christmas: 1, winter: 1, spring: 1, summer: 1 };
   function parse(iso) {
     var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || "");
@@ -451,18 +448,18 @@ var WFT = (function () {
   function days(a, b) { return Math.round((b.t - a.t) / 86400000); }
   function themeFor(iso) {
     var p = parse(iso); if (!p) return "autumn";
-    if (p.m === 12 && p.d >= 11 && p.d <= 25) return "christmas";
+    if (p.m === 12) return "christmas";
     if (p.m === 10 && p.d >= 25 && p.d <= 31) return "halloween";
     if (p.m >= 9 && p.m <= 11) return "autumn";
-    if (p.m === 12 || p.m <= 2) return "winter";
+    if (p.m <= 2) return "winter";
     if (p.m <= 5) return "spring";
     return "summer";
   }
   function festiveWindow(iso) {
     var p = parse(iso); if (!p) return "";
     if (p.m === 10 && p.d >= 25 && p.d <= 31) return "halloween";
-    if (p.m === 12 && p.d >= 11 && p.d <= 17) return "xmas1";
-    if (p.m === 12 && p.d >= 18 && p.d <= 25) return "xmas2";
+    if (p.m === 12 && p.d >= 1 && p.d <= 17) return "xmas1";
+    if (p.m === 12 && p.d >= 18 && p.d <= 31) return "xmas2";
     return "";
   }
   // Index of the idea to highlight on a date inside window win (n ideas).
@@ -530,65 +527,6 @@ var WFT = (function () {
 })();
 </script>
 <script>
-
-(function () {
-  function qs(name) {
-    try {
-      var q = (location.search || "").replace(/^\?/, "").split("&");
-      for (var i = 0; i < q.length; i++) {
-        var kv = q[i].split("=");
-        if (kv[0] === name) return decodeURIComponent(kv[1] || "");
-      }
-    } catch (e) {}
-    return "";
-  }
-  function setQueryTheme(name) {
-    var parts = (location.search || "").replace(/^\?/, "").split("&").filter(function (p) {
-      return p && p.indexOf("theme=") !== 0;
-    });
-    if (name) parts.push("theme=" + encodeURIComponent(name));
-    var next = parts.length ? ("?" + parts.join("&")) : location.pathname;
-    if (!parts.length) next = location.pathname + (location.hash || "");
-    else next = location.pathname + "?" + parts.join("&") + (location.hash || "");
-    try { history.replaceState(null, "", next); } catch (e) { location.search = name ? ("?theme=" + name) : ""; }
-  }
-  function markActive(name) {
-    var btns = document.querySelectorAll(".ts-btn");
-    for (var i = 0; i < btns.length; i++) {
-      var v = btns[i].getAttribute("data-theme-set") || "";
-      var on = (name ? v === name : v === "");
-      if (on) btns[i].classList.add("on"); else btns[i].classList.remove("on");
-    }
-  }
-  function applySimple(name) {
-    if (!name && typeof WFT !== "undefined" && WFT.themeFor) {
-      var iso = (typeof london === "function") ? london().iso : null;
-      // fall through: pages without meal applyAll set theme themselves after
-    }
-    if (name) document.documentElement.setAttribute("data-theme", name);
-    markActive(name || "");
-  }
-  document.addEventListener("click", function (ev) {
-    var b = ev.target.closest && ev.target.closest(".ts-btn");
-    if (!b) return;
-    ev.preventDefault();
-    var name = b.getAttribute("data-theme-set") || "";
-    setQueryTheme(name);
-    // Prefer meal-plan page hook
-    if (typeof window.__glassSetTheme === "function") {
-      window.__glassSetTheme(name);
-    } else {
-      applySimple(name);
-      // Re-run page theme if it exposes a refresh
-      if (typeof window.__glassRefresh === "function") window.__glassRefresh();
-      else location.reload();
-    }
-  });
-  // Initial mark from URL
-  var t = qs("theme");
-  if (t && !(typeof WFT !== "undefined" && WFT.NAMES && WFT.NAMES[t])) t = "";
-  markActive(t || "");
-})();
-
+/* theme dock removed; ?theme= still works via page JS */
 </script>
 </body></html>

@@ -14,10 +14,10 @@ BUILD_TODAY=YYYY-MM-DD fakes the build date (the no-JS fallback theme, Tonight a
 
 THEMES (picked in the browser from the Europe/London date, so no rebuild is needed; precedence top to bottom).
 The build date only sets the fallback used when JS is off.  Preview: ?date=YYYY-MM-DD and/or ?theme=NAME.
-  christmas  11 Dec - 25 Dec inclusive   red / green / gold      (festive panel: 11-17 Dec set A, 18-25 Dec set B)
+  christmas  1 Dec - 31 Dec inclusive    red / green / gold      (festive panel: 1-17 Dec set A, 18-31 Dec set B)
   halloween  25 Oct - 31 Oct inclusive   black / purple / orange (festive panel: Halloween set)
   autumn     Sep-Nov (default look)      harvest orange / burgundy / mustard / brown / cream
-  winter     Dec-Feb (after Christmas)   spring Mar-May   summer Jun-Aug
+  winter     Jan-Feb                     spring Mar-May   summer Jun-Aug
 FESTIVE ideas live in the FESTIVE dict below (static, rendered into the HTML so the privacy scan covers them;
 JS only shows/hides a window and picks one idea per day: (days since window start) % number of ideas).
 No dish may appear in two windows (standing rule: never repeat a meal the following week).
@@ -145,11 +145,11 @@ THEMES = {
 AUT = THEMES["autumn"]["vars"]
 
 def theme_for(d):
-    """Mirror of the JS picker: Christmas 11-25 Dec, Halloween 25-31 Oct, else meteorological season."""
-    if d.month == 12 and 11 <= d.day <= 25: return "christmas"
+    """Mirror of the JS picker: Christmas all December, Halloween 25-31 Oct, else meteorological season."""
+    if d.month == 12: return "christmas"
     if d.month == 10 and 25 <= d.day <= 31: return "halloween"
     if d.month in (9, 10, 11): return "autumn"
-    if d.month in (12, 1, 2): return "winter"
+    if d.month in (1, 2): return "winter"
     if d.month in (3, 4, 5): return "spring"
     return "summer"
 
@@ -171,7 +171,7 @@ FESTIVE = {
      "desc": "Homemade pizza bases with passata, mozzarella and parmesan. Olives and salami become the spiders. Let the kids build their own.",
      "url": "https://www.bbcgoodfood.com/recipes/halloween-spider-pizzas"},
   ]},
-  "xmas1": {"start": "12-11", "end": "12-17", "emoji": "🎄", "title": "Festive idea: Christmas", "ideas": [
+  "xmas1": {"start": "12-01", "end": "12-17", "emoji": "🎄", "title": "Festive idea: Christmas", "ideas": [
     {"name": "Christmas tree pizza tart", "time": "30 min",
      "desc": "A tree cut from ready-rolled puff pastry, topped with passata and garlic, mozzarella and chopped ham or chipolatas. Twist the pastry offcuts into 'tinsel'.",
      "url": "https://www.bbcgoodfood.com/recipes/christmas-tree-pizza-tart"},
@@ -186,7 +186,7 @@ FESTIVE = {
      "url": "https://www.bbcgoodfood.com/recipes/christmas-dinner-sausage-roll"},
   ]},
   # Order matters: 4 ideas over 18-25 Dec, so 21 Dec and 25 Dec land on the turkey crown (index 3).
-  "xmas2": {"start": "12-18", "end": "12-25", "emoji": "🎄", "title": "Festive idea: Christmas", "ideas": [
+  "xmas2": {"start": "12-18", "end": "12-31", "emoji": "🎄", "title": "Festive idea: Christmas", "ideas": [
     {"name": "Cheesy sprout pasta bake", "time": "50 min",
      "desc": "Penne in a homemade cheese sauce with roasted sprouts. Stir in shredded cooked ham or chicken for extra protein.",
      "url": "https://www.bbcgoodfood.com/recipes/cheesy-sprout-pasta-bake"},
@@ -206,8 +206,8 @@ def festive_for(d, theme=None):
     """(window, idx) for a date, mirroring the JS. theme overrides (preview only)."""
     key = None
     if d.month == 10 and 25 <= d.day <= 31: key = "halloween"
-    elif d.month == 12 and 11 <= d.day <= 17: key = "xmas1"
-    elif d.month == 12 and 18 <= d.day <= 25: key = "xmas2"
+    elif d.month == 12 and 1 <= d.day <= 17: key = "xmas1"
+    elif d.month == 12 and 18 <= d.day <= 31: key = "xmas2"
     if not key: return None
     f = FESTIVE[key]; m, dd = map(int, f["start"].split("-"))
     return key, (d - datetime.date(d.year, m, dd)).days % len(f["ideas"])
@@ -259,7 +259,7 @@ PAGE = r'''<!doctype html>
 
 JS_PURE = r'''// Pure date logic (no DOM). Keep in step with theme_for() / festive_for() in build.py.
 var WFT = (function () {
-  var WIN = { halloween: ["10", "25", 4], xmas1: ["12", "11", 4], xmas2: ["12", "18", 4] };
+  var WIN = { halloween: ["10", "25", 4], xmas1: ["12", "01", 4], xmas2: ["12", "18", 4] };
   var NAMES = { autumn: 1, halloween: 1, christmas: 1, winter: 1, spring: 1, summer: 1 };
   function parse(iso) {
     var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || "");
@@ -272,18 +272,18 @@ var WFT = (function () {
   function days(a, b) { return Math.round((b.t - a.t) / 86400000); }
   function themeFor(iso) {
     var p = parse(iso); if (!p) return "autumn";
-    if (p.m === 12 && p.d >= 11 && p.d <= 25) return "christmas";
+    if (p.m === 12) return "christmas";
     if (p.m === 10 && p.d >= 25 && p.d <= 31) return "halloween";
     if (p.m >= 9 && p.m <= 11) return "autumn";
-    if (p.m === 12 || p.m <= 2) return "winter";
+    if (p.m <= 2) return "winter";
     if (p.m <= 5) return "spring";
     return "summer";
   }
   function festiveWindow(iso) {
     var p = parse(iso); if (!p) return "";
     if (p.m === 10 && p.d >= 25 && p.d <= 31) return "halloween";
-    if (p.m === 12 && p.d >= 11 && p.d <= 17) return "xmas1";
-    if (p.m === 12 && p.d >= 18 && p.d <= 25) return "xmas2";
+    if (p.m === 12 && p.d >= 1 && p.d <= 17) return "xmas1";
+    if (p.m === 12 && p.d >= 18 && p.d <= 31) return "xmas2";
     return "";
   }
   // Index of the idea to highlight on a date inside window win (n ideas).
@@ -377,7 +377,7 @@ JS_DOM = r'''// Everything here is ES5 (plain var and function only). No network
     var tag = t.tag;
     if (name === "christmas") {
       var n = WFT.daysUntil(iso, 12, 25);
-      tag = (n >= 1 && n <= 14) ? n + " sleep" + (n === 1 ? "" : "s") + " until Christmas" : (n === 0 ? "Merry Christmas!" : t.tag);
+      tag = (n >= 1 && n <= 24) ? n + " sleep" + (n === 1 ? "" : "s") + " until Christmas" : (n === 0 ? "Merry Christmas!" : t.tag);
     } else if (name === "halloween") {
       var h = WFT.daysUntil(iso, 10, 31);
       tag = (h > 0 && h <= 7) ? h + " day" + (h === 1 ? "" : "s") + " until Halloween" : (h === 0 ? "Happy Halloween!" : t.tag);
@@ -436,6 +436,17 @@ JS_DOM = r'''// Everything here is ES5 (plain var and function only). No network
   }
   applyAll(); tick();
   setInterval(tick, 20000);
+  // Selected state for thumb radios (also covered by :has() in modern browsers)
+  document.addEventListener("change", function (ev) {
+    var t = ev.target;
+    if (!t || !t.matches || !t.matches("input[type=radio][name^=\"r-\"]")) return;
+    var fs = t.closest(".thumbs"); if (!fs) return;
+    var labs = fs.querySelectorAll(".thumb");
+    for (var i = 0; i < labs.length; i++) {
+      if (labs[i].querySelector("input").checked) labs[i].classList.add("is-on");
+      else labs[i].classList.remove("is-on");
+    }
+  });
 })();
 // Builds the rating email on tap. Stores nothing, makes no network requests.
 document.addEventListener("click", function (ev) {
@@ -624,7 +635,7 @@ def main():
         fallback_body = f"dish_id: {dish_id}\ndish: {name}\nrating: up|down\ngroup: kids|adults|everyone\ncomment: \nweek: {wk}\n"
         rate = f'''<details class="rate"><summary class="btn">Rate this</summary>
 <div class="rate-body" data-dish-id="{e(dish_id)}" data-dish="{e(name)}" data-week="{e(wk)}">
-<fieldset><legend>Rating</legend><label><input type="radio" name="r-{idx}" value="up"> Thumbs up</label><label><input type="radio" name="r-{idx}" value="down"> Thumbs down</label></fieldset>
+<fieldset class="thumbs"><legend>Rating</legend><label class="thumb thumb-up"><input type="radio" name="r-{idx}" value="up" aria-label="Thumbs up"><span aria-hidden="true">👍</span></label><label class="thumb thumb-down"><input type="radio" name="r-{idx}" value="down" aria-label="Thumbs down"><span aria-hidden="true">👎</span></label></fieldset>
 <fieldset><legend>From</legend><label><input type="radio" name="g-{idx}" value="kids"> Kids</label><label><input type="radio" name="g-{idx}" value="adults"> Adults</label><label><input type="radio" name="g-{idx}" value="everyone" checked> Everyone</label></fieldset>
 <label class="c">Comment (optional)<textarea rows="2" maxlength="300" placeholder="e.g. too spicy, kids wouldn't eat it"></textarea></label>
 <a class="btn send" href="{e(q("Rating: " + name, fallback_body))}">Open email to send</a>
@@ -716,7 +727,7 @@ def main():
     deco0 = " ".join(th["emoji"]) + "   " + " ".join(reversed(th["emoji"])) + "   " + " ".join(th["emoji"])
     if theme0 == "christmas":
         n = (datetime.date(today.year, 12, 25) - today).days
-        tag0 = f"{n} sleep{'' if n == 1 else 's'} until Christmas" if 1 <= n <= 14 else ("Merry Christmas!" if n == 0 else th["tag"])
+        tag0 = f"{n} sleep{'' if n == 1 else 's'} until Christmas" if 1 <= n <= 24 else ("Merry Christmas!" if n == 0 else th["tag"])
     elif theme0 == "halloween":
         n = (datetime.date(today.year, 10, 31) - today).days
         tag0 = f"{n} day{'' if n == 1 else 's'} until Halloween" if 0 < n <= 7 else ("Happy Halloween!" if n == 0 else th["tag"])
