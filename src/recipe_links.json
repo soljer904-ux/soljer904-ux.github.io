@@ -1,0 +1,52 @@
+{
+ "_note": "Recipe links already shared for a dish in the family chat (raw/_chat.txt). Only links clearly tied to that dish. Dishes not listed link to their card on the page. Links added later are noted in 'source'.",
+ "casserole": [
+  {
+   "label": "BBC Good Food: sausage & bean casserole",
+   "url": "https://www.bbcgoodfood.com/recipes/sausage-bean-casserole",
+   "source": "chat 07/09/2025"
+  }
+ ],
+ "chilli": [
+  {
+   "label": "BBC Good Food: slow cooker chilli con carne",
+   "url": "https://www.bbcgoodfood.com/recipes/slow-cooker-chilli-con-carne",
+   "source": "chat 06/01/2026"
+  }
+ ],
+ "curry": [
+  {
+   "label": "BBC Good Food: slow cooker chicken tikka masala",
+   "url": "https://www.bbcgoodfood.com/recipes/slow-cooker-chicken-tikka-masala",
+   "source": "chat 06/01/2026"
+  }
+ ],
+ "orzo": [
+  {
+   "label": "One-pan chicken sausage & orzo",
+   "url": "https://www.eatingbirdfood.com/one-pan-chicken-sausage-and-orzo/",
+   "source": "chat 05/02/2025"
+  }
+ ],
+ "salmon": [
+  {
+   "label": "BBC Good Food: creamy salmon, leek & potato traybake",
+   "url": "https://www.bbcgoodfood.com/recipes/creamy-salmon-leek-potato-traybake",
+   "source": "chat 11/02/2026"
+  }
+ ],
+ "goujons": [
+  {
+   "label": "BBC Food: baked chicken goujons",
+   "url": "https://www.bbc.co.uk/food/recipes/chickengoujons_82608",
+   "source": "added 2026-10-22 (kids' request)"
+  }
+ ],
+ "schnitzel": [
+  {
+   "label": "Recipes Made Easy: oven-baked chicken schnitzel",
+   "url": "https://www.recipesmadeeasy.co.uk/oven-baked-chicken-schnitzel/",
+   "source": "added 2026-10-22 (kids' request)"
+  }
+ ]
+}
