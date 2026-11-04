@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#1a7a4c">
+<title>Isla's Parrot Missions 🦜</title>
+<style>
+  :root {
+    --green: #1a7a4c;
+    --green-dark: #0f5a36;
+    --lime: #b8e986;
+    --yellow: #ffe66d;
+    --coral: #ff6b6b;
+    --sky: #4ecdc4;
+    --purple: #7b68ee;
+    --ink: #1a2332;
+    --paper: #fffaf0;
+    --card: #ffffff;
+    --grownup: #fff3cd;
+    --grownup-border: #f0c36d;
+    --safe: #ffe0e0;
+    --radius: 18px;
+    --shadow: 0 6px 20px rgba(26,35,50,0.12);
+    --touch: 48px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: linear-gradient(180deg, #e8f8ef 0%, var(--paper) 40%, #fff5e6 100%);
+    color: var(--ink);
+    font-size: 1.15rem;
+    line-height: 1.45;
+    padding: 0 0 4rem;
+    -webkit-tap-highlight-color: transparent;
+  }
+  header.hero {
+    background: linear-gradient(135deg, var(--green) 0%, #2d9b6a 50%, var(--sky) 100%);
+    color: white;
+    padding: 1.5rem 1.25rem 2rem;
+    text-align: center;
+    border-radius: 0 0 28px 28px;
+    box-shadow: var(--shadow);
+  }
+  header.hero h1 {
+    margin: 0.4rem 0 0.3rem;
+    font-size: clamp(1.8rem, 6vw, 2.6rem);
+    letter-spacing: -0.02em;
+  }
+  header.hero p { margin: 0.35rem auto; max-width: 32rem; opacity: 0.95; font-size: 1.05rem; }
+  .parrot-svg { width: min(180px, 45vw); height: auto; margin: 0.5rem auto; display: block; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2)); }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 0 1rem; }
+  .progress-bar {
+    position: sticky; top: 0; z-index: 20;
+    background: rgba(255,250,240,0.92);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 0.6rem 1rem;
+    border-bottom: 2px solid var(--lime);
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .progress-bar .fill-wrap {
+    flex: 1; height: 14px; background: #e0e8e4; border-radius: 999px; overflow: hidden;
+  }
+  .progress-bar .fill {
+    height: 100%; width: 0%; background: linear-gradient(90deg, var(--green), var(--sky));
+    border-radius: 999px; transition: width 0.35s ease;
+  }
+  .progress-bar .pct { font-weight: 700; color: var(--green-dark); min-width: 3.2rem; text-align: right; font-size: 0.95rem; }
+  .mission-nav {
+    display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center;
+    padding: 1rem 0 0.5rem;
+  }
+  .mission-nav a {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-height: var(--touch); min-width: var(--touch);
+    padding: 0.4rem 0.85rem;
+    background: var(--card); border: 2px solid var(--green);
+    border-radius: 999px; color: var(--green-dark); text-decoration: none;
+    font-weight: 700; font-size: 0.95rem; box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  }
+  .mission-nav a.done { background: var(--lime); border-color: var(--green); }
+  .mission {
+    background: var(--card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin: 1.25rem 0;
+    overflow: hidden;
+    border: 3px solid transparent;
+  }
+  .mission.complete { border-color: var(--lime); }
+  .mission-head {
+    background: linear-gradient(90deg, var(--green), #2d9b6a);
+    color: white;
+    padding: 1rem 1.15rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .mission-head .num {
+    background: white; color: var(--green-dark);
+    width: 2.4rem; height: 2.4rem; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 1.2rem; flex-shrink: 0;
+  }
+  .mission-head h2 { margin: 0; font-size: clamp(1.2rem, 4vw, 1.5rem); }
+  .mission-body { padding: 1rem 1.15rem 1.25rem; }
+  .mission-body > p.lead { font-size: 1.1rem; margin-top: 0; }
+  .step {
+    display: flex; gap: 0.75rem; align-items: flex-start;
+    padding: 0.85rem 0.65rem;
+    border-radius: 14px;
+    margin: 0.4rem -0.35rem;
+    transition: background 0.2s;
+  }
+  .step:active { background: #f0faf4; }
+  .step.done { background: #eef9e8; }
+  .tick {
+    flex-shrink: 0;
+    width: var(--touch); height: var(--touch);
+    border: 3px solid var(--green);
+    border-radius: 14px;
+    background: white;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.6rem;
+    transition: background 0.15s, transform 0.1s;
+    -webkit-user-select: none; user-select: none;
+  }
+  .tick:active { transform: scale(0.92); }
+  .step.done .tick { background: var(--lime); border-color: var(--green-dark); }
+  .step-text { flex: 1; padding-top: 0.35rem; }
+  .step-text strong { display: block; font-size: 1.1rem; margin-bottom: 0.15rem; }
+  .step-text p { margin: 0.25rem 0; }
+  .grownup {
+    background: var(--grownup);
+    border: 2px dashed var(--grownup-border);
+    border-radius: 12px;
+    padding: 0.65rem 0.85rem;
+    margin: 0.5rem 0;
+    font-size: 1rem;
+  }
+  .grownup::before { content: "🙋 Ask a grown-up: "; font-weight: 800; color: #8a5a00; }
+  .safety {
+    background: var(--safe);
+    border: 2px solid var(--coral);
+    border-radius: 12px;
+    padding: 0.65rem 0.85rem;
+    margin: 0.5rem 0;
+    font-size: 1rem;
+  }
+  .safety::before { content: "⚠️ Safety: "; font-weight: 800; color: #b33; }
+  .block {
+    display: inline-block;
+    padding: 0.25rem 0.55rem;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin: 0.1rem 0.15rem;
+    color: white;
+    box-shadow: 0 2px 0 rgba(0,0,0,0.15);
+  }
+  .b-basic { background: #1e9fd6; }
+  .b-input { background: #b72e63; }
+  .b-logic { background: #4c97ff; }
+  .b-loops { background: #0f9d58; }
+  .b-servo { background: #cf63cf; }
+  .b-music { background: #d65cd6; }
+  .celeb {
+    display: none;
+    text-align: center;
+    background: linear-gradient(135deg, var(--yellow), #ffd1a1);
+    border-radius: 14px;
+    padding: 1rem;
+    margin-top: 0.85rem;
+    font-size: 1.25rem;
+    font-weight: 800;
+    animation: pop 0.45s ease;
+  }
+  .mission.complete .celeb { display: block; }
+  @keyframes pop {
+    0% { transform: scale(0.8); opacity: 0; }
+    60% { transform: scale(1.05); }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  .diagram {
+    display: block; margin: 0.75rem auto; max-width: 100%;
+    background: #f7fff9; border-radius: 12px; padding: 0.5rem;
+    border: 2px solid #d4ecd9;
+  }
+  .parts-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 0.65rem; margin: 0.75rem 0;
+  }
+  .part-card {
+    background: #f7fff9; border: 2px solid #c8e6d0; border-radius: 12px;
+    padding: 0.75rem; text-align: center; font-size: 0.95rem;
+  }
+  .part-card .emoji { font-size: 2rem; display: block; margin-bottom: 0.25rem; }
+  a.btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-height: var(--touch); padding: 0.6rem 1.2rem;
+    background: var(--green); color: white; text-decoration: none;
+    border-radius: 999px; font-weight: 800; margin: 0.35rem 0.25rem;
+    box-shadow: 0 4px 0 var(--green-dark);
+  }
+  a.btn:active { transform: translateY(2px); box-shadow: 0 2px 0 var(--green-dark); }
+  a.btn.sky { background: var(--sky); box-shadow: 0 4px 0 #2a9a93; }
+  a.btn.purple { background: var(--purple); box-shadow: 0 4px 0 #5a4bc7; }
+  .tip {
+    background: #e8f4ff; border-left: 5px solid var(--sky);
+    padding: 0.65rem 0.85rem; border-radius: 0 10px 10px 0; margin: 0.6rem 0;
+  }
+  details.dad {
+    margin: 2rem 0 1rem;
+    background: #2a3140; color: #e8ecf2;
+    border-radius: var(--radius); padding: 0.5rem 1rem 1rem;
+  }
+  details.dad summary {
+    cursor: pointer; font-weight: 800; font-size: 1.15rem;
+    padding: 0.75rem 0; list-style: none;
+  }
+  details.dad summary::-webkit-details-marker { display: none; }
+  details.dad summary::before { content: "🔧 "; }
+  details.dad table {
+    width: 100%; border-collapse: collapse; margin: 0.75rem 0;
+    font-size: 0.95rem; background: #1a2030; border-radius: 8px; overflow: hidden;
+  }
+  details.dad th, details.dad td {
+    padding: 0.55rem 0.65rem; text-align: left; border-bottom: 1px solid #3a4558;
+  }
+  details.dad th { background: #3a4558; }
+  details.dad code, details.dad pre {
+    background: #12161f; color: #b8e986; padding: 0.15rem 0.4rem;
+    border-radius: 4px; font-size: 0.88rem;
+  }
+  details.dad pre {
+    padding: 0.85rem; overflow-x: auto; white-space: pre-wrap; line-height: 1.4;
+  }
+  details.dad a { color: #7dd3fc; }
+  .reset-row { text-align: center; margin: 1.5rem 0; }
+  button.reset {
+    min-height: var(--touch); padding: 0.5rem 1.1rem;
+    border: 2px solid #aaa; background: white; border-radius: 999px;
+    font-size: 1rem; cursor: pointer; color: #555;
+  }
+  footer.note {
+    text-align: center; color: #666; font-size: 0.9rem; padding: 1rem;
+  }
+  @media (max-width: 480px) {
+    body { font-size: 1.08rem; }
+    .step { padding: 0.7rem 0.35rem; }
+  }
+  @media (orientation: landscape) and (max-height: 500px) {
+    header.hero { padding: 0.85rem 1rem 1.1rem; }
+    .parrot-svg { width: 90px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <svg class="parrot-svg" viewBox="0 0 200 180" aria-hidden="true">
+    <ellipse cx="100" cy="110" rx="48" ry="58" fill="#2d9b6a"/>
+    <ellipse cx="100" cy="55" rx="32" ry="30" fill="#1a7a4c"/>
+    <circle cx="112" cy="50" r="6" fill="#fff"/>
+    <circle cx="113" cy="50" r="3" fill="#1a2332"/>
+    <path d="M128 55 L165 48 L128 68 Z" fill="#ff9f43"/>
+    <path d="M128 62 L158 68 L128 72 Z" fill="#e67e22"/>
+    <path d="M55 95 Q30 80 25 100 Q30 115 55 110 Z" fill="#4ecdc4"/>
+    <path d="M145 95 Q170 80 175 100 Q170 115 145 110 Z" fill="#4ecdc4"/>
+    <path d="M85 160 Q100 185 115 160" stroke="#cf63cf" stroke-width="10" fill="none" stroke-linecap="round"/>
+    <text x="100" y="28" text-anchor="middle" font-size="22">🦜</text>
+  </svg>
+  <h1>Isla's Parrot Missions</h1>
+  <p>Build a cardboard parrot that talks, flaps and wags its tail!</p>
+  <p style="font-size:0.95rem;opacity:0.9">Tap the big boxes when you finish a step ✔️</p>
+</header>
+
+<div class="progress-bar" aria-label="Progress">
+  <span aria-hidden="true">🏆</span>
+  <div class="fill-wrap"><div class="fill" id="progressFill"></div></div>
+  <span class="pct" id="progressPct">0%</span>
+</div>
+
+<div class="wrap">
+  <nav class="mission-nav" id="missionNav" aria-label="Missions"></nav>
+
+  <!-- MISSION 0: What you need -->
+  <section class="mission" id="m0" data-mission="0">
+    <div class="mission-head"><span class="num">0</span><h2>Meet your kit</h2></div>
+    <div class="mission-body">
+      <p class="lead">Let's see what came in the box! 📦</p>
+      <div class="parts-grid">
+        <div class="part-card"><span class="emoji">🟩</span><strong>micro:bit</strong><br>the tiny computer</div>
+        <div class="part-card"><span class="emoji">🔌</span><strong>USB cable</strong><br>plugs into a computer</div>
+        <div class="part-card"><span class="emoji">🟦</span><strong>Servo board</strong><br>holds 3 motors</div>
+        <div class="part-card"><span class="emoji">⚙️</span><strong>3 SG90 servos</strong><br>little motors</div>
+        <div class="part-card"><span class="emoji">🔋</span><strong>3× AA batteries</strong><br>for the servo board</div>
+        <div class="part-card"><span class="emoji">📦</span><strong>Cardboard &amp; tape</strong><br>for the parrot body</div>
+      </div>
+      <div class="step" data-id="m0-s1">
+        <button type="button" class="tick" aria-label="Mark done">⬜</button>
+        <div class="step-text"><strong>Find the micro:bit</strong><p>It is the little board with a yellow LED face.</p></div>
+      </div>
+      <div class="step" data-id="m0-s2">
+        <button type="button" class="tick" aria-label="Mark done">⬜</button>
+        <div class="step-text"><strong>Find the 3 servos</strong><p>Each one has three wires: brown, red and orange.</p></div>
+      </div>
+      <div class="step" data-id="m0-s3">
+        <button type="button" class="tick" aria-label="Mark done">⬜</button>
+        <div class="step-text"><strong>Find the blue servo board</strong><p>It has a slot for the micro:bit and three plugs for servos.</p></div>
+      </div>
+      <div class="celeb">🎉 Mission 0 done! You know your kit!</div>
+    </div>
+  </section>
+
+  <!-- MISSION 1 -->
+  <section class="mission" id="m1" data-mission="1">
+    <div class="mission-head"><span class="num">1</span><h2>Meet your micro:bit</h2></div>
+    <div class="mission-body">
+      <p class="lead">Make a heart light up on the micro:bit. ❤️</p>
+      <div class="tip">Open MakeCode here: <a class="btn sky" href="https://makecode.microbit.org" target="_blank" rel="noopener">makecode.microbit.org</a></div>
+      <div class="grownup">On a MacBook, plug the USB cable into the micro:bit and the computer. On an iPad you do not use a cable — use the free <strong>micro:bit</strong> app and Bluetooth (see tip at the bottom of this mission).</div>
+
+      <div class="step" data-id="m1-s1">
+        <button type="button" class="tick" aria-label="Mark done">⬜</button>
+        <div class="step-text">
+          <strong>Start a new project</strong>
+          <p>In MakeCode, tap <strong>New Project</strong>. Call it <em>Heart</em>.</p>
+        </div>
+      </div>
+      <div class="step" data-id="m1-s2">
+        <button type="button" class="tick" aria-label="Mark done">⬜</button>
+        <div class="step-text">
+          <strong>Show a heart</strong>
+          <p>From the blue <span class="block b-basic">Basic</span> menu, drag
+          <span class="block b-basic">show icon</span> into
+          <span class="block b-basic">on start</span>.
+          Choose the heart ❤️.</p>
+        </div>
+      </div>
+      <div class="step" data-id="m1-s3">
+        <button type="button" class="tick" aria-label="Mark done">⬜</button>
+        <div class="step-text">
+          <strong>Download to the micro:bit</strong>
+          <p><strong>MacBook (easiest):</strong> plug in USB → tap Download. In Chrome/Edge it can send straight over. In Safari, drag the file onto the <em>MICROBIT</em> drive.</p>
+          <p><strong>iPad:</strong> use the free <em>micro:bit</em> app from the App Store. Write code in the app (or open a project from Chrome/Edge into the app). Put the micro:bit in Bluetooth mode (press the back reset button 3 times until you see the Bluetooth logo), then send. An iPad cannot use a USB cable for this.</p>
+        </div>
+      </div>
+      <div class="step" data-id="m1-s4">
+        <button type="button" class="tick" aria-label="Mark done">⬜</button>
+        <div class="step-text"><strong>See the heart!</strong><p>The yellow lights should show a heart. You did the first program!</p></div>
+      </div>
+      <div class="celeb">🎉 You did it! Your micro:bit loves you!</div>
+    </div>
+  </section>
+
+  <!-- MISSION 2 -->
+  <section class="mission" id="m2" data-mission="2">
+    <div class="mission-head"><span class="num">2</span><h2>Make one servo wiggle</h2></div>
+    <div class="mission-body">
+      <p class="lead">Plug one motor in and make it wave. 👋</p>
+
+      <svg class="diagram" viewBox="0 0 340 160" role="img" aria-label="Servo plug diagram">
+        <rect x="20" y="30" width="120" height="100" rx="10" fill="#4a90d9"/>
+        <text x="80" y="55" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">Servo board</text>
+        <text x="80" y="78" text-anchor="middle" fill="#fff" font-size="11">Servo 1</text>
+        <rect x="50" y="90" width="18" height="22" fill="#333"/><text x="59" y="130" text-anchor="middle" font-size="10">G</text>
+        <rect x="72" y="90" width="18" height="22" fill="#c0392b"/><text x="81" y="130" text-anchor="middle" font-size="10">V</text>
+        <rect x="94" y="90" width="18" height="22" fill="#f39c12"/><text x="103" y="130" text-anchor="middle" font-size="10">S</text>
+        <path d="M103 112 C140 140 180 80 200 90" stroke="#f39c12" stroke-width="3" fill="none"/>
+        <path d="M81 112 C130 150 175 95 200 100" stroke="#c0392b" stroke-width="3" fill="none"/>
+        <path d="M59 112 C120 160 170 110 200 110" stroke="#5d4037" stroke-width="3" fill="none"/>
+        <rect x="200" y="70" width="110" height="55" rx="8" fill="#ecf0f1" stroke="#7f8c8d"/>
+        <text x="255" y="95" text-anchor="middle" font-size="12" font-weight="700">SG90 servo</text>
+        <text x="255" y="112" text-anchor="middle" font-size="10">🟤 brown → G</text>
+        <text x="255" y="125" text-anchor="middle" font-size="10">🔴 red → V · 🟠 orange → S</text>
+      </svg>
+
+      <div class="grownup">Put 3 AA batteries in the servo board the right way round. Slot the micro:bit into the edge connector so you can see the LED face. Plug ONE servo into <strong>Servo 1</strong>: brown on G, red on V, orange on S (S is the bottom pin).</div>
+      <div class="safety">Keep fingers clear of the spinning horn. Do not force a stuck servo.</div>
+
+      <div class="step" data-id="m2-s1">
+        <button type="button" class="tick" aria-label="Mark done">⬜</button>
+        <div class="step-text"><strong>Batteries and micro:bit in</strong><p>Board switch is OFF for now. micro:bit LEDs face you.</p></div>
+      </div>
+      <div class="step" data-id="m2-s2">
+        <button type="button" class="tick" aria-label="Mark done">⬜</button>
+        <div class="step-text"><strong>Plug servo into Servo 1</strong><p>Brown–G, red–V, orange–S. Push it on straight.</p></div>
+      </div>
+      <div class="step" data-id="m2-s3">
+        <button type="button" class="tick" aria-label="Mark done">⬜</button>
+        <div class="step-text">
+          <strong>Add the Simple Servo blocks</strong>
+          <p>New project called <em>Wiggle</em>. Tap the cog ⚙️ → <strong>Extensions</strong> → search <strong>Simple Servo</strong> → tap the Kitronik tile.</p>
+          <p>A purple <span class="block b-servo">Servo</span> menu appears!</p>
+        </div>
+      </div>
+      <div class="step" data-id="m2-s4">
+        <button type="button" class="tick" aria-label="Mark done">⬜</button>
+        <div class="step-text">
+          <strong>Build the wiggle code</strong>
+          <p>From pink <span class="block b-input">Input</span>:
+          <span class="block b-input">on button A pressed</span></p>
+          <p>Inside it, from purple <span class="block b-servo">Servo</span>:
+          <span class="block b-servo">set servo 1 angle to 90</span></p>
+          <p>Add another: <span class="block b-input">on button B pressed</span>
+          with <span class="block b-servo">set servo 1 to central position</span></p>
+        </div>
+      </div>
+      <div class="step" data-id="m2-s5">
+        <button type="button" class="tick" aria-label="Mark done">⬜</button>
+        <div class="step-text">
+          <strong>Download, switch ON, press A</strong>
+          <p>Send the code (Mac USB or iPad app). Turn the board switch ON. Press button <strong>A</strong> — the servo should move. Press <strong>B</strong> — it goes back to the middle.</p>
+        </div>
+      </div>
+      <div class="celeb">🎉 You did it! Your first robot muscle works!</div>
+    </div>
+  </section>
+
+  <!-- MISSION 3 -->
+  <section class="mission" id="m3" data-mission="3">
+    <div class="mission-head"><span class="num">3</span><h2>Build the beak</h2></div>
+    <div class="mission-body">
+      <p class="lead">Two cardboard triangles that open and shut. 🐤</p>
+
+      <svg class="diagram" viewBox="0 0 280 140" role="img" aria-label="Beak diagram">
+        <polygon points="40,70 140,30 140,70" fill="#ff9f43" stroke="#e67e22" stroke-width="2"/>
+        <polygon points="40,70 140,70 140,110" fill="#e67e22" stroke="#d35400" stroke-width="2"/>
+        <circle cx="140" cy="70" r="6" fill="#7f8c8d"/>
+        <text x="145" y="55" font-size="11">paper fastener</text>
+        <rect x="155" y="85" width="40" height="28" rx="4" fill="#bdc3c7"/>
+        <text x="175" y="103" text-anchor="middle" font-size="10">servo</text>
+        <path d="M155 95 L140 85" stroke="#333" stroke-width="2"/>
+        <text x="200" y="125" font-size="11">rubber band pulls shut ↑</text>
+      </svg>
+
+      <div class="grownup">Help with scissors or a craft knife for the triangles. A cool-melt glue gun needs an adult nearby.</div>
+      <div class="safety">Scissors and craft knives are sharp. Glue guns can still feel hot — ask Dad.</div>
+
+      <div class="step" data-id="m3-s1">
+        <button type="button" class="tick" aria-label="Mark done">⬜</button>
+        <div class="step-text"><strong>Cut two triangles</strong><p>About the size of your thumb. One for the top beak, one for the bottom.</p></div>
+      </div>
+      <div class="step" data-id="m3-s2">
+        <button type="button" class="tick" aria-label="Mark done">⬜</button>
+        <div class="step-text"><strong>Join them with a paper fastener</strong><p>Push the fastener through both triangles near the thick end so they can open like a mouth.</p></div>
+      </div>
+      <div class="step" data-id="m3-s3">
+        <button type="button" class="tick" aria-label="Mark done">⬜</button>
+        <div class="step-text"><strong>Add a rubber band</strong><p>Loop a rubber band so the beak wants to stay shut.</p></div>
+      </div>
+      <div class="step" data-id="m3-s4">
+        <button type="button" class="tick" aria-label="Mark done">⬜</button>
+        <div class="step-text">
+          <strong>Tape Servo 1 under the lower beak</strong>
+          <p>When the servo horn pushes up, the beak opens. Keep the lever short (about 5 cm). Label this servo <strong>BEAK</strong> with a sticker or tape.</p>
+        </div>
+      </div>
+      <div class="step" data-id="m3-s5">
+        <button type="button" class="tick" aria-label="Mark done">⬜</button>
+        <div class="step-text">
+          <strong>Code: open on A, close on B</strong>
+          <p><span class="block b-input">on button A pressed</span> →
+          <span class="block b-servo">set servo 1 angle to 40</span></p>
+          <p><span class="block b-input">on button B pressed</span> →
+          <span class="block b-servo">set servo 1 angle to 90</span></p>
+          <p>Try different numbers until the beak looks right. Don't go past where it feels stuck.</p>
+        </div>
+      </div>
+      <div class="celeb">🎉 You did it! The parrot can chat!</div>
+    </div>
+  </section>
+
+  <!-- MISSION 4 -->
+  <section class="mission" id="m4" data-mission="4">
+    <div class="mission-head"><span class="num">4</span><h2>Build the wings</h2></div>
+    <div class="mission-body">
+      <p class="lead">Two little levers that flap together. 🪽</p>
+      <div class="tip">One servo moves both wings. Keep each wing lever about <strong>5 cm</strong> long so the little motor is strong enough.</div>
+
+      <div class="step" data-id="m4-s1">
+        <button type="button" class="tick" aria-label="Mark done">⬜</button>
+        <div class="step-text"><strong>Cut two wing shapes</strong><p>Cardboard wings, about the length of your hand. Tape a lolly stick to each for strength.</p></div>
+      </div>
+      <div class="step" data-id="m4-s2">
+        <button type="button" class="tick" aria-label="Mark done">⬜</button>
+        <div class="step-text">
+          <strong>Mount Servo 2 in the middle</strong>
+          <p>Plug it into <strong>Servo 2</strong> on the board. Tape a cross-shaped horn so both wings can sit on opposite sides and flap together. Label it <strong>WINGS</strong>.</p>
+        </div>
+      </div>
+      <div class="grownup">Help hold the body while taping. Elastic bands through the board's side holes can hold the electronics in place later.</div>
+      <div class="step" data-id="m4-s3">
+        <button type="button" class="tick" aria-label="Mark done">⬜</button>
+        <div class="step-text">
+          <strong>Code a flap loop</strong>
+          <p><span class="block b-input">on button A pressed</span></p>
+          <p>Inside, from green <span class="block b-loops">Loops</span>:
+          <span class="block b-loops">repeat 4 times</span></p>
+          <p>Inside the repeat:</p>
+          <p><span class="block b-servo">set servo 2 angle to 60</span></p>
+          <p><span class="block b-basic">pause (ms) 300</span></p>
+          <p><span class="block b-servo">set servo 2 angle to 120</span></p>
+          <p><span class="block b-basic">pause (ms) 300</span></p>
+        </div>
+      </div>
+      <div class="step" data-id="m4-s4">
+        <button type="button" class="tick" aria-label="Mark done">⬜</button>
+        <div class="step-text"><strong>Download and flap!</strong><p>Press A and watch the wings go. Change 60 and 120 if you need a bigger or smaller flap.</p></div>
+      </div>
+      <div class="celeb">🎉 You did it! Ready for take-off!</div>
+    </div>
+  </section>
+
+  <!-- MISSION 5 -->
+  <section class="mission" id="m5" data-mission="5">
+    <div class="mission-head"><span class="num">5</span><h2>Build the tail</h2></div>
+    <div class="mission-body">
+      <p class="lead">A wagging feather fan at the back. 🦚</p>
+
+      <div class="step" data-id="m5-s1">
+        <button type="button" class="tick" aria-label="Mark done">⬜</button>
+        <div class="step-text"><strong>Cut a tail fan</strong><p>A triangle or feather shape from cardboard. Colour it if you like!</p></div>
+      </div>
+      <div class="step" data-id="m5-s2">
+        <button type="button" class="tick" aria-label="Mark done">⬜</button>
+        <div class="step-text">
+          <strong>Stick it on Servo 3</strong>
+          <p>Plug into <strong>Servo 3</strong>. Tape the tail to the servo horn. Label it <strong>TAIL</strong>.</p>
+        </div>
+      </div>
+      <div class="step" data-id="m5-s3">
+        <button type="button" class="tick" aria-label="Mark done">⬜</button>
+        <div class="step-text">
+          <strong>Code a wag</strong>
+          <p><span class="block b-input">on button B pressed</span></p>
+          <p><span class="block b-loops">repeat 6 times</span> with:</p>
+          <p><span class="block b-servo">set servo 3 angle to 70</span> ·
+          <span class="block b-basic">pause 200</span> ·
+          <span class="block b-servo">set servo 3 angle to 110</span> ·
+          <span class="block b-basic">pause 200</span></p>
+          <p>Then <span class="block b-servo">set servo 3 to central position</span></p>
+        </div>
+      </div>
+      <div class="step" data-id="m5-s4">
+        <button type="button" class="tick" aria-label="Mark done">⬜</button>
+        <div class="step-text"><strong>Press B and wag!</strong><p>Happy parrot dance time.</p></div>
+      </div>
+      <div class="celeb">🎉 You did it! That tail is cheeky!</div>
+    </div>
+  </section>
+
+  <!-- MISSION 6 -->
+  <section class="mission" id="m6" data-mission="6">
+    <div class="mission-head"><span class="num">6</span><h2>Build the parrot body</h2></div>
+    <div class="mission-body">
+      <p class="lead">Put the head, body and bits together. 🦜</p>
+
+      <svg class="diagram" viewBox="0 0 260 180" role="img" aria-label="Body parts">
+        <ellipse cx="130" cy="110" rx="45" ry="55" fill="#2d9b6a" stroke="#1a7a4c" stroke-width="2"/>
+        <text x="130" y="115" text-anchor="middle" fill="#fff" font-size="12">body tube</text>
+        <ellipse cx="130" cy="48" rx="28" ry="26" fill="#1a7a4c"/>
+        <text x="130" y="52" text-anchor="middle" fill="#fff" font-size="11">head</text>
+        <text x="40" y="100" font-size="12">← wing</text>
+        <text x="200" y="100" font-size="12">wing →</text>
+        <text x="130" y="175" text-anchor="middle" font-size="12">tail ↓</text>
+      </svg>
+
+      <div class="grownup">Help roll and tape strong cardboard tubes. Mount the servo board with elastic bands through the side holes so it can come off for coding.</div>
+
+      <div class="step" data-id="m6-s1">
+        <button type="button" class="tick" aria-label="Mark done">⬜</button>
+        <div class="step-text"><strong>Make a body tube</strong><p>Roll cardboard into a tube about as tall as a water bottle. Tape it shut.</p></div>
+      </div>
+      <div class="step" data-id="m6-s2">
+        <button type="button" class="tick" aria-label="Mark done">⬜</button>
+        <div class="step-text"><strong>Make a smaller head tube</strong><p>Stick the head on top of the body. Add eyes with stickers or draw them.</p></div>
+      </div>
+      <div class="step" data-id="m6-s3">
+        <button type="button" class="tick" aria-label="Mark done">⬜</button>
+        <div class="step-text"><strong>Fit the beak on the head</strong><p>Tape the beak assembly to the front of the head so Servo 1 can still move.</p></div>
+      </div>
+      <div class="step" data-id="m6-s4">
+        <button type="button" class="tick" aria-label="Mark done">⬜</button>
+        <div class="step-text"><strong>Fit wings on the sides</strong><p>Servo 2 sits inside or on the back. Wings poke out left and right.</p></div>
+      </div>
+      <div class="step" data-id="m6-s5">
+        <button type="button" class="tick" aria-label="Mark done">⬜</button>
+        <div class="step-text"><strong>Fit the tail at the back</strong><p>Servo 3 at the bottom rear. Leave space so it can wag.</p></div>
+      </div>
+      <div class="step" data-id="m6-s6">
+        <button type="button" class="tick" aria-label="Mark done">⬜</button>
+        <div class="step-text"><strong>Decorate!</strong><p>Paint, feathers, stickers — make it YOUR parrot.</p></div>
+      </div>
+      <div class="celeb">🎉 You did it! It looks like a real parrot!</div>
+    </div>
+  </section>
+
+  <!-- MISSION 7 -->
+  <section class="mission" id="m7" data-mission="7">
+    <div class="mission-head"><span class="num">7</span><h2>Full parrot show!</h2></div>
+    <div class="mission-body">
+      <p class="lead">All three servos work together. Clap or press a button for a show! 🎭</p>
+
+      <div class="step" data-id="m7-s1">
+        <button type="button" class="tick" aria-label="Mark done">⬜</button>
+        <div class="step-text">
+          <strong>Check the plugs</strong>
+          <p>Servo 1 = beak · Servo 2 = wings · Servo 3 = tail. All brown–G, red–V, orange–S.</p>
+        </div>
+      </div>
+      <div class="step" data-id="m7-s2">
+        <button type="button" class="tick" aria-label="Mark done">⬜</button>
+        <div class="step-text">
+          <strong>Build the show code</strong>
+          <p>New project <em>ParrotShow</em>. Add the <strong>Simple Servo</strong> extension again.</p>
+          <p><span class="block b-basic">on start</span> →
+          <span class="block b-servo">set servo 1 to central</span> ·
+          <span class="block b-servo">set servo 2 to central</span> ·
+          <span class="block b-servo">set servo 3 to central</span> ·
+          <span class="block b-basic">show icon ♥</span></p>
+        </div>
+      </div>
+      <div class="step" data-id="m7-s3">
+        <button type="button" class="tick" aria-label="Mark done">⬜</button>
+        <div class="step-text">
+          <strong>Button A = talk + flap</strong>
+          <p><span class="block b-input">on button A pressed</span></p>
+          <p>Open beak: <span class="block b-servo">set servo 1 angle to 40</span></p>
+          <p>Flap twice (servo 2 between 60 and 120 with pauses).</p>
+          <p>Close beak: <span class="block b-servo">set servo 1 angle to 90</span></p>
+        </div>
+      </div>
+      <div class="step" data-id="m7-s4">
+        <button type="button" class="tick" aria-label="Mark done">⬜</button>
+        <div class="step-text">
+          <strong>Button B = wag tail</strong>
+          <p>Same wag as Mission 5 on servo 3.</p>
+        </div>
+      </div>
+      <div class="step" data-id="m7-s5">
+        <button type="button" class="tick" aria-label="Mark done">⬜</button>
+        <div class="step-text">
+          <strong>Bonus: clap to party!</strong>
+          <p>From pink <span class="block b-input">Input</span> find
+          <span class="block b-input">on loud sound</span>
+          (micro:bit V2 has a mic).</p>
+          <p>Inside: flap, wag, and open the beak once — a surprise party when you clap!</p>
+        </div>
+      </div>
+      <div class="step" data-id="m7-s6">
+        <button type="button" class="tick" aria-label="Mark done">⬜</button>
+        <div class="step-text"><strong>Download and put on a show</strong><p>Show Dad. Show Mum. Show the twins. Take a bow! 🌟</p></div>
+      </div>
+      <div class="celeb">🏆 PARROT COMPLETE! You are an amazing maker, Isla!</div>
+    </div>
+  </section>
+
+  <!-- Optional note about head turn -->
+  <section class="mission" id="m8" data-mission="8">
+    <div class="mission-head" style="background:linear-gradient(90deg,#7b68ee,#4ecdc4)"><span class="num">★</span><h2>Later: turn the head?</h2></div>
+    <div class="mission-body">
+      <p class="lead">Optional extra — skip this for now if you like.</p>
+      <p>A fourth servo could turn the head. But this board only has <strong>3</strong> servo plugs. You would need another board or a bigger driver. Save it for Parrot Version 2!</p>
+      <div class="step" data-id="m8-s1">
+        <button type="button" class="tick" aria-label="Mark done">⬜</button>
+        <div class="step-text"><strong>I read this — maybe later</strong><p>Tick when you've seen it. No building needed today.</p></div>
+      </div>
+      <div class="celeb">✨ Idea saved for next time!</div>
+    </div>
+  </section>
+
+  <details class="dad" id="for-dad">
+    <summary>For Dad — wiring, pins &amp; full code</summary>
+    <p>Hardware from the project pack (Pi Hut order arrived). Kitronik Simple Servo Control Board + 3× TowerPro SG90 (180°) + micro:bit V2 Go.</p>
+
+    <h3>Wiring / pin table</h3>
+    <table>
+      <thead><tr><th>Part</th><th>Board socket</th><th>MakeCode</th><th>micro:bit pin</th><th>Wire colours</th></tr></thead>
+      <tbody>
+        <tr><td>Beak</td><td>Servo 1</td><td>servo 1</td><td>P8</td><td>G←brown, V←red, S←orange</td></tr>
+        <tr><td>Wings</td><td>Servo 2</td><td>servo 2</td><td>P15</td><td>same</td></tr>
+        <tr><td>Tail</td><td>Servo 3</td><td>servo 3</td><td>P16</td><td>same</td></tr>
+      </tbody>
+    </table>
+    <p>micro:bit slots into the edge connector (LEDs facing you). Board powered by 3×AA; power switch on the board. Croc pads break out P0, P1, P2, Switch A (P5), 3V, GND — not needed for the parrot.</p>
+    <p><strong>Extension:</strong> MakeCode → Extensions → search “Simple Servo” (KitronikLtd/pxt-kitronik-simple-servo). Blocks are purple under <em>Servo</em>.</p>
+
+    <h3>Download: Mac vs iPad</h3>
+    <ul>
+      <li><strong>MacBook:</strong> USB cable to micro:bit. Chrome/Edge can WebUSB-download directly. Safari downloads a .hex — drag onto the MICROBIT drive.</li>
+      <li><strong>iPad:</strong> Apple blocks USB program transfer. Install the free <em>micro:bit</em> iOS app. Code inside the app (or hand off from Chrome/Edge into the app). Send over Bluetooth: press reset 3 times for the Bluetooth logo, then transfer. Safari alone cannot flash the board.</li>
+    </ul>
+
+    <h3>Suggested full MakeCode (blocks → JavaScript view)</h3>
+    <pre>// Add extension: Simple Servo (Kitronik)
+// Angles are starting points — tweak for your cardboard.
+
+input.onButtonPressed(Button.A, function () {
+    // Talk + flap
+    kitronik_simple_servo.setServoAngle(
+        kitronik_simple_servo.ServoChoice.servo1, 40)
+    for (let i = 0; i &lt; 2; i++) {
+        kitronik_simple_servo.setServoAngle(
+            kitronik_simple_servo.ServoChoice.servo2, 60)
+        basic.pause(300)
+        kitronik_simple_servo.setServoAngle(
+            kitronik_simple_servo.ServoChoice.servo2, 120)
+        basic.pause(300)
+    }
+    kitronik_simple_servo.setServoAngle(
+        kitronik_simple_servo.ServoChoice.servo1, 90)
+})
+
+input.onButtonPressed(Button.B, function () {
+    // Wag tail
+    for (let i = 0; i &lt; 6; i++) {
+        kitronik_simple_servo.setServoAngle(
+            kitronik_simple_servo.ServoChoice.servo3, 70)
+        basic.pause(200)
+        kitronik_simple_servo.setServoAngle(
+            kitronik_simple_servo.ServoChoice.servo3, 110)
+        basic.pause(200)
+    }
+    kitronik_simple_servo.setServoNeutral(
+        kitronik_simple_servo.ServoChoice.servo3)
+})
+
+input.onLoudSound(function () {
+    // Clap party
+    kitronik_simple_servo.setServoAngle(
+        kitronik_simple_servo.ServoChoice.servo1, 40)
+    kitronik_simple_servo.setServoAngle(
+        kitronik_simple_servo.ServoChoice.servo2, 60)
+    kitronik_simple_servo.setServoAngle(
+        kitronik_simple_servo.ServoChoice.servo3, 70)
+    basic.pause(400)
+    kitronik_simple_servo.setServoNeutral(
+        kitronik_simple_servo.ServoChoice.servo1)
+    kitronik_simple_servo.setServoNeutral(
+        kitronik_simple_servo.ServoChoice.servo2)
+    kitronik_simple_servo.setServoNeutral(
+        kitronik_simple_servo.ServoChoice.servo3)
+})
+
+basic.forever(function () {})
+
+kitronik_simple_servo.setServoNeutral(
+    kitronik_simple_servo.ServoChoice.servo1)
+kitronik_simple_servo.setServoNeutral(
+    kitronik_simple_servo.ServoChoice.servo2)
+kitronik_simple_servo.setServoNeutral(
+    kitronik_simple_servo.ServoChoice.servo3)
+basic.showIcon(IconNames.Heart)</pre>
+    <p>Paste into MakeCode’s JavaScript view after adding the extension, then switch back to Blocks to show Isla.</p>
+    <p>Pack notes: levers under ~5–8 cm; optional 4th (head) needs another board. Cool-melt glue gun = adult nearby. Official guide: <a href="https://kitronik.co.uk/blogs/resources/simple-servo-control-board-for-micro-bit-getting-started-guide" target="_blank" rel="noopener">Kitronik getting started</a>.</p>
+  </details>
+
+  <div class="reset-row">
+    <button type="button" class="reset" id="resetProgress">Reset all ticks</button>
+  </div>
+  <footer class="note">Made for Isla · Birthday STEM parrot · Open on iPad or MacBook</footer>
+</div>
+
+<script>
+(function () {
+  var KEY = 'isla-parrot-ticks-v1';
+  var steps = Array.prototype.slice.call(document.querySelectorAll('.step[data-id]'));
+  var missions = Array.prototype.slice.call(document.querySelectorAll('.mission[data-mission]'));
+
+  function load() {
+    try { return JSON.parse(localStorage.getItem(KEY) || '{}'); }
+    catch (e) { return {}; }
+  }
+  function save(state) {
+    try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {}
+  }
+
+  var state = load();
+
+  function applyStep(el, done) {
+    el.classList.toggle('done', !!done);
+    var tick = el.querySelector('.tick');
+    if (tick) {
+      tick.textContent = done ? '✅' : '⬜';
+      tick.setAttribute('aria-pressed', done ? 'true' : 'false');
+    }
+  }
+
+  function missionDone(m) {
+    var ids = Array.prototype.slice.call(m.querySelectorAll('.step[data-id]'));
+    return ids.length > 0 && ids.every(function (s) { return !!state[s.getAttribute('data-id')]; });
+  }
+
+  function refreshMissions() {
+    missions.forEach(function (m) {
+      m.classList.toggle('complete', missionDone(m));
+    });
+    // nav
+    var nav = document.getElementById('missionNav');
+    if (nav && !nav.dataset.ready) {
+      nav.innerHTML = missions.map(function (m) {
+        var n = m.getAttribute('data-mission');
+        var label = n === '8' ? '★' : n;
+        return '<a href="#m' + n + '" data-nav="' + n + '">' + label + '</a>';
+      }).join('');
+      nav.dataset.ready = '1';
+    }
+    Array.prototype.forEach.call(document.querySelectorAll('[data-nav]'), function (a) {
+      var m = document.getElementById('m' + a.getAttribute('data-nav'));
+      a.classList.toggle('done', m && missionDone(m));
+    });
+    // progress
+    var total = steps.length;
+    var done = steps.filter(function (s) { return !!state[s.getAttribute('data-id')]; }).length;
+    var pct = total ? Math.round(100 * done / total) : 0;
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('progressPct').textContent = pct + '%';
+  }
+
+  steps.forEach(function (el) {
+    var id = el.getAttribute('data-id');
+    applyStep(el, state[id]);
+    var tick = el.querySelector('.tick');
+    function toggle() {
+      state[id] = !state[id];
+      save(state);
+      applyStep(el, state[id]);
+      refreshMissions();
+    }
+    tick.addEventListener('click', function (e) { e.preventDefault(); toggle(); });
+    el.addEventListener('click', function (e) {
+      if (e.target.closest('.tick')) return;
+      // allow tapping the whole row
+      toggle();
+    });
+  });
+
+  refreshMissions();
+
+  document.getElementById('resetProgress').addEventListener('click', function () {
+    if (!confirm('Clear all ticks and start again?')) return;
+    state = {};
+    save(state);
+    steps.forEach(function (el) { applyStep(el, false); });
+    refreshMissions();
+  });
+})();
+</script>
+</body>
+</html>
