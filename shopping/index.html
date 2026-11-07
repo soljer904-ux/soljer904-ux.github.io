@@ -319,8 +319,45 @@ html[data-theme="halloween"] .tonight .mode{background:rgba(255,162,58,.95) !imp
 .shop-form .send{margin-top:16px;min-height:52px;font-size:1.15rem}
 .shop-form .err{color:#b00020;font-weight:700;margin:8px 0 0}
 
+
+:root{--bg:#141a3a!important;--fg:#ffffff!important;--muted:#e6e9ff!important;--card:#1d2452!important;--line:#ffd166!important;
+ --accent:#ffd166!important;--accent2:#ef476f!important;--tint:#2a3270!important;--hdrbg:#050816!important;--hdrfg:#ffffff!important;
+ --glass:rgba(29,36,82,.93)!important;--glass2:rgba(20,26,64,.93)!important;--gline:rgba(255,209,102,.6)!important;--herobg:#3a1f5c!important;--today:#2a3a8a!important}
+body.fireworks main *:not(.fw-title):not(input):not(textarea):not(select){color:#fff!important}
+body.fireworks main a,body.fireworks main a *{color:#ffd166!important}
+body.fireworks main button,body.fireworks main a[class],body.fireworks main .btn{background:#2a3270!important;color:#ffd166!important;border-color:#ffd166!important}
+body.fireworks .tab.on,body.fireworks main .on,body.fireworks main .on *,body.fireworks main .active,body.fireworks main [aria-selected="true"],body.fireworks main [aria-pressed="true"]{background:#ffd166!important;color:#111!important}
+body.fireworks main input,body.fireworks main textarea,body.fireworks main select{background:#0b1030!important;color:#fff!important}
+body.fireworks{background:#050816 radial-gradient(ellipse at top,#1b1f4b 0%,#050816 70%) fixed!important;color:#fff}
+body.fireworks .scene{display:none!important}
+
+.fw-banner{position:relative;z-index:3;overflow:hidden;text-align:center;margin:8px 0 16px;padding:22px 12px;border-radius:18px;
+ background:linear-gradient(180deg,#050816 0%,#1b1f4b 100%);border:3px solid #ffd166;min-height:96px}
+.fw-title{position:relative;z-index:2;font-weight:900;font-size:1.7rem;letter-spacing:.02em;color:#fff;
+ background:linear-gradient(90deg,#ffd166,#ffffff,#ef476f,#4cc9f0,#ffd166);background-size:300% 100%;
+ -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:fwshim 5s linear infinite}
+.fw-burst{position:absolute;z-index:1;width:5px;height:5px;border-radius:50%;background:#fff;
+ box-shadow:0 -26px 0 0 var(--c),18px -18px 0 0 var(--c),26px 0 0 0 var(--c),18px 18px 0 0 var(--c),0 26px 0 0 var(--c),-18px 18px 0 0 var(--c),-26px 0 0 0 var(--c),-18px -18px 0 0 var(--c),
+ 0 -13px 0 0 #fff,13px 0 0 0 #fff,0 13px 0 0 #fff,-13px 0 0 0 #fff;
+ animation:fwpop 2.6s ease-out infinite;transform:scale(.2);opacity:0}
+.fw-burst.b1{left:10%;top:35%;--c:#ffd166}
+.fw-burst.b2{left:88%;top:30%;--c:#ef476f;animation-delay:.7s}
+.fw-burst.b3{left:30%;top:70%;--c:#4cc9f0;animation-delay:1.4s}
+.fw-burst.b4{left:70%;top:72%;--c:#06d6a0;animation-delay:2s}
+.fw-burst.b5{left:50%;top:18%;--c:#f72585;animation-delay:1s}
+.fw-spark{position:absolute;z-index:1;width:3px;height:3px;border-radius:50%;background:#fff;animation:fwtw 1.8s ease-in-out infinite}
+.fw-spark.s1{left:20%;top:20%}.fw-spark.s2{left:62%;top:15%;animation-delay:.4s}.fw-spark.s3{left:80%;top:80%;animation-delay:.9s}
+.fw-spark.s4{left:5%;top:80%;animation-delay:1.3s}.fw-spark.s5{left:42%;top:85%;animation-delay:.6s}.fw-spark.s6{left:95%;top:12%;animation-delay:1.1s}
+@keyframes fwpop{0%{transform:scale(.2);opacity:0}10%{opacity:1}55%{transform:scale(1.25);opacity:.9}75%{opacity:0;transform:scale(1.4)}100%{opacity:0}}
+@keyframes fwtw{0%,100%{opacity:.15;transform:scale(.6)}50%{opacity:1;transform:scale(1.4)}}
+@keyframes fwshim{0%{background-position:0% 0}100%{background-position:300% 0}}
+@media (prefers-reduced-motion: reduce){
+ .fw-burst{animation:none;opacity:.85;transform:scale(1)}
+ .fw-spark{animation:none;opacity:.8}
+ .fw-title{animation:none}}
+
 </style></head>
-<body>
+<body class="fireworks">
 <div class="scene" aria-hidden="true">
 <div class="scene-base"></div>
 <div class="scene-blob b1"></div>
@@ -338,6 +375,7 @@ html[data-theme="halloween"] .tonight .mode{background:rgba(255,162,58,.95) !imp
 <div class="clock-box"><div class="clock" id="clock"></div><div class="datefull" id="datefull">Saturday 7 November</div></div>
 </div></div></header>
 <main>
+<div class="fw-banner" role="img" aria-label="Fireworks night"><i class="fw-burst b1"></i><i class="fw-burst b2"></i><i class="fw-burst b3"></i><i class="fw-burst b4"></i><i class="fw-burst b5"></i><i class="fw-spark s1"></i><i class="fw-spark s2"></i><i class="fw-spark s3"></i><i class="fw-spark s4"></i><i class="fw-spark s5"></i><i class="fw-spark s6"></i><div class="fw-title">Fireworks night</div><div style="position:relative;z-index:2;font-size:1.6rem">🎆</div></div>
 <p class="fam-nav">
 <a href="/">🍽️ Meal plan</a>
 <a href="/family/">👨‍👩‍👧‍👦 Family page</a>
