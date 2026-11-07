@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en-GB" data-theme="autumn"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; img-src 'none'; connect-src 'none'; form-action 'none'; base-uri 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; media-src 'self'; img-src 'self'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; connect-src 'none'; form-action 'none'; base-uri 'none'">
 <meta name="referrer" content="no-referrer">
 <meta name="theme-color" content="#0F766E">
 <title>Training Portal</title>
@@ -391,8 +391,25 @@ body.fireworks .scene{display:none!important}
  .fw-spark{animation:none;opacity:.8}
  .fw-title{animation:none}}
 
+
+body.fireworks{background:#050816!important}
+.fw-bgvid,.fw-bgimg{position:fixed!important;top:0!important;left:0!important;right:0!important;bottom:0!important;width:100vw!important;height:100vh!important;object-fit:cover;z-index:0!important;pointer-events:none;display:block}
+.fw-bgimg{background:#050816 center/cover no-repeat url(/fireworks/fw-portrait.jpg);display:none!important}
+@media (orientation:landscape){.fw-bgimg{background-image:url(/fireworks/fw-landscape.jpg)}}
+.fw-overlay{position:fixed!important;top:0;left:0;right:0;bottom:0;z-index:1!important;pointer-events:none;background:rgba(5,8,22,.35)}
+:root{--glass:rgba(16,20,52,.72)!important;--glass2:rgba(12,16,44,.72)!important;--card:rgba(16,20,52,.74)!important;--hdrbg:rgba(5,8,22,.3)!important}
+body.fireworks .hdr{background:rgba(5,8,22,.3)!important;backdrop-filter:none!important}
+body.fireworks .fw-banner{background:rgba(5,8,22,.45)!important}
+body.fireworks > header,body.fireworks > main,body.fireworks > footer,body.fireworks .hdr,body.fireworks main{position:relative;z-index:2!important}
+@media (prefers-reduced-motion: reduce){.fw-bgvid{display:none!important}.fw-bgimg{display:block!important}}
+
 </style></head>
-<body class="fireworks">
+<body class="fireworks"><video class="fw-bgvid" id="fwvid" muted autoplay loop playsinline preload="auto" aria-hidden="true"></video><div class="fw-bgimg" aria-hidden="true"></div><div class="fw-overlay" aria-hidden="true"></div>
+<script>(function(){var v=document.getElementById('fwvid');if(!v)return;var mq=window.matchMedia('(orientation: landscape)');
+var rm=window.matchMedia('(prefers-reduced-motion: reduce)');var cur='';
+function pick(){if(rm.matches){v.removeAttribute('src');return;}var o=mq.matches?'landscape':'portrait';if(o===cur)return;cur=o;
+var webm=v.canPlayType('video/webm; codecs="vp9"');v.poster='/fireworks/fw-'+o+'.jpg';v.src='/fireworks/fw-'+o+(webm?'.webm':'.mp4');v.muted=true;var p=v.play();if(p&&p.catch)p.catch(function(){});}
+pick();if(mq.addEventListener){mq.addEventListener('change',pick);}else if(mq.addListener){mq.addListener(pick);}window.addEventListener('orientationchange',function(){setTimeout(pick,200);});})();</script>
 <div class="scene" aria-hidden="true">
 <div class="scene-base"></div>
 <div class="scene-blob b1"></div>
