@@ -13,7 +13,9 @@
 <section aria-labelledby="setupTitle"><h2 id="setupTitle">1 · Set up, then rehearse</h2>
 <p><strong>Log into Spotify (open.spotify.com) in this same browser first. Otherwise only 30-second previews play.</strong> <a href="https://open.spotify.com" target="_blank" rel="noopener">Open Spotify ↗</a></p>
 <p class="muted">Login alone does not guarantee full playback. Test this exact phone and Bluetooth/AirPlay speaker. This page cannot choose or verify your speaker.</p>
-<label><input id="rehearsal" type="checkbox" checked>Rehearsal mode — NO FIREWORKS (silent simulated clock)</label>
+<label><input id="rehearsal" type="checkbox" checked>Rehearsal mode — NO FIREWORKS</label>
+<label><input id="rehearsalMusic" type="checkbox" checked>Rehearse WITH music (uncheck for silent simulated timing)</label>
+<p class="muted">Music plays from this phone. To hear it on a speaker, connect the phone to it by Bluetooth or AirPlay (e.g. say "Alexa, pair Bluetooth" to an Echo). Spotify Connect speakers like Kitchen won't show it.</p>
 <p class="warning">A separate music helper operates this page. It never operates your receiver. Never rush lighting to the music.</p>
 <h3>Step 1 · Unlock music on your phone</h3>
 <p><strong>Tap the green play button in the Spotify player below once.</strong> Mobile browsers may need a real tap inside the player before scripts can control music. Then try Step 2.</p>
@@ -132,13 +134,14 @@ function musicError(error){
  window.fireworksShowError(error);diagnostics();
 }
 const isRehearsal = () => $('rehearsal').checked;
+const isSilentRehearsal = () => isRehearsal() && !$('rehearsalMusic').checked;
 const effectiveRemote = c => Boolean(c.remote && $('remoteReady').checked);
 function message(text){$('musicStatus').textContent=text;}
 function call(method,...args){try{if(!controller || typeof controller[method]!=='function')throw new Error(`Spotify controller.${method} is unavailable`);controller[method](...args);return true;}catch(e){musicError(e);return false;}}
 function clearWork(pause=true){generation++;clearInterval(countTimer);countTimer=null;run=null;$('manualPlay').hidden=true;if(pause && controller)call('pause');}
 function hold(reason='Ready when the firer declares it safe.',forcePause=false){
  const wasTest=run && run.type==='test';
- clearWork(forcePause || wasTest || !$('keepMusic').checked || !seekVerified || isRehearsal());
+ clearWork(forcePause || wasTest || !$('keepMusic').checked || !seekVerified || isSilentRehearsal());
  state='hold';rehearsalElapsed=0;render();message(reason);
 }
 function render(){
@@ -148,7 +151,7 @@ function render(){
  $('method').textContent=c.remote?`REMOTE button ${c.remote}${remote?' · mapping confirmed':' → HAND-LIGHT fallback (remote unconfirmed)'}`:'HAND-LIGHT';
  $('song').textContent=`${tracks[c.track].name} · ${format(c.start)}–${format(c.end)} (${c.end-c.start} s) · ${c.section}`;
  $('countdown').textContent=format(c.end-c.start-(state==='rehearsing'?rehearsalElapsed:0));
- $('stateText').textContent=state==='done'?'SHOW COMPLETE · remain clear of fired items':state==='hold'?(rehearsal?`HOLD · simulate readiness for ${c.item}`:remote?`HOLD · confirm clear and ready for remote ${c.remote}`:`Light ${c.item}, then tap GO`):state==='countdown'?'Readiness confirmed · optional music count-in':state==='rehearsing'?'REHEARSAL RUNNING · DO NOT LIGHT':state==='test'?'MUSIC TEST · NO FIREWORKS':'Soundtrack cue running';
+ $('stateText').textContent=state==='done'?'SHOW COMPLETE · remain clear of fired items':state==='hold'?(rehearsal?`HOLD · simulate readiness for ${c.item}`:remote?`HOLD · confirm clear and ready for remote ${c.remote}`:`Light ${c.item}, then tap GO`):state==='countdown'?'Readiness confirmed · optional music count-in':state==='rehearsing'?'REHEARSAL RUNNING · DO NOT LIGHT':state==='test'?'MUSIC TEST · NO FIREWORKS':(rehearsal?'REHEARSAL · NO FIREWORKS · soundtrack cue running':'Soundtrack cue running');
  $('remotePrompt').textContent='';
  $('labelGate').hidden=!c.gate || rehearsal;$('labelText').textContent=c.gate || '';$('labelConfirmed').checked=confirmations.has(index);
  $('go').disabled=!['hold'].includes(state) || (!rehearsal && (!$('safetyReady').checked || (c.gate && !confirmations.has(index))));
@@ -159,7 +162,7 @@ function render(){
 }
 function navigate(delta){clearWork();index=Math.max(0,Math.min(cues.length-1,index+delta));hold('HOLD. Back/Skip never starts music or authorises lighting.',true);}
 function finishSegment(){
- if(!run)return;const r=run;clearWork(r.type==='test' || !$('keepMusic').checked || !seekVerified || isRehearsal());
+ if(!run)return;const r=run;clearWork(r.type==='test' || !$('keepMusic').checked || !seekVerified || isSilentRehearsal());
  if(r.type==='test'){
   seekVerified=true;fullVerified=fullVerified||r.length>30;$('keepMusic').disabled=false;
   $('testResult').textContent=`PASS: observed seek near 1:30 and ${r.length} seconds of advancing playback.${fullVerified?' Extended >30 s playback also verified.':' Full playback beyond 30 s is NOT yet verified.'}`;
@@ -199,7 +202,7 @@ function go(){
   },1000);
  }else beginCue();
 }
-function beginCue(){if(isRehearsal()){clearWork();state='rehearsing';rehearsalElapsed=0;lastTick=performance.now();render();message('Silent rehearsal. GO/HOLD/Back/Skip work exactly as readiness controls.');}else startMusic();}
+function beginCue(){if(isSilentRehearsal()){clearWork();state='rehearsing';rehearsalElapsed=0;lastTick=performance.now();render();message('Silent rehearsal. GO/HOLD/Back/Skip work exactly as readiness controls.');}else startMusic();}
 function playbackUpdate(event){
  const d=event.data || {};
  lastPlayback={event:`${new Date().toLocaleTimeString('en-GB',{timeZone:'Europe/London'})} GMT · ${d.isPaused?'paused':d.isBuffering?'buffering':'playing'} · ${d.playingURI || 'unknown track'}`,position:Number.isFinite(Number(d.position))?Number(d.position):null,duration:Number.isFinite(Number(d.duration))?Number(d.duration):null};
@@ -227,7 +230,7 @@ function playbackUpdate(event){
  if(p>r.pos+.05)r.lastProgress=now;
  r.pos=p;
  if(p>=r.end-.15){finishSegment();return;}
- if(!r.paused && !r.buffering){state=r.type==='test'?'test':'playing';$('manualPlay').hidden=true;message(r.type==='test'?'Testing observed playback and seeking…':'Playing selected section. Timings remain approximate.');}
+ if(!r.paused && !r.buffering){state=r.type==='test'?'test':'playing';$('manualPlay').hidden=true;message(r.type==='test'?'Testing observed playback and seeking…':(isRehearsal()?'REHEARSAL · NO FIREWORKS · ':'')+'Playing selected section. Timings remain approximate.');}
  else{message(r.buffering?'Buffering · clock frozen. Do not time ignition to this.':'Spotify paused · clock frozen. Tap to resume.');$('manualPlay').hidden=false;}
  $('countdown').textContent=format(r.end-p);
 }
@@ -282,6 +285,7 @@ $('manualPlay').onclick=()=>{if(run){call('play');if(!run.accepted)requestSeek()
 $('go').onclick=go;$('hold').onclick=()=>hold('HOLD requested. Music is paused unless the verified keep-playing option is enabled.');
 $('stop').onclick=()=>hold('STOPPED. Music paused, countdown cancelled. No automatic resume.',true);
 $('back').onclick=()=>navigate(-1);$('skip').onclick=()=>{if(index===cues.length-1){clearWork();state='done';render();message('Final cue skipped. Remain clear.');}else navigate(1);};
+$('rehearsalMusic').onchange=()=>hold('Rehearsal music option changed. Tap GO deliberately to restart the cue.',true);
 $('rehearsal').onchange=()=>hold('Mode changed. Confirm readiness again; nothing starts automatically.',true);
 $('remoteReady').onchange=()=>hold('Remote mapping changed. Confirm readiness again.',true);
 $('safetyReady').onchange=()=>hold('Readiness changed. Nothing starts automatically.',true);
