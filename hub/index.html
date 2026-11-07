@@ -328,8 +328,35 @@ html[data-theme="halloween"] .tonight .mode{background:rgba(255,162,58,.95) !imp
 .rota th{font-size:.9rem;text-transform:uppercase;letter-spacing:.04em;opacity:.8}
 .note{background:#FBE2B0;background:var(--tint);border-radius:14px;padding:10px 12px;font-weight:600;margin:8px 0}
 
+
+:root{--bg:#141a3a!important;--fg:#ffffff!important;--muted:#e6e9ff!important;--card:#1d2452!important;--line:#ffd166!important;--accent:#ffd166!important;--accent2:#ef476f!important;--tint:#2a3270!important;--hdrbg:#050816!important;--hdrfg:#ffffff!important}
+body.fireworks .scene{display:none!important}
+body.fireworks .fcard{background:#1d2452!important;border-color:#ffd166!important;color:#fff!important}
+body.fireworks .lcard{background:#0b1030!important;border-color:#4cc9f0!important;color:#fff!important}
+body.fireworks .fcard h2,body.fireworks .fcard h3,body.fireworks .rowlist .t{color:#fff!important}
+body.fireworks,body.fireworks main{color:#fff}
+body.fireworks .fcard,body.fireworks .lcard{opacity:1!important;animation:none!important;backdrop-filter:none!important}
+body.fireworks .lcard strong{color:#ffd166!important}
+body.fireworks .lcard span,body.fireworks .rowlist .d{opacity:1!important;color:#e6e9ff!important}
+body.fireworks .fam-nav a{color:#111!important}
+/* Fireworks night theme — toggle off via FIREWORKS flag */
+body.fireworks{background:#050816 radial-gradient(ellipse at top,#1b1f4b 0%,#050816 70%) fixed !important;}
+.fw-sky{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+body.fireworks header, body.fireworks main{position:relative;z-index:1}
+.fw-b{position:absolute;width:6px;height:6px;border-radius:50%;opacity:0;
+ box-shadow:0 -40px 0 #ffd166,28px -28px 0 #ef476f,40px 0 0 #06d6a0,28px 28px 0 #4cc9f0,0 40px 0 #f72585,-28px 28px 0 #ffd166,-40px 0 0 #4cc9f0,-28px -28px 0 #ef476f;
+ animation:fw 6s ease-out infinite}
+.fw-b:nth-child(1){left:12%;top:12%}
+.fw-b:nth-child(2){left:78%;top:8%;animation-delay:2s}
+.fw-b:nth-child(3){left:50%;top:22%;animation-delay:4s}
+.fw-b:nth-child(4){left:88%;top:40%;animation-delay:3s}
+@keyframes fw{0%{transform:scale(.1);opacity:0}8%{opacity:.9}40%{transform:scale(1.4);opacity:0}100%{opacity:0}}
+.fw-banner{position:relative;z-index:1;text-align:center;font-weight:800;font-size:1.4rem;color:#fff;
+ margin:8px 0 14px;padding:10px;border-radius:14px;background:rgba(20,24,64,.85);border:2px solid #ffd166}
+@media (prefers-reduced-motion: reduce){.fw-b{animation:none;opacity:.5;transform:scale(1)}}
+
 </style></head>
-<body>
+<body class="fireworks"><div class="fw-sky" aria-hidden="true"><i class="fw-b"></i><i class="fw-b"></i><i class="fw-b"></i><i class="fw-b"></i></div>
 <div class="scene" aria-hidden="true">
 <div class="scene-base"></div>
 <div class="scene-blob b1"></div>
@@ -347,6 +374,7 @@ html[data-theme="halloween"] .tonight .mode{background:rgba(255,162,58,.95) !imp
 <div class="clock-box"><div class="clock" id="clock"></div><div class="datefull" id="datefull">Saturday 7 November</div></div>
 </div></div></header>
 <main>
+<div class="fw-banner">Fireworks night 🎆</div>
 <p class="fam-nav">
 <a href="/">🍽️ Meal plan</a>
 <a href="/family/">👨‍👩‍👧‍👦 Family page</a>
