@@ -5,7 +5,7 @@
 <meta name="theme-color" content="#101324">
 <title>Fireworks · Show Control</title>
 <style>
-:root{color-scheme:dark;--bg:#101324;--card:#1d2238;--text:#f4f5ff;--muted:#c6cae1;--amber:#ffd078;--green:#9cf0bf;--pink:#ff9eb6}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top right,#43264f,transparent 42%),var(--bg);color:var(--text);font:18px/1.5 system-ui,sans-serif;padding:18px 12px 150px}main{max-width:760px;margin:auto}h1{font-size:2.1rem;line-height:1.1}h2{font-size:1.35rem;margin-top:0}h3{margin:10px 0}p{margin:10px 0}small,.muted{color:var(--muted)}a{color:#b9d9ff;overflow-wrap:anywhere}section,details{background:var(--card);border:1px solid #535b7b;border-radius:18px;margin:18px 0;padding:18px}button{font:inherit;font-weight:750;min-height:80px;padding:14px 16px;border:2px solid #8992b4;border-radius:14px;background:#303954;color:white;cursor:pointer;touch-action:manipulation;white-space:normal}button:disabled{opacity:.45;cursor:not-allowed}button:focus-visible,a:focus-visible,input:focus-visible{outline:4px solid white;outline-offset:4px}.wide{width:100%;margin:8px 0}.go{background:var(--green);color:#0c2b21;font-size:1.8rem}.amber{color:#211600;background:var(--amber)}.stop{background:#762139;border-color:var(--pink)}label{display:flex;gap:14px;align-items:center;min-height:68px;padding:10px 0;cursor:pointer}input[type=checkbox]{width:30px;height:30px;flex-shrink:0;accent-color:var(--green)}.badge{display:inline-block;padding:5px 10px;border-radius:8px;background:#34415a;font-weight:bold}.badge.live{background:#6b2439}.status{border-left:5px solid var(--amber);padding:12px;background:#2c2d3b;white-space:pre-line}.timer{font:750 clamp(3.4rem,15vw,6rem)/1.2 ui-monospace,monospace;font-variant-numeric:tabular-nums;margin:15px 0}.hold-title{font-size:1.6rem;color:var(--amber);line-height:1.3}.remote{color:var(--pink);font-size:1.65rem;font-weight:800}#cueList{padding-left:26px}#cueList li{padding:16px 4px;border-bottom:1px solid #535b7b}#cueList li.current{border:2px solid var(--amber);border-radius:10px;padding:12px}#cueList small{display:block}summary{min-height:64px;font-weight:750;cursor:pointer}.dock{position:fixed;bottom:0;left:0;right:0;background:#101324f5;border-top:2px solid #606b8e;display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;padding:10px max(10px,env(safe-area-inset-right)) max(10px,env(safe-area-inset-bottom));z-index:5}.dock button{padding:8px;font-size:1rem;min-width:0}.dock-inner{display:contents}[hidden]{display:none!important}#embedWrap{min-height:152px;overflow:hidden;border-radius:12px}iframe{max-width:100%;border:0}.spark{color:var(--amber)}.warning{color:var(--amber)}@media(prefers-reduced-motion:no-preference){.spark{animation:glow 4s infinite alternate}@keyframes glow{to{text-shadow:0 0 22px #ffa3d0}}}@media(min-width:800px){.dock{padding-left:calc((100vw - 740px)/2);padding-right:calc((100vw - 740px)/2)}}
+:root{color-scheme:dark;--bg:#101324;--card:#1d2238;--text:#f4f5ff;--muted:#c6cae1;--amber:#ffd078;--green:#9cf0bf;--pink:#ff9eb6}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top right,#43264f,transparent 42%),var(--bg);color:var(--text);font:18px/1.5 system-ui,sans-serif;padding:18px 12px 150px}main{max-width:760px;margin:auto}h1{font-size:2.1rem;line-height:1.1}h2{font-size:1.35rem;margin-top:0}h3{margin:10px 0}p{margin:10px 0}small,.muted{color:var(--muted)}a{color:#b9d9ff;overflow-wrap:anywhere}section,details{background:var(--card);border:1px solid #535b7b;border-radius:18px;margin:18px 0;padding:18px}button{font:inherit;font-weight:750;min-height:80px;padding:14px 16px;border:2px solid #8992b4;border-radius:14px;background:#303954;color:white;cursor:pointer;touch-action:manipulation;white-space:normal}button:disabled{opacity:.45;cursor:not-allowed}button:focus-visible,a:focus-visible,input:focus-visible{outline:4px solid white;outline-offset:4px}.wide{width:100%;margin:8px 0}.go{background:var(--green);color:#0c2b21;font-size:1.8rem}.amber{color:#211600;background:var(--amber)}.stop{background:#762139;border-color:var(--pink)}label{display:flex;gap:14px;align-items:center;min-height:68px;padding:10px 0;cursor:pointer}input[type=checkbox]{width:30px;height:30px;flex-shrink:0;accent-color:var(--green)}.badge{display:inline-block;padding:5px 10px;border-radius:8px;background:#34415a;font-weight:bold}.badge.live{background:#6b2439}.status{border-left:5px solid var(--amber);padding:12px;background:#2c2d3b;white-space:pre-line}.timer{font:750 clamp(3.4rem,15vw,6rem)/1.2 ui-monospace,monospace;font-variant-numeric:tabular-nums;margin:15px 0}.hold-title{font-size:1.6rem;color:var(--amber);line-height:1.3}.remote{color:var(--pink);font-size:1.65rem;font-weight:800}#cueList{padding-left:26px}#cueList li{padding:16px 4px;border-bottom:1px solid #535b7b}#cueList li.current{border:2px solid var(--amber);border-radius:10px;padding:12px}#cueList small{display:block}summary{min-height:64px;font-weight:750;cursor:pointer}.dock{position:fixed;bottom:0;left:0;right:0;background:#101324f5;border-top:2px solid #606b8e;display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;padding:10px max(10px,env(safe-area-inset-right)) max(10px,env(safe-area-inset-bottom));z-index:5}.dock button{padding:8px;font-size:1rem;min-width:0}.dock-inner{display:contents}[hidden]{display:none!important}#embedWrap{min-height:152px;overflow:hidden;border-radius:12px}iframe{width:100%;min-height:152px;max-width:100%;border:0}#diagnostics{font:12px/1.5 ui-monospace,monospace;overflow-wrap:anywhere;white-space:pre-wrap}.spark{color:var(--amber)}.warning{color:var(--amber)}@media(prefers-reduced-motion:no-preference){.spark{animation:glow 4s infinite alternate}@keyframes glow{to{text-shadow:0 0 22px #ffa3d0}}}@media(min-width:800px){.dock{padding-left:calc((100vw - 740px)/2);padding-right:calc((100vw - 740px)/2)}}
 </style>
 </head>
 <body><main>
@@ -15,9 +15,20 @@
 <p class="muted">Login alone does not guarantee full playback. Test this exact phone and Bluetooth/AirPlay speaker. This page cannot choose or verify your speaker.</p>
 <label><input id="rehearsal" type="checkbox" checked>Rehearsal mode — NO FIREWORKS (silent simulated clock)</label>
 <p class="warning">A separate music helper operates this page. It never operates your receiver. Never rush lighting to the music.</p>
-<button id="test" class="wide">Test music · 10 seconds at 1:30</button>
+<h3>Step 1 · Unlock music on your phone</h3>
+<p><strong>Tap the green play button in the Spotify player below once.</strong> Mobile browsers may need a real tap inside the player before scripts can control music. Then try Step 2.</p>
+<div id="embedWrap"><div id="embed"></div></div>
+<p id="unlockStatus" class="status" role="status">Music not unlocked yet — tap Play inside the Spotify player.</p>
+<p id="apiStatus" role="status">Spotify player still loading…</p>
+<button id="retryApi" class="wide" onclick="this.nextElementSibling.textContent='Retrying Spotify player…'; if(window.retrySpotifyPlayer)window.retrySpotifyPlayer(); else this.nextElementSibling.textContent='Page script did not initialise. Reload this page.'">Retry Spotify player</button>
+<p id="retryStatus" role="status"></p>
+<p class="muted">If only previews play, open Spotify in this same browser and log in, then reload. iPhone Safari may block cross-site login. Chrome with cross-site tracking allowed may be needed; iPhone Chrome can have the same restrictions. Only change privacy settings if you are comfortable doing so.</p>
+<p id="diagnostics" aria-label="Spotify diagnostics">API: loading · Controller: not ready · Last event: none · Position: — · Duration: —</p>
+<noscript><p class="warning">JavaScript is disabled. Enable it and reload to use music tests and Show Control.</p></noscript>
+<h3>Step 2 · Test the music</h3>
+<button id="test" class="wide" onclick="document.getElementById('testResult').textContent='Starting test…'; try { if(window.fireworksTestTap)window.fireworksTestTap(10); else document.getElementById('testResult').textContent='Page script still loading. Wait a moment, then retry or reload.'; } catch(error) { document.getElementById('testResult').textContent='Music test error: '+error.message; }">Test music · 10 seconds at 1:30</button>
 <p id="testResult" role="status">Not tested. Music seeking is best-effort, not guaranteed by Spotify.</p>
-<button id="fullTest" class="wide">Extended test · 35 seconds at 1:30</button>
+<button id="fullTest" class="wide" onclick="document.getElementById('testResult').textContent='Starting test…'; try { if(window.fireworksTestTap)window.fireworksTestTap(35); else document.getElementById('testResult').textContent='Page script still loading. Wait a moment, then retry or reload.'; } catch(error) { document.getElementById('testResult').textContent='Music test error: '+error.message; }">Extended test · 35 seconds at 1:30</button>
 <p class="muted">The quick test checks observed seeking only. The extended test checks playback beyond 30 seconds too. Neither verifies firework timing.</p>
 <label><input id="keepMusic" type="checkbox" disabled>Keep music playing during HOLD (only after a successful seek test; whole song continues, not a loop)</label>
 <label><input id="safetyReady" type="checkbox">Live readiness: labels, distances, weather and adult firer checked. HOLD overrides music.</label>
@@ -35,7 +46,7 @@
 <p id="next"></p><p id="elapsed" class="muted">Active soundtrack: 00:00 · holds excluded</p>
 <p class="muted">After every cue, a readiness HOLD. Countdown is a music prompt, never a deadline or proof of safety. Remote outputs are independent, not chains.</p>
 </section>
-<section><h2>Spotify player · manual fallback</h2><div id="embedWrap"><div id="embed"></div></div><p id="apiStatus" class="muted">Waiting for Spotify's API…</p><p>Keep this page visible and your phone awake. Leaving it forces HOLD. The embed can introduce gaps; this is <strong>not a seamless mix</strong>.</p><p><a href="https://open.spotify.com/playlist/5Zi8WkhCabpOXRdpuKVdoX" target="_blank" rel="noopener">Open whole-song backup playlist ↗</a> — not synchronised; Queen's full track includes adult innuendo outside the selected cut, including if you keep music playing during HOLD.</p></section>
+<section><h2>Spotify · manual fallback</h2><p><a href="#embedWrap">Return to the Spotify player ↑</a></p><p>Keep this page visible and your phone awake. Leaving it forces HOLD. The embed can introduce gaps; this is <strong>not a seamless mix</strong>.</p><p><a href="https://open.spotify.com/playlist/5Zi8WkhCabpOXRdpuKVdoX" target="_blank" rel="noopener">Open whole-song backup playlist ↗</a> — not synchronised; Queen's full track includes adult innuendo outside the selected cut, including if you keep music playing during HOLD.</p></section>
 <details><summary>All 22 cues · printable running order</summary><p id="total"></p><ol id="cueList"></ol></details>
 <section><h2>Check the label · not cleared for firing</h2><p>These are NOT active unless positively identified and safe. Unknown objects stay out of the sequence.</p><ul>
 <li>Small “Bonfire Fountain” / small tube — unidentified; omitted.</li><li>Red stick — rocket or launch equipment unknown; omitted. Never light unidentified equipment.</li><li>Blue-headed rockets A–D — model unconfirmed. Cues 4/17/19/20 locked in live mode until label, tube and clearance confirmed. Omit if unsuitable.</li><li>Moonlight A/B — probably Magical Moonlight. Cues 8/11 locked until exact label and duration confirmed.</li><li>Treasure Chest — fountain/cake conflict. Cue 14 only for the confirmed 60-second fountain; skip the cake variant rather than use this timing.</li><li>Optional second Swirl wheel — count unconfirmed, omitted from the 22 cues. No auto-added cue.</li></ul></section>
@@ -49,7 +60,27 @@
 </ul><p><a href="https://www.gov.uk/fireworks-the-law" target="_blank" rel="noopener">UK law</a> · <a href="https://www.rospa.com/policy/home-safety/advice/fireworks-safety" target="_blank" rel="noopener">RoSPA</a> · <a href="https://www.ukfr.com/db04r-firing-system-online-manual" target="_blank" rel="noopener">DB04R reference</a></p><p class="muted">Durations and lyric cuts are planning estimates, not measured fuse delays or verified beat maps. Aladdin's Cave versions differ; Top Secret uses the 42 s maximum budget. Music ending never means a firework is safe to approach.</p></section>
 </main>
 <nav class="dock" aria-label="Always available show controls"><button id="back">← Back</button><button id="skip">Skip →</button><button id="stop" class="stop">■ STOP</button></nav>
-<script>
+<script id="feedback-bootstrap">
+(function(){
+ function showError(error){
+  var text='Music/page error: '+(error && error.message ? error.message : String(error));
+  document.getElementById('testResult').textContent=text;
+  document.getElementById('apiStatus').textContent=text+' Try Retry Spotify player or reload.';
+ }
+ window.fireworksShowError=showError;
+ window.fireworksTestTap=function(seconds){
+  var result=document.getElementById('testResult');
+  result.textContent='Starting test…';
+  try {
+   if(typeof window.beginMusicTest!=='function')throw new Error('Show Control script has not initialised. Reload this page.');
+   window.beginMusicTest(seconds);
+  }catch(error){showError(error);}
+ };
+ window.addEventListener('error',function(event){if(event.message)showError(event.error || event.message);});
+ window.addEventListener('unhandledrejection',function(event){showError(event.reason || 'Unhandled playback error');});
+})();
+</script>
+<script id="show-control">
 'use strict';
 const tracks = {
  firework:{name:'Firework — Katy Perry',id:'4r6eNCsrZnQWJzzvFh4nlg'},
@@ -89,12 +120,22 @@ const format = s => {const n=Math.ceil(Math.max(0,s));return `${String(Math.floo
 const uri = key => 'spotify:track:' + tracks[key].id;
 let index=0,state='hold',controller=null,ready=false,run=null,generation=0,seekVerified=false,fullVerified=false;
 let completed=0,rehearsalElapsed=0,lastTick=performance.now(),count=0,countTimer=null;
+let apiState='loading',apiObject=null,apiAttempt=0,apiTimer=null,musicUnlocked=false,lastApiError='';
+let lastPlayback={event:'none',position:null,duration:null};
 const confirmations = new Set();
+const previewAdvice='Only previews are playing. Open open.spotify.com in this same browser and log in, then reload. iPhone Safari may block this; Chrome with cross-site tracking allowed may be needed (iPhone Chrome may have the same restrictions).';
+function diagnostics(){
+ $('diagnostics').textContent=`API: ${apiState} · Controller: ${ready?'ready':'not ready'} · Last playback event: ${lastPlayback.event} · Position: ${lastPlayback.position===null?'—':(lastPlayback.position/1000).toFixed(1)+' s'} · Duration: ${lastPlayback.duration===null?'—':(lastPlayback.duration/1000).toFixed(1)+' s'}\nUser agent: ${navigator.userAgent}${lastApiError?'\nError: '+lastApiError:''}`;
+}
+function musicError(error){
+ lastApiError=error && error.message ? error.message : String(error);
+ window.fireworksShowError(error);diagnostics();
+}
 const isRehearsal = () => $('rehearsal').checked;
 const effectiveRemote = c => Boolean(c.remote && $('remoteReady').checked);
 function message(text){$('musicStatus').textContent=text;}
-function call(method,...args){try{if(controller && typeof controller[method]==='function'){controller[method](...args);return true;}}catch(e){message(`Spotify ${method} failed. HOLD; use the visible player or backup.`);}return false;}
-function clearWork(pause=true){generation++;clearInterval(countTimer);countTimer=null;run=null;$('manualPlay').hidden=true;if(pause)call('pause');}
+function call(method,...args){try{if(!controller || typeof controller[method]!=='function')throw new Error(`Spotify controller.${method} is unavailable`);controller[method](...args);return true;}catch(e){musicError(e);return false;}}
+function clearWork(pause=true){generation++;clearInterval(countTimer);countTimer=null;run=null;$('manualPlay').hidden=true;if(pause && controller)call('pause');}
 function hold(reason='Ready when the firer declares it safe.',forcePause=false){
  const wasTest=run && run.type==='test';
  clearWork(forcePause || wasTest || !$('keepMusic').checked || !seekVerified || isRehearsal());
@@ -132,16 +173,20 @@ function failMusic(text){
  const test=run && run.type==='test';if(test){seekVerified=false;fullVerified=false;$('keepMusic').checked=false;$('keepMusic').disabled=true;$('testResult').textContent='NOT VERIFIED: '+text;}
  hold(text,true);
 }
-function requestSeek(){if(!run)return;run.seekRequests++;run.lastSeek=performance.now();call('seek',run.start);}
+function requestSeek(){if(!run)return;run.seekRequests++;run.lastSeek=performance.now();if(!call('seek',run.start))failMusic('Spotify seek failed: '+lastApiError);}
 function startMusic(type='cue',length=10){
- if(!ready){hold('Spotify is not ready. Use the player/backup, or rehearse without music.',true);return;}
+ if(!ready){
+  const text=apiState==='failed'?'Spotify player failed to load. Tap Retry Spotify player.':'Spotify player still loading. Wait, then tap Test music again, or Retry Spotify player.';
+  if(type==='test')$('testResult').textContent=text;
+  $('apiStatus').textContent=text;hold(text,true);return;
+ }
  clearWork();const c=cues[index],now=performance.now();
  state=type==='test'?'test':'loading';
- run={type,start:type==='test'?90:c.start,end:type==='test'?90+length:c.end,length,uri:uri(type==='test'?'firework':c.track),born:now,lastUpdate:now,lastSeek:now,seekRequests:0,accepted:false,pos:0,paused:true,buffering:false,lastProgress:now,firstPos:null};
+ run={type,start:type==='test'?90:c.start,end:type==='test'?90+length:c.end,length,uri:uri(type==='test'?'firework':c.track),born:now,lastUpdate:now,lastSeek:now,seekRequests:0,accepted:false,pos:0,paused:true,buffering:false,lastProgress:now,firstPos:null,nearZeroSince:null};
  render();message('Loading Spotify and requesting section start…'+(!fullVerified && type==='cue'?' Full playback beyond 30 seconds is NOT verified.':''));
- call('loadUri',run.uri);call('play');requestSeek();
+ if(!call('loadUri',run.uri) || !call('play')){failMusic('Spotify could not start: '+lastApiError);return;}requestSeek();if(!run)return;
  const token=generation;
- setTimeout(()=>{if(token===generation && run && (!run.accepted || run.paused || run.buffering)){$('manualPlay').hidden=false;message('Playback not confirmed. Tap to start music, or tap Play on the player below. Clock is held.');}},2000);
+ setTimeout(()=>{if(token===generation && run && (!run.accepted || run.paused || run.buffering)){$('manualPlay').hidden=false;const text='Playback not confirmed. Tap the green Play button inside the Spotify player above once, then retry the test. Clock is held.';message(text);if(run.type==='test')$('testResult').textContent=text;}},2000);
 }
 function go(){
  if($('go').disabled)return;
@@ -156,12 +201,23 @@ function go(){
 }
 function beginCue(){if(isRehearsal()){clearWork();state='rehearsing';rehearsalElapsed=0;lastTick=performance.now();render();message('Silent rehearsal. GO/HOLD/Back/Skip work exactly as readiness controls.');}else startMusic();}
 function playbackUpdate(event){
- const d=event.data || {};if(!run)return;
+ const d=event.data || {};
+ lastPlayback={event:`${new Date().toLocaleTimeString('en-GB',{timeZone:'Europe/London'})} GMT · ${d.isPaused?'paused':d.isBuffering?'buffering':'playing'} · ${d.playingURI || 'unknown track'}`,position:Number.isFinite(Number(d.position))?Number(d.position):null,duration:Number.isFinite(Number(d.duration))?Number(d.duration):null};
+ if(d.isPaused===false){musicUnlocked=true;$('unlockStatus').textContent='Music unlocked · playback observed. Now tap Test music. This does not yet verify full playback or seeking.';}
+ diagnostics();
+ if(d.isPaused===false && Number(d.duration)>0 && Number(d.duration)<=30500){
+  if(run)failMusic(previewAdvice);else{$('testResult').textContent=previewAdvice;message(previewAdvice);}return;
+ }
+ if(!run)return;
  if(d.playingURI!==run.uri){if(d.playingURI && run.accepted)failMusic('Unexpected track. HOLD; check the player.');return;}
  const r=run,now=performance.now(),p=Number(d.position)/1000,duration=Number(d.duration)/1000;
  r.lastUpdate=now;r.paused=!!d.isPaused;r.buffering=!!d.isBuffering;
  if(!Number.isFinite(p))return;
- if(duration>0 && (duration<=30.5 || duration<r.end-1)){failMusic('Preview or shortened track detected. Timed cue stopped; use whole-song backup.');return;}
+ if(duration>0 && (duration<=30.5 || duration<r.end-1)){failMusic(previewAdvice);return;}
+ if(!r.accepted && !r.paused && !r.buffering && p<5 && r.start>10){
+  if(r.nearZeroSince===null)r.nearZeroSince=now;
+  if(now-r.nearZeroSince>3500){failMusic(previewAdvice+' The requested seek also stayed near the beginning.');return;}
+ }else r.nearZeroSince=null;
  if(!r.accepted){
   if(Math.abs(p-r.start)<=2.5){r.accepted=true;r.pos=p;r.firstPos=p;r.lastProgress=now;seekVerified=true;$('keepMusic').disabled=false;}
   else{if(now-r.lastSeek>900 && r.seekRequests<4)requestSeek();if(now-r.born>8000)failMusic('Seeking to the selected section did not work. HOLD; manual player/backup required.');return;}
@@ -175,14 +231,53 @@ function playbackUpdate(event){
  else{message(r.buffering?'Buffering · clock frozen. Do not time ignition to this.':'Spotify paused · clock frozen. Tap to resume.');$('manualPlay').hidden=false;}
  $('countdown').textContent=format(r.end-p);
 }
-window.onSpotifyIframeApiReady = IFrameAPI => {
- IFrameAPI.createController($('embed'),{uri:uri('firework'),width:'100%',height:152},embedController=>{
-  controller=embedController;
-  controller.addListener('ready',()=>{ready=true;$('apiStatus').textContent='Spotify ready. Test seeking and full playback on this phone.';});
-  controller.addListener('playback_update',playbackUpdate);
- });
+function playerFailed(text){
+ ready=false;apiState='failed';clearTimeout(apiTimer);
+ $('apiStatus').textContent='Spotify player failed to load: '+text+' Tap Retry Spotify player.';
+ $('retryStatus').textContent='Retry is available; the music test is never locked.';
+ if(run)failMusic('Spotify player failed to load: '+text);
+ diagnostics();
+}
+function createPlayer(IFrameAPI,attempt){
+ if(attempt!==apiAttempt)return;
+ apiObject=IFrameAPI;apiState='loaded';diagnostics();
+ $('apiStatus').textContent='Spotify API loaded; player still loading…';
+ try{
+  IFrameAPI.createController($('embed'),{uri:uri('firework'),width:'100%',height:152},embedController=>{
+   if(attempt!==apiAttempt){try{embedController.destroy();}catch(_){}return;}
+   controller=embedController;
+   controller.addListener('ready',()=>{if(attempt!==apiAttempt)return;ready=true;clearTimeout(apiTimer);$('apiStatus').textContent='Spotify player ready. Tap its green Play button once, then Test music.';$('retryStatus').textContent='Player ready.';diagnostics();});
+   controller.addListener('playback_update',event=>{if(attempt!==apiAttempt)return;try{playbackUpdate(event);}catch(error){musicError(error);hold('Playback error: '+lastApiError,true);}});
+  });
+ }catch(error){musicError(error);playerFailed(lastApiError);}
+}
+window.retrySpotifyPlayer=function(){
+ try{
+  hold('Loading Spotify; nothing starts automatically.',true);
+  const attempt=++apiAttempt;ready=false;musicUnlocked=false;seekVerified=false;fullVerified=false;
+  $('keepMusic').checked=false;$('keepMusic').disabled=true;
+  lastApiError='';lastPlayback={event:'none',position:null,duration:null};
+  $('unlockStatus').textContent='Music not unlocked yet — tap Play inside the Spotify player.';
+  if(controller && typeof controller.destroy==='function')controller.destroy();controller=null;
+  $('embedWrap').replaceChildren();const host=document.createElement('div');host.id='embed';$('embedWrap').append(host);
+  clearTimeout(apiTimer);apiState=apiObject?'loaded':'loading';diagnostics();
+  $('apiStatus').textContent='Spotify player still loading…';
+  apiTimer=setTimeout(()=>{if(attempt===apiAttempt && !ready)playerFailed('Timed out waiting for the API/player. Check your network or browser content blockers.');},12000);
+  if(apiObject){createPlayer(apiObject,attempt);return;}
+  const previous=$('spotifyApiScript');if(previous)previous.remove();
+  window.onSpotifyIframeApiReady=IFrameAPI=>{if(attempt===apiAttempt)createPlayer(IFrameAPI,attempt);};
+  const script=document.createElement('script');script.id='spotifyApiScript';script.src='https://open.spotify.com/embed/iframe-api/v1';script.async=true;
+  script.onerror=()=>{if(attempt===apiAttempt)playerFailed('The Spotify API script could not be downloaded.');};
+  document.body.append(script);
+ }catch(error){musicError(error);playerFailed(lastApiError);}
 };
-$('test').onclick=()=>startMusic('test',10);$('fullTest').onclick=()=>startMusic('test',35);
+window.beginMusicTest=function(seconds){
+ try{
+  $('testResult').textContent='Starting test…';
+  startMusic('test',seconds);
+  if(run && run.type==='test')$('testResult').textContent=musicUnlocked?'Starting test… seeking to 1:30.':'Starting test… tap the green Play button inside the Spotify player if music does not start.';
+ }catch(error){musicError(error);hold('Test error: '+lastApiError,true);}
+};
 $('manualPlay').onclick=()=>{if(run){call('play');if(!run.accepted)requestSeek();}};
 $('go').onclick=go;$('hold').onclick=()=>hold('HOLD requested. Music is paused unless the verified keep-playing option is enabled.');
 $('stop').onclick=()=>hold('STOPPED. Music paused, countdown cancelled. No automatic resume.',true);
@@ -215,7 +310,8 @@ for(const [i,c] of cues.entries()){
 }
 const total=cues.reduce((s,c)=>s+c.end-c.start,0);$('total').textContent=`${cues.length} provisional cues · ${total} seconds (${format(total)}) of selected music, excluding holds and count-ins. Plan roughly 25–35 minutes including unlimited safety holds, not a fixed finish.`;
 render();
-setTimeout(()=>{if(!ready)$('apiStatus').textContent='Spotify API not ready. Network/login restrictions may apply. Silent rehearsal and cue sheet still work.';},10000);
+diagnostics();
+window.retrySpotifyPlayer();
 </script>
-<script src="https://open.spotify.com/embed/iframe-api/v1" async></script>
+
 </body></html>
