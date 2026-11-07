@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#101324">
+<title>Fireworks · Show Control</title>
+<style>
+:root{color-scheme:dark;--bg:#101324;--card:#1d2238;--text:#f4f5ff;--muted:#c6cae1;--amber:#ffd078;--green:#9cf0bf;--pink:#ff9eb6}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top right,#43264f,transparent 42%),var(--bg);color:var(--text);font:18px/1.5 system-ui,sans-serif;padding:18px 12px 150px}main{max-width:760px;margin:auto}h1{font-size:2.1rem;line-height:1.1}h2{font-size:1.35rem;margin-top:0}h3{margin:10px 0}p{margin:10px 0}small,.muted{color:var(--muted)}a{color:#b9d9ff;overflow-wrap:anywhere}section,details{background:var(--card);border:1px solid #535b7b;border-radius:18px;margin:18px 0;padding:18px}button{font:inherit;font-weight:750;min-height:80px;padding:14px 16px;border:2px solid #8992b4;border-radius:14px;background:#303954;color:white;cursor:pointer;touch-action:manipulation;white-space:normal}button:disabled{opacity:.45;cursor:not-allowed}button:focus-visible,a:focus-visible,input:focus-visible{outline:4px solid white;outline-offset:4px}.wide{width:100%;margin:8px 0}.go{background:var(--green);color:#0c2b21;font-size:1.8rem}.amber{color:#211600;background:var(--amber)}.stop{background:#762139;border-color:var(--pink)}label{display:flex;gap:14px;align-items:center;min-height:68px;padding:10px 0;cursor:pointer}input[type=checkbox]{width:30px;height:30px;flex-shrink:0;accent-color:var(--green)}.badge{display:inline-block;padding:5px 10px;border-radius:8px;background:#34415a;font-weight:bold}.badge.live{background:#6b2439}.status{border-left:5px solid var(--amber);padding:12px;background:#2c2d3b;white-space:pre-line}.timer{font:750 clamp(3.4rem,15vw,6rem)/1.2 ui-monospace,monospace;font-variant-numeric:tabular-nums;margin:15px 0}.hold-title{font-size:1.6rem;color:var(--amber);line-height:1.3}.remote{color:var(--pink);font-size:1.65rem;font-weight:800}#cueList{padding-left:26px}#cueList li{padding:16px 4px;border-bottom:1px solid #535b7b}#cueList li.current{border:2px solid var(--amber);border-radius:10px;padding:12px}#cueList small{display:block}summary{min-height:64px;font-weight:750;cursor:pointer}.dock{position:fixed;bottom:0;left:0;right:0;background:#101324f5;border-top:2px solid #606b8e;display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;padding:10px max(10px,env(safe-area-inset-right)) max(10px,env(safe-area-inset-bottom));z-index:5}.dock button{padding:8px;font-size:1rem;min-width:0}.dock-inner{display:contents}[hidden]{display:none!important}#embedWrap{min-height:152px;overflow:hidden;border-radius:12px}iframe{max-width:100%;border:0}.spark{color:var(--amber)}.warning{color:var(--amber)}@media(prefers-reduced-motion:no-preference){.spark{animation:glow 4s infinite alternate}@keyframes glow{to{text-shadow:0 0 22px #ffa3d0}}}@media(min-width:800px){.dock{padding-left:calc((100vw - 740px)/2);padding-right:calc((100vw - 740px)/2)}}
+</style>
+</head>
+<body><main>
+<header><p class="spark">✦ JASON'S GARDEN · 7 NOVEMBER 2026 ✦</p><h1>Fireworks<br>Show Control</h1><p>First light <strong>19:00 GMT · Europe/London</strong>. No automatic start. No fixed finish.</p><p id="wallClock" class="muted"></p></header>
+<section aria-labelledby="setupTitle"><h2 id="setupTitle">1 · Set up, then rehearse</h2>
+<p><strong>Log into Spotify (open.spotify.com) in this same browser first. Otherwise only 30-second previews play.</strong> <a href="https://open.spotify.com" target="_blank" rel="noopener">Open Spotify ↗</a></p>
+<p class="muted">Login alone does not guarantee full playback. Test this exact phone and Bluetooth/AirPlay speaker. This page cannot choose or verify your speaker.</p>
+<label><input id="rehearsal" type="checkbox" checked>Rehearsal mode — NO FIREWORKS (silent simulated clock)</label>
+<p class="warning">A separate music helper operates this page. It never operates your receiver. Never rush lighting to the music.</p>
+<button id="test" class="wide">Test music · 10 seconds at 1:30</button>
+<p id="testResult" role="status">Not tested. Music seeking is best-effort, not guaranteed by Spotify.</p>
+<button id="fullTest" class="wide">Extended test · 35 seconds at 1:30</button>
+<p class="muted">The quick test checks observed seeking only. The extended test checks playback beyond 30 seconds too. Neither verifies firework timing.</p>
+<label><input id="keepMusic" type="checkbox" disabled>Keep music playing during HOLD (only after a successful seek test; whole song continues, not a loop)</label>
+<label><input id="safetyReady" type="checkbox">Live readiness: labels, distances, weather and adult firer checked. HOLD overrides music.</label>
+<label><input id="remoteReady" type="checkbox">DB04R / igniter compatibility and inert button-mapping test confirmed: 1 Heatwave · 2 Haunted House · 3 Crazy Crocs · 4 Top Secret.</label>
+<p class="muted">Without that confirmation, remote items become HAND-LIGHT timing cues. No wiring changes during the show.</p>
+</section>
+<section id="runner" aria-labelledby="runnerTitle"><h2 id="runnerTitle">2 · Show runner</h2><span class="badge" id="modeBadge">REHEARSAL · NO FIREWORKS</span>
+<p id="cueNumber"></p><h2 id="item"></h2><p id="method"></p><p id="song"></p><p id="stateText" class="hold-title" role="status"></p>
+<div id="countdown" class="timer" aria-label="Segment time remaining">00:45</div><p id="remotePrompt" class="remote" role="status"></p>
+<p id="musicStatus" class="status" role="status">Stopped. Ready when you are.</p>
+<div id="labelGate" hidden><label><input id="labelConfirmed" type="checkbox"><span id="labelText"></span></label></div>
+<button id="go" class="wide go">GO · rehearse cue 1</button>
+<button id="hold" class="wide amber">HOLD · pause / abort countdown</button>
+<button id="manualPlay" class="wide amber" hidden>Tap to start music</button>
+<p id="next"></p><p id="elapsed" class="muted">Active soundtrack: 00:00 · holds excluded</p>
+<p class="muted">After every cue, a readiness HOLD. Countdown is a music prompt, never a deadline or proof of safety. Remote outputs are independent, not chains.</p>
+</section>
+<section><h2>Spotify player · manual fallback</h2><div id="embedWrap"><div id="embed"></div></div><p id="apiStatus" class="muted">Waiting for Spotify's API…</p><p>Keep this page visible and your phone awake. Leaving it forces HOLD. The embed can introduce gaps; this is <strong>not a seamless mix</strong>.</p><p><a href="https://open.spotify.com/playlist/5Zi8WkhCabpOXRdpuKVdoX" target="_blank" rel="noopener">Open whole-song backup playlist ↗</a> — not synchronised; Queen's full track includes adult innuendo outside the selected cut, including if you keep music playing during HOLD.</p></section>
+<details><summary>All 22 cues · printable running order</summary><p id="total"></p><ol id="cueList"></ol></details>
+<section><h2>Check the label · not cleared for firing</h2><p>These are NOT active unless positively identified and safe. Unknown objects stay out of the sequence.</p><ul>
+<li>Small “Bonfire Fountain” / small tube — unidentified; omitted.</li><li>Red stick — rocket or launch equipment unknown; omitted. Never light unidentified equipment.</li><li>Blue-headed rockets A–D — model unconfirmed. Cues 4/17/19/20 locked in live mode until label, tube and clearance confirmed. Omit if unsuitable.</li><li>Moonlight A/B — probably Magical Moonlight. Cues 8/11 locked until exact label and duration confirmed.</li><li>Treasure Chest — fountain/cake conflict. Cue 14 only for the confirmed 60-second fountain; skip the cake variant rather than use this timing.</li><li>Optional second Swirl wheel — count unconfirmed, omitted from the 22 cues. No auto-added cue.</li></ul></section>
+<section><h2>UK Firework Code · safety first</h2><ul>
+<li>Spectators at least <strong>8 m AND every greater labelled distance</strong> (possibly 15 m or 25 m). If your garden cannot meet it, omit that item. Never assume 8 m is enough.</li>
+<li><strong>Never return to a lit firework.</strong> Treat a misfire as live. Wait at least 30 minutes, then soak only when manufacturer/supplier guidance says it is safe; never approach, relight or troubleshoot it during the show.</li>
+<li>Only connect igniters to the DB04R remote if positively identified as suitable and fitted to <strong>both manufacturers' instructions</strong>. Orange wire colour is not identification. Otherwise hand-light everything and use remote cues only as timing prompts.</li>
+<li>Four independent starts, one item per output. No fuse modification, chaining, multiple items per output or in-show rewiring. Buttons 5–12 add no outputs. Test mapping/range only with approved inert testers; continuity is not a safety certificate.</li>
+<li>Sober adult firer; children remain supervised behind the barrier. Secure candles (never handheld), use specified stable rocket tubes (never bottles), mount wheel as labelled. Pets indoors, water available, stock closed away from ignition.</li>
+<li><strong>Never rush lighting to the music.</strong> Unlimited holds. No one approaches a failed item to reach another. Ordinary 23:00 GMT cutoff applies tonight, subject to local rules.</li>
+</ul><p><a href="https://www.gov.uk/fireworks-the-law" target="_blank" rel="noopener">UK law</a> · <a href="https://www.rospa.com/policy/home-safety/advice/fireworks-safety" target="_blank" rel="noopener">RoSPA</a> · <a href="https://www.ukfr.com/db04r-firing-system-online-manual" target="_blank" rel="noopener">DB04R reference</a></p><p class="muted">Durations and lyric cuts are planning estimates, not measured fuse delays or verified beat maps. Aladdin's Cave versions differ; Top Secret uses the 42 s maximum budget. Music ending never means a firework is safe to approach.</p></section>
+</main>
+<nav class="dock" aria-label="Always available show controls"><button id="back">← Back</button><button id="skip">Skip →</button><button id="stop" class="stop">■ STOP</button></nav>
+<script>
+'use strict';
+const tracks = {
+ firework:{name:'Firework — Katy Perry',id:'4r6eNCsrZnQWJzzvFh4nlg'},
+ thunder:{name:'Thunder — Imagine Dragons',id:'75qMlHG85EEhrXPKhkf5FI'},
+ sky:{name:'A Sky Full of Stars — Coldplay',id:'5Ej7ONISqqbpqZrosDtisX'},
+ moana:{name:"How Far I'll Go — Auli‘i Cravalho",id:'4bBgnxyKABiDfUfC4fQD1P'},
+ feeling:{name:"Can't Stop the Feeling — Justin Timberlake",id:'2patgfDMwQsMBGdlwHDKOg'},
+ queen:{name:"Don't Stop Me Now — Queen",id:'5eK3EGtSzTz9eEcPFwE37E'}
+};
+// start/end values are seconds into the exact verified studio tracks.
+const cues = [
+ {n:1,item:'Bonfire Heart',track:'firework',start:37,end:82,section:'Rising prechorus → first chorus'},
+ {n:2,item:'Heatwave',remote:1,track:'firework',start:53,end:73,section:'Chorus punch'},
+ {n:3,item:'Magical Stars A',track:'firework',start:177,end:197,section:'Final chorus'},
+ {n:4,item:'Rocket A',track:'firework',start:46,end:61,section:'Rise / chorus; music window only',gate:'Confirm exact rocket label, specified launch tube and required clearance. Fuse delay is unknown.'},
+ {n:5,item:'Haunted House',remote:2,track:'thunder',start:85,end:115,section:'Refrain / instrumental'},
+ {n:6,item:'Volcanic Eruptions',track:'thunder',start:120,end:150,section:'Final refrain'},
+ {n:7,item:'Swarming Bees A',track:'moana',start:0,end:35,section:'Gentle opening'},
+ {n:8,item:'Moonlight A',track:'sky',start:0,end:35,section:'Piano opening',gate:'Confirm exact Moonlight fountain label and 35-second version.'},
+ {n:9,item:'Enchanted Forest',track:'moana',start:37,end:72,section:'Warm rise / first chorus'},
+ {n:10,item:'Swirl wheel A',track:'sky',start:0,end:30,section:'Piano'},
+ {n:11,item:'Moonlight B',track:'moana',start:73,end:108,section:'Second verse',gate:'Confirm exact Moonlight fountain label and 35-second version.'},
+ {n:12,item:'Swarming Bees B',track:'sky',start:0,end:35,section:'Reprise'},
+ {n:13,item:"Aladdin's Cave",track:'moana',start:0,end:80,section:'Full mini-arc · 80 s version budget'},
+ {n:14,item:'Treasure Chest',track:'feeling',start:24,end:84,section:'Hook / chorus',gate:'Confirm this is the 60-second FOUNTAIN. Cake version: skip this cue.'},
+ {n:15,item:'Nukes of Hazzard fountain',track:'feeling',start:41,end:96,section:'Prechorus / dance'},
+ {n:16,item:'Magical Stars B',track:'feeling',start:136,end:156,section:'Second chorus'},
+ {n:17,item:'Rocket B',track:'firework',start:115,end:130,section:'Music window only',gate:'Confirm exact rocket label, specified launch tube and required clearance. Fuse delay is unknown.'},
+ {n:18,item:'Lost World',track:'thunder',start:120,end:150,section:'Rebuild'},
+ {n:19,item:'Rocket C',track:'firework',start:162,end:177,section:'Bridge; music window only',gate:'Confirm exact rocket label, specified launch tube and required clearance. Fuse delay is unknown.'},
+ {n:20,item:'Rocket D',track:'firework',start:177,end:192,section:'Last hand-lit aerial; music window only',gate:'Confirm exact rocket label, specified launch tube and required clearance. Fuse delay is unknown.'},
+ {n:21,item:'Crazy Crocs',remote:3,track:'feeling',start:136,end:161,section:'Finale chorus'},
+ {n:22,item:'Top Secret',remote:4,track:'queen',start:50,end:92,section:'Rise ~57 / chorus ~72 · maximum budget'}
+];
+const $ = id => document.getElementById(id);
+const format = s => {const n=Math.ceil(Math.max(0,s));return `${String(Math.floor(n/60)).padStart(2,'0')}:${String(n%60).padStart(2,'0')}`;};
+const uri = key => 'spotify:track:' + tracks[key].id;
+let index=0,state='hold',controller=null,ready=false,run=null,generation=0,seekVerified=false,fullVerified=false;
+let completed=0,rehearsalElapsed=0,lastTick=performance.now(),count=0,countTimer=null;
+const confirmations = new Set();
+const isRehearsal = () => $('rehearsal').checked;
+const effectiveRemote = c => Boolean(c.remote && $('remoteReady').checked);
+function message(text){$('musicStatus').textContent=text;}
+function call(method,...args){try{if(controller && typeof controller[method]==='function'){controller[method](...args);return true;}}catch(e){message(`Spotify ${method} failed. HOLD; use the visible player or backup.`);}return false;}
+function clearWork(pause=true){generation++;clearInterval(countTimer);countTimer=null;run=null;$('manualPlay').hidden=true;if(pause)call('pause');}
+function hold(reason='Ready when the firer declares it safe.',forcePause=false){
+ const wasTest=run && run.type==='test';
+ clearWork(forcePause || wasTest || !$('keepMusic').checked || !seekVerified || isRehearsal());
+ state='hold';rehearsalElapsed=0;render();message(reason);
+}
+function render(){
+ const c=cues[index],rehearsal=isRehearsal(),remote=effectiveRemote(c);
+ $('modeBadge').textContent=rehearsal?'REHEARSAL · NO FIREWORKS':'LIVE · MANUAL READINESS';$('modeBadge').className='badge'+(rehearsal?'':' live');
+ $('cueNumber').textContent=`Cue ${c.n} of ${cues.length}`;$('item').textContent=c.item;
+ $('method').textContent=c.remote?`REMOTE button ${c.remote}${remote?' · mapping confirmed':' → HAND-LIGHT fallback (remote unconfirmed)'}`:'HAND-LIGHT';
+ $('song').textContent=`${tracks[c.track].name} · ${format(c.start)}–${format(c.end)} (${c.end-c.start} s) · ${c.section}`;
+ $('countdown').textContent=format(c.end-c.start-(state==='rehearsing'?rehearsalElapsed:0));
+ $('stateText').textContent=state==='done'?'SHOW COMPLETE · remain clear of fired items':state==='hold'?(rehearsal?`HOLD · simulate readiness for ${c.item}`:remote?`HOLD · confirm clear and ready for remote ${c.remote}`:`Light ${c.item}, then tap GO`):state==='countdown'?'Readiness confirmed · optional music count-in':state==='rehearsing'?'REHEARSAL RUNNING · DO NOT LIGHT':state==='test'?'MUSIC TEST · NO FIREWORKS':'Soundtrack cue running';
+ $('remotePrompt').textContent='';
+ $('labelGate').hidden=!c.gate || rehearsal;$('labelText').textContent=c.gate || '';$('labelConfirmed').checked=confirmations.has(index);
+ $('go').disabled=!['hold'].includes(state) || (!rehearsal && (!$('safetyReady').checked || (c.gate && !confirmations.has(index))));
+ $('go').textContent=rehearsal?`GO · rehearse cue ${c.n}`:remote?`GO · ready for remote ${c.remote}`:`GO · ${c.item}`;
+ $('next').textContent=index+1<cues.length?`Up next: ${cues[index+1].n} · ${cues[index+1].item} · ${cues[index+1].remote?'REMOTE '+cues[index+1].remote:'HAND-LIGHT'} · readiness HOLD`:'Up next: finish · remain clear';
+ for(const li of $('cueList').children)li.classList.toggle('current',Number(li.dataset.index)===index);
+ $('elapsed').textContent=`Completed soundtrack: ${format(completed)} · holds excluded`;
+}
+function navigate(delta){clearWork();index=Math.max(0,Math.min(cues.length-1,index+delta));hold('HOLD. Back/Skip never starts music or authorises lighting.',true);}
+function finishSegment(){
+ if(!run)return;const r=run;clearWork(r.type==='test' || !$('keepMusic').checked || !seekVerified || isRehearsal());
+ if(r.type==='test'){
+  seekVerified=true;fullVerified=fullVerified||r.length>30;$('keepMusic').disabled=false;
+  $('testResult').textContent=`PASS: observed seek near 1:30 and ${r.length} seconds of advancing playback.${fullVerified?' Extended >30 s playback also verified.':' Full playback beyond 30 s is NOT yet verified.'}`;
+  state='hold';render();message('Music test finished; show remains in HOLD.');return;
+ }
+ completed+=cues[index].end-cues[index].start;
+ if(index===cues.length-1){state='done';render();message('Show complete. This does not mean any firework is safe to approach.');}
+ else {index++;hold('Cue ended. Unlimited readiness HOLD; never approach a lit or failed item.');}
+}
+function failMusic(text){
+ const test=run && run.type==='test';if(test){seekVerified=false;fullVerified=false;$('keepMusic').checked=false;$('keepMusic').disabled=true;$('testResult').textContent='NOT VERIFIED: '+text;}
+ hold(text,true);
+}
+function requestSeek(){if(!run)return;run.seekRequests++;run.lastSeek=performance.now();call('seek',run.start);}
+function startMusic(type='cue',length=10){
+ if(!ready){hold('Spotify is not ready. Use the player/backup, or rehearse without music.',true);return;}
+ clearWork();const c=cues[index],now=performance.now();
+ state=type==='test'?'test':'loading';
+ run={type,start:type==='test'?90:c.start,end:type==='test'?90+length:c.end,length,uri:uri(type==='test'?'firework':c.track),born:now,lastUpdate:now,lastSeek:now,seekRequests:0,accepted:false,pos:0,paused:true,buffering:false,lastProgress:now,firstPos:null};
+ render();message('Loading Spotify and requesting section start…'+(!fullVerified && type==='cue'?' Full playback beyond 30 seconds is NOT verified.':''));
+ call('loadUri',run.uri);call('play');requestSeek();
+ const token=generation;
+ setTimeout(()=>{if(token===generation && run && (!run.accepted || run.paused || run.buffering)){$('manualPlay').hidden=false;message('Playback not confirmed. Tap to start music, or tap Play on the player below. Clock is held.');}},2000);
+}
+function go(){
+ if($('go').disabled)return;
+ if(cues[index].remote && (isRehearsal() || effectiveRemote(cues[index]))){
+  clearWork();state='countdown';count=3;render();
+  const prefix=isRehearsal()?'REHEARSAL ONLY · simulate':'Press';
+  $('remotePrompt').textContent=`${prefix} remote ${cues[index].remote} in ${count}…`;
+  countTimer=setInterval(()=>{count--;if(count>0){$('remotePrompt').textContent=`${prefix} remote ${cues[index].remote} in ${count}…`;return;}
+   clearInterval(countTimer);countTimer=null;beginCue();$('remotePrompt').textContent=isRehearsal()?'SIMULATED REMOTE · NO FIREWORKS':`Remote ${cues[index].remote} cue NOW · only if safe; never mandatory`;
+  },1000);
+ }else beginCue();
+}
+function beginCue(){if(isRehearsal()){clearWork();state='rehearsing';rehearsalElapsed=0;lastTick=performance.now();render();message('Silent rehearsal. GO/HOLD/Back/Skip work exactly as readiness controls.');}else startMusic();}
+function playbackUpdate(event){
+ const d=event.data || {};if(!run)return;
+ if(d.playingURI!==run.uri){if(d.playingURI && run.accepted)failMusic('Unexpected track. HOLD; check the player.');return;}
+ const r=run,now=performance.now(),p=Number(d.position)/1000,duration=Number(d.duration)/1000;
+ r.lastUpdate=now;r.paused=!!d.isPaused;r.buffering=!!d.isBuffering;
+ if(!Number.isFinite(p))return;
+ if(duration>0 && (duration<=30.5 || duration<r.end-1)){failMusic('Preview or shortened track detected. Timed cue stopped; use whole-song backup.');return;}
+ if(!r.accepted){
+  if(Math.abs(p-r.start)<=2.5){r.accepted=true;r.pos=p;r.firstPos=p;r.lastProgress=now;seekVerified=true;$('keepMusic').disabled=false;}
+  else{if(now-r.lastSeek>900 && r.seekRequests<4)requestSeek();if(now-r.born>8000)failMusic('Seeking to the selected section did not work. HOLD; manual player/backup required.');return;}
+ }
+ if(p<r.start-3){failMusic('Playback moved before the selected cut. HOLD.');return;}
+ if(p-r.pos>4){failMusic('Unexpected playback jump. HOLD; restart the cue deliberately.');return;}
+ if(p>r.pos+.05)r.lastProgress=now;
+ r.pos=p;
+ if(p>=r.end-.15){finishSegment();return;}
+ if(!r.paused && !r.buffering){state=r.type==='test'?'test':'playing';$('manualPlay').hidden=true;message(r.type==='test'?'Testing observed playback and seeking…':'Playing selected section. Timings remain approximate.');}
+ else{message(r.buffering?'Buffering · clock frozen. Do not time ignition to this.':'Spotify paused · clock frozen. Tap to resume.');$('manualPlay').hidden=false;}
+ $('countdown').textContent=format(r.end-p);
+}
+window.onSpotifyIframeApiReady = IFrameAPI => {
+ IFrameAPI.createController($('embed'),{uri:uri('firework'),width:'100%',height:152},embedController=>{
+  controller=embedController;
+  controller.addListener('ready',()=>{ready=true;$('apiStatus').textContent='Spotify ready. Test seeking and full playback on this phone.';});
+  controller.addListener('playback_update',playbackUpdate);
+ });
+};
+$('test').onclick=()=>startMusic('test',10);$('fullTest').onclick=()=>startMusic('test',35);
+$('manualPlay').onclick=()=>{if(run){call('play');if(!run.accepted)requestSeek();}};
+$('go').onclick=go;$('hold').onclick=()=>hold('HOLD requested. Music is paused unless the verified keep-playing option is enabled.');
+$('stop').onclick=()=>hold('STOPPED. Music paused, countdown cancelled. No automatic resume.',true);
+$('back').onclick=()=>navigate(-1);$('skip').onclick=()=>{if(index===cues.length-1){clearWork();state='done';render();message('Final cue skipped. Remain clear.');}else navigate(1);};
+$('rehearsal').onchange=()=>hold('Mode changed. Confirm readiness again; nothing starts automatically.',true);
+$('remoteReady').onchange=()=>hold('Remote mapping changed. Confirm readiness again.',true);
+$('safetyReady').onchange=()=>hold('Readiness changed. Nothing starts automatically.',true);
+$('labelConfirmed').onchange=()=>{if($('labelConfirmed').checked)confirmations.add(index);else confirmations.delete(index);render();};
+$('keepMusic').onchange=()=>{if(!$('keepMusic').checked && state==='hold')call('pause');};
+document.addEventListener('visibilitychange',()=>{if(document.hidden)hold('Page hidden: forced HOLD. Return and tap GO deliberately.',true);});
+window.addEventListener('pagehide',()=>hold('Page left: HOLD.',true));
+setInterval(()=>{
+ const now=performance.now();
+ $('wallClock').textContent='Now: '+new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/London',hour:'2-digit',minute:'2-digit',second:'2-digit',timeZoneName:'short'}).format(new Date())+' · Europe/London';
+ if(state==='rehearsing'){
+  rehearsalElapsed+=(now-lastTick)/1000;lastTick=now;
+  $('countdown').textContent=format(cues[index].end-cues[index].start-rehearsalElapsed);
+  if(rehearsalElapsed>=cues[index].end-cues[index].start){run={type:'cue'};finishSegment();}
+ }
+ if(run){
+  if(now-run.born>12000 && !run.accepted)failMusic('Music did not start/seek. HOLD; use the visible player or backup.');
+  else if(run && (now-run.lastUpdate>12000 || (!run.paused && !run.buffering && now-run.lastProgress>12000)))failMusic('Playback stalled or feedback lost. HOLD; no automatic catch-up.');
+ }
+},200);
+for(const [i,c] of cues.entries()){
+ const li=document.createElement('li');li.dataset.index=i;
+ const title=document.createElement('strong');title.textContent=c.item+' · '+(c.remote?'REMOTE '+c.remote:'HAND-LIGHT');li.append(title);
+ const line=document.createElement('small');line.textContent=`${tracks[c.track].name} · ${format(c.start)}–${format(c.end)} · ${c.end-c.start} s · ${c.section}${c.gate?' · LABEL LOCK':''}`;li.append(line);
+ const link=document.createElement('a');link.href='https://open.spotify.com/track/'+tracks[c.track].id;link.target='_blank';link.rel='noopener';link.textContent='Open whole track ↗';li.append(link);$('cueList').append(li);
+}
+const total=cues.reduce((s,c)=>s+c.end-c.start,0);$('total').textContent=`${cues.length} provisional cues · ${total} seconds (${format(total)}) of selected music, excluding holds and count-ins. Plan roughly 25–35 minutes including unlimited safety holds, not a fixed finish.`;
+render();
+setTimeout(()=>{if(!ready)$('apiStatus').textContent='Spotify API not ready. Network/login restrictions may apply. Silent rehearsal and cue sheet still work.';},10000);
+</script>
+<script src="https://open.spotify.com/embed/iframe-api/v1" async></script>
+</body></html>
