@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en-GB" data-theme="autumn"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; media-src 'self'; img-src 'self'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; connect-src 'none'; form-action 'none'; base-uri 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; img-src 'none'; connect-src 'none'; form-action 'none'; base-uri 'none'">
 <meta name="referrer" content="no-referrer">
 <meta name="theme-color" content="#0F766E">
 <title>Training Portal</title>
@@ -354,37 +354,8 @@ html[data-theme="halloween"] .tonight .mode{background:rgba(255,162,58,.95) !imp
 .thint{text-align:center;font-size:.85rem;opacity:.75;margin:0}
 @media(max-width:640px){.timebig{font-size:3.8rem}}
 
-
-:root{--bg:#141a3a!important;--fg:#ffffff!important;--muted:#e6e9ff!important;--card:#1d2452!important;--line:#ffd166!important;
- --accent:#ffd166!important;--accent2:#ef476f!important;--tint:#2a3270!important;--hdrbg:#050816!important;--hdrfg:#ffffff!important;
- --glass:rgba(29,36,82,.93)!important;--glass2:rgba(20,26,64,.93)!important;--gline:rgba(255,209,102,.6)!important;--herobg:#3a1f5c!important;--today:#2a3a8a!important}
-body.fireworks main *:not(.fw-title):not(input):not(textarea):not(select){color:#fff!important}
-body.fireworks main a,body.fireworks main a *{color:#ffd166!important}
-body.fireworks main button,body.fireworks main a[class],body.fireworks main .btn{background:#2a3270!important;color:#ffd166!important;border-color:#ffd166!important}
-body.fireworks .tab.on,body.fireworks main .on,body.fireworks main .on *,body.fireworks main .active,body.fireworks main [aria-selected="true"],body.fireworks main [aria-pressed="true"]{background:#ffd166!important;color:#111!important}
-body.fireworks main input,body.fireworks main textarea,body.fireworks main select{background:#0b1030!important;color:#fff!important}
-body.fireworks{background:#050816 radial-gradient(ellipse at top,#1b1f4b 0%,#050816 70%) fixed!important;color:#fff}
-body.fireworks .scene{display:none!important}
-
-.fw-banner{position:relative;z-index:3;text-align:center;margin:8px 0 16px;padding:18px 12px;border-radius:18px;
- background:rgba(5,8,22,.5);border:3px solid #ffd166}
-.fw-title{font-weight:900;font-size:1.7rem;letter-spacing:.02em;color:#ffd166}
-
-
-body.fireworks{background:#050816!important}
-.fw-bgvid,.fw-bgimg{position:fixed!important;top:0!important;left:0!important;right:0!important;bottom:0!important;width:100vw!important;height:100vh!important;object-fit:cover;z-index:0!important;pointer-events:none;display:block}
-.fw-bgimg{background:#050816 center/cover no-repeat url(/fireworks/fw-portrait.jpg);display:none!important}
-@media (orientation:landscape){.fw-bgimg{background-image:url(/fireworks/fw-landscape.jpg)}}
-.fw-overlay{position:fixed!important;top:0;left:0;right:0;bottom:0;z-index:1!important;pointer-events:none;background:rgba(5,8,22,.35)}
-:root{--glass:rgba(16,20,52,.72)!important;--glass2:rgba(12,16,44,.72)!important;--card:rgba(16,20,52,.74)!important;--hdrbg:rgba(5,8,22,.3)!important}
-body.fireworks .hdr{background:rgba(5,8,22,.3)!important;backdrop-filter:none!important}
-body.fireworks .fw-banner{background:rgba(5,8,22,.45)!important}
-body.fireworks > header,body.fireworks > main,body.fireworks > footer,body.fireworks .hdr,body.fireworks main{position:relative;z-index:2!important}
-@media (prefers-reduced-motion: reduce){.fw-bgvid{display:none!important}.fw-bgimg{display:block!important}}
-
 </style></head>
-<body class="fireworks"><video class="fw-bgvid" id="fwvid" muted autoplay loop playsinline preload="auto" aria-hidden="true"></video><div class="fw-bgimg" aria-hidden="true"></div><div class="fw-overlay" aria-hidden="true"></div>
-
+<body>
 <div class="scene" aria-hidden="true">
 <div class="scene-base"></div>
 <div class="scene-blob b1"></div>
@@ -396,13 +367,12 @@ body.fireworks > header,body.fireworks > main,body.fireworks > footer,body.firew
 
 
 <header class="hdr"><div class="hdr-in">
-<p class="deco" id="deco" aria-hidden="true">🎆 🎇 🧨 ✨ 🔥 🌭 🍔 🌟 🎉 🥳 🪵 🌙   🎆 🎇 🧨 ✨ 🔥 🌭 🍔 🌟 🎉 🥳 🪵 🌙</p>
+<p class="deco" id="deco" aria-hidden="true">🍂 🍁 🌰 🍄 🍎   🍎 🍄 🌰 🍁 🍂   🍂 🍁 🌰 🍄 🍎</p>
 <div class="hdr-row">
 <div class="hdr-left"><h1>Training Portal</h1><p class="theme-tag">Plan · interval timer · phone-first</p></div>
-<div class="clock-box"><div class="clock" id="clock"></div><div class="datefull" id="datefull">Saturday 7 November</div></div>
+<div class="clock-box"><div class="clock" id="clock"></div><div class="datefull" id="datefull">Sunday 8 November</div></div>
 </div></div></header>
 <main>
-<div class="fw-banner"><div class="fw-title">Fireworks night 🎆</div></div>
 <p class="fam-nav">
 <a href="/">🍽️ Meal plan</a>
 <a href="/family/">👨‍👩‍👧‍👦 Family page</a>
@@ -544,7 +514,7 @@ body.fireworks > header,body.fireworks > main,body.fireworks > footer,body.firew
 </section>
 </section>
 
-<footer>Updated 07 Nov 2026. Rest defaults 60–90 s when not listed. Train hard only if fully well.</footer>
+<footer>Updated 08 Nov 2026. Rest defaults 60–90 s when not listed. Train hard only if fully well.</footer>
 </main>
 <script>
 // Pure date logic (no DOM). Keep in step with theme_for() / festive_for() in build.py.
@@ -917,29 +887,4 @@ var WFT = (function () {
 <script>
 /* theme dock removed; ?theme= still works via page JS */
 </script>
-<script>(function(){
-var v=document.getElementById('fwvid');if(!v)return;
-var mq=window.matchMedia('(orientation: landscape)'),rm=window.matchMedia('(prefers-reduced-motion: reduce)');
-var cur='',lastT=-1,stuck=0,busy=false;
-var webm=!!v.canPlayType('video/webm; codecs="vp9"');
-function kick(){if(rm.matches||!v.src||busy)return;v.muted=true;var p=v.play();if(p&&p.catch)p.catch(function(){});}
-function restart(){if(rm.matches)return;try{v.currentTime=0;}catch(e){}kick();}
-function pick(){if(rm.matches){v.pause();v.removeAttribute('src');v.load();cur='';return;}
- var o=mq.matches?'landscape':'portrait';if(o===cur)return;cur=o;busy=true;
- v.poster='/fireworks/fw-'+o+'.jpg';v.src='/fireworks/fw-'+o+(webm?'.webm':'.mp4');v.load();busy=false;lastT=-1;stuck=0;kick();}
-['ended','stalled','suspend','error','pause'].forEach(function(ev){v.addEventListener(ev,function(){
- if(document.hidden)return;if(ev==='ended'||ev==='error'){if(ev==='error'){cur='';setTimeout(pick,1000);}else restart();}else setTimeout(kick,300);});});
-v.addEventListener('canplay',kick);
-function onMq(){pick();}
-if(mq.addEventListener){mq.addEventListener('change',onMq);rm.addEventListener('change',onMq);}else if(mq.addListener){mq.addListener(onMq);rm.addListener(onMq);}
-window.addEventListener('orientationchange',function(){setTimeout(pick,200);});
-document.addEventListener('visibilitychange',function(){if(!document.hidden)kick();});
-window.addEventListener('focus',kick);window.addEventListener('pageshow',kick);
-setInterval(function(){if(document.hidden||rm.matches)return;
- if(v.paused){kick();}
- if(v.currentTime===lastT){stuck++;if(stuck>=2){stuck=0;restart();}}else stuck=0;lastT=v.currentTime;
- var d=document.getElementById('deco');if(d&&d.textContent!=="\ud83c\udf86 \ud83c\udf87 \ud83e\udde8 \u2728 \ud83d\udd25 \ud83c\udf2d \ud83c\udf54 \ud83c\udf1f \ud83c\udf89 \ud83e\udd73 \ud83e\udeb5 \ud83c\udf19   \ud83c\udf86 \ud83c\udf87 \ud83e\udde8 \u2728 \ud83d\udd25 \ud83c\udf2d \ud83c\udf54 \ud83c\udf1f \ud83c\udf89 \ud83e\udd73 \ud83e\udeb5 \ud83c\udf19"){d.textContent="\ud83c\udf86 \ud83c\udf87 \ud83e\udde8 \u2728 \ud83d\udd25 \ud83c\udf2d \ud83c\udf54 \ud83c\udf1f \ud83c\udf89 \ud83e\udd73 \ud83e\udeb5 \ud83c\udf19   \ud83c\udf86 \ud83c\udf87 \ud83e\udde8 \u2728 \ud83d\udd25 \ud83c\udf2d \ud83c\udf54 \ud83c\udf1f \ud83c\udf89 \ud83e\udd73 \ud83e\udeb5 \ud83c\udf19";}
-},5000);
-var d=document.getElementById('deco');if(d){d.textContent="\ud83c\udf86 \ud83c\udf87 \ud83e\udde8 \u2728 \ud83d\udd25 \ud83c\udf2d \ud83c\udf54 \ud83c\udf1f \ud83c\udf89 \ud83e\udd73 \ud83e\udeb5 \ud83c\udf19   \ud83c\udf86 \ud83c\udf87 \ud83e\udde8 \u2728 \ud83d\udd25 \ud83c\udf2d \ud83c\udf54 \ud83c\udf1f \ud83c\udf89 \ud83e\udd73 \ud83e\udeb5 \ud83c\udf19";setTimeout(function(){d.textContent="\ud83c\udf86 \ud83c\udf87 \ud83e\udde8 \u2728 \ud83d\udd25 \ud83c\udf2d \ud83c\udf54 \ud83c\udf1f \ud83c\udf89 \ud83e\udd73 \ud83e\udeb5 \ud83c\udf19   \ud83c\udf86 \ud83c\udf87 \ud83e\udde8 \u2728 \ud83d\udd25 \ud83c\udf2d \ud83c\udf54 \ud83c\udf1f \ud83c\udf89 \ud83e\udd73 \ud83e\udeb5 \ud83c\udf19";},50);}
-pick();})();</script>
 </body></html>
