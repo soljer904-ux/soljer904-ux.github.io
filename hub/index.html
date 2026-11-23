@@ -327,6 +327,9 @@ html[data-theme="halloween"] .tonight .mode{background:rgba(255,162,58,.95) !imp
 .rota th,.rota td{padding:8px 6px;border-top:1px solid #D9A85F;border-top:1px solid var(--line);text-align:left;vertical-align:top}
 .rota th{font-size:.9rem;text-transform:uppercase;letter-spacing:.04em;opacity:.8}
 .note{background:#FBE2B0;background:var(--tint);border-radius:14px;padding:10px 12px;font-weight:600;margin:8px 0}
+.bday-card{text-align:center;padding:22px 20px;background:#FBE2B0;background:var(--tint)}
+.bday-msg{font-size:1.85rem;font-weight:800;margin:0;line-height:1.3;color:#A33A0C;color:var(--accent)}
+@media(min-width:640px){.bday-msg{font-size:2.15rem}}
 
 
 :root{--bg:#13203a!important;--fg:#ffffff!important;--muted:#e6ecff!important;--card:#1a2a48!important;--line:#e8c36a!important;
@@ -373,7 +376,7 @@ body.xmas > header,body.xmas > main,body.xmas > footer,body.xmas .hdr,body.xmas 
 <p class="deco" id="deco" aria-hidden="true">🎄 ❄️ ⛄ 🎁 ⭐ 🔔 🦌 🎅 🕯️ 🍪 🧦 ✨   🎄 ❄️ ⛄ 🎁 ⭐ 🔔 🦌 🎅 🕯️ 🍪 🧦 ✨</p>
 <div class="hdr-row">
 <div class="hdr-left"><h1>Family Hub</h1><p class="theme-tag">Quick links for phone and tablet</p></div>
-<div class="clock-box"><div class="clock" id="clock"></div><div class="datefull" id="datefull">Saturday 21 November</div></div>
+<div class="clock-box"><div class="clock" id="clock"></div><div class="datefull" id="datefull">Monday 23 November</div></div>
 </div></div></header>
 <main>
 <div class="xm-banner"><div class="xm-title">🎄 Merry Christmas ❄️</div></div>
@@ -383,6 +386,10 @@ body.xmas > header,body.xmas > main,body.xmas > footer,body.xmas .hdr,body.xmas 
 <a href="/shopping/">🛒 Shopping</a>
 <a href="/training/">🏋️ Training</a>
 </p>
+
+<section class="fcard bday-card" id="isla-bday">
+<p class="bday-msg" id="isla-bday-msg">🎂 Isla&#x27;s birthday: 13 days to go!</p>
+</section>
 
 <section class="fcard" id="quick">
 <h2>Quick links</h2>
@@ -450,7 +457,7 @@ body.xmas > header,body.xmas > main,body.xmas > footer,body.xmas .hdr,body.xmas 
 </ul>
 </section>
 
-<footer>Updated 21 Nov 2026. Ask Eve for files that live on her computer (shopping lists, history, home plans).</footer>
+<footer>Updated 23 Nov 2026. Ask Eve for files that live on her computer (shopping lists, history, home plans).</footer>
 </main>
 <script>
 // Pure date logic (no DOM). Keep in step with theme_for() / festive_for() in build.py.
@@ -544,6 +551,16 @@ var WFT = (function () {
   byId("datefull").textContent = DAYS[dow] + " " + P.d + " " + MONTHS[P.m - 1];
   function tick() { var L = london(); byId("clock").textContent = pad(L.hh) + ":" + pad(L.mm); }
   tick(); setInterval(tick, 20000);
+  var bdayCard = byId("isla-bday"), bdayMsg = byId("isla-bday-msg");
+  var bdayTarget = WFT.parse("2026-12-06"), bdayToday = WFT.parse(iso);
+  if (bdayCard && bdayMsg && bdayTarget && bdayToday) {
+    var bdayDays = Math.round((bdayTarget.t - bdayToday.t) / 86400000);
+    if (bdayDays < 0) { bdayCard.hidden = true; }
+    else {
+      bdayCard.hidden = false;
+      bdayMsg.textContent = bdayDays === 0 ? "Happy birthday Isla! 🎉" : ("🎂 Isla's birthday: " + bdayDays + (bdayDays === 1 ? " day to go!" : " days to go!"));
+    }
+  }
 })();
 </script>
 <script>
