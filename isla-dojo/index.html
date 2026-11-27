@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Isla's Karate Times Tables Dojo</title>
+  <meta name="theme-color" content="#0f766e" />
+  <style>
+    :root {
+      --bg: #ffffff;
+      --bg-subtle: #f6f7f9;
+      --text: #111827;
+      --text-secondary: #4b5563;
+      --border: #d1d5db;
+      --border-subtle: #e5e7eb;
+      --border-focus: #0f766e;
+      --accent: #0f766e;
+      --accent-subtle: rgba(15, 118, 110, 0.12);
+      --accent-2: #eab308;
+      --fill-primary: #111827;
+      --text-on-primary: #ffffff;
+      --fill-secondary: #f3f4f6;
+      --success-bg: rgba(34, 197, 94, 0.14);
+      --success-text: #166534;
+      --warn-bg: rgba(234, 179, 8, 0.18);
+      --warn-text: #854d0e;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --radius-xl: 16px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #111318;
+        --bg-subtle: #1a1d24;
+        --text: #f3f4f6;
+        --text-secondary: #9ca3af;
+        --border: #374151;
+        --border-subtle: #262a34;
+        --border-focus: #2dd4bf;
+        --accent: #2dd4bf;
+        --accent-subtle: rgba(45, 212, 191, 0.2);
+        --accent-2: #facc15;
+        --fill-primary: #f3f4f6;
+        --text-on-primary: #111318;
+        --fill-secondary: #232730;
+        --success-bg: rgba(34, 197, 94, 0.2);
+        --success-text: #86efac;
+        --warn-bg: rgba(234, 179, 8, 0.2);
+        --warn-text: #fde047;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 28px 16px 56px;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      line-height: 1.5;
+    }
+
+    .page {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 1.75rem;
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+    }
+
+    .summary {
+      margin: 0 0 28px;
+      color: var(--text-secondary);
+      font-size: 0.98rem;
+    }
+
+    section {
+      margin-bottom: 28px;
+    }
+
+    h2 {
+      margin: 0 0 12px;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .wrap-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .belt-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--text);
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 0.9rem;
+      text-align: left;
+    }
+
+    .belt-btn.selected {
+      border-color: var(--border-focus);
+      background: var(--accent-subtle);
+    }
+
+    .belt-name {
+      font-weight: 600;
+    }
+
+    .belt-sub {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+    }
+
+    .table-chip {
+      padding: 5px 10px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      background: var(--fill-secondary);
+      color: var(--text);
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 0.82rem;
+      font-weight: 500;
+    }
+
+    .table-chip.active {
+      border-color: var(--border-focus);
+      background: var(--fill-primary);
+      color: var(--text-on-primary);
+    }
+
+    .segmented {
+      display: inline-flex;
+      flex-wrap: wrap;
+      padding: 3px;
+      border-radius: var(--radius-md);
+      background: var(--fill-secondary);
+      gap: 2px;
+    }
+
+    .segmented button {
+      border: none;
+      background: transparent;
+      color: var(--text-secondary);
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .segmented button.active {
+      background: var(--bg);
+      color: var(--text);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+    }
+
+    .card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 20px;
+      background: var(--bg);
+    }
+
+    .card-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+    }
+
+    .stats strong {
+      color: var(--text);
+    }
+
+    .progress-track {
+      height: 6px;
+      border-radius: 999px;
+      background: var(--fill-secondary);
+      margin-top: 14px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--accent);
+      transition: width 200ms ease;
+    }
+
+    .question-text {
+      font-size: 2.25rem;
+      font-weight: 600;
+      text-align: center;
+      padding: 22px 8px 14px;
+      letter-spacing: 0.02em;
+    }
+
+    .answer-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .answer-input {
+      width: 150px;
+      padding: 10px 14px;
+      font-size: 1.25rem;
+      text-align: center;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      background: var(--bg-subtle);
+      color: var(--text);
+      font-family: inherit;
+    }
+
+    .btn {
+      padding: 10px 16px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      background: var(--fill-secondary);
+      color: var(--text);
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .btn.primary {
+      background: var(--fill-primary);
+      color: var(--text-on-primary);
+      border-color: var(--fill-primary);
+    }
+
+    .btn:disabled {
+      opacity: 0.45;
+      cursor: default;
+    }
+
+    .choice-btn {
+      min-width: 76px;
+      padding: 12px 18px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      background: var(--fill-secondary);
+      color: var(--text);
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .feedback {
+      margin-top: 16px;
+      padding: 12px 14px;
+      border-radius: var(--radius-lg);
+      font-size: 0.92rem;
+      text-align: center;
+      font-weight: 500;
+    }
+
+    .feedback.correct {
+      background: var(--success-bg);
+      color: var(--success-text);
+    }
+
+    .feedback.try-again {
+      background: var(--warn-bg);
+      color: var(--warn-text);
+    }
+
+    .card-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .hint-box {
+      margin-top: 14px;
+      padding: 14px;
+      border-radius: var(--radius-lg);
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-subtle);
+      font-size: 0.9rem;
+    }
+
+    .hint-title {
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .missed-box {
+      margin-top: 18px;
+      text-align: left;
+      padding: 14px;
+      border-radius: var(--radius-lg);
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .missed-pill {
+      padding: 4px 10px;
+      border-radius: var(--radius-md);
+      background: var(--bg);
+      border: 1px solid var(--border);
+      font-size: 0.88rem;
+    }
+
+    details {
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 12px 16px;
+      background: var(--bg-subtle);
+    }
+
+    summary {
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.98rem;
+    }
+
+    details ul {
+      margin: 10px 0 4px;
+      padding-left: 20px;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    details li {
+      margin-bottom: 6px;
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 18px 12px 40px;
+      }
+
+      h1 {
+        font-size: 1.45rem;
+      }
+
+      .question-text {
+        font-size: 1.85rem;
+        padding: 16px 4px 10px;
+      }
+
+      .btn,
+      .belt-btn,
+      .choice-btn,
+      .segmented button {
+        min-height: 44px;
+      }
+
+      .card {
+        padding: 16px 14px;
+      }
+    }
+
+    .hidden {
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <h1>Isla's Karate Times Tables Dojo</h1>
+    <p class="summary">
+      Welcome to the dojo, Isla! This is your own place for calm, 10-minute times tables practice, with karate belt challenges, visual dot arrays, and friendly mental maths strategies.
+    </p>
+
+    <section>
+      <h2>1. Choose Your Belt or Table</h2>
+      <div id="belt-grid" class="wrap-row" style="margin-bottom: 14px;"></div>
+
+      <div id="table-row" class="wrap-row" style="margin-bottom: 14px;">
+        <span style="font-size: 0.82rem; color: var(--text-secondary); margin-right: 4px;">
+          Or drill one table:
+        </span>
+      </div>
+
+      <div class="wrap-row" style="gap: 12px;">
+        <div class="segmented" id="mode-segmented">
+          <button type="button" data-mode="type" class="active">Type answer</button>
+          <button type="button" data-mode="tap">4-choice tap</button>
+        </div>
+        <div class="segmented" id="length-segmented">
+          <button type="button" data-len="8">8 questions</button>
+          <button type="button" data-len="10" class="active">10 questions</button>
+          <button type="button" data-len="15">15 questions</button>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>2. The Dojo Mat</h2>
+      <div class="card">
+        <div class="card-header">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <span id="active-belt-svg"></span>
+            <div>
+              <div id="active-label" style="font-weight: 600;"></div>
+              <div id="active-sensei" style="font-size: 0.82rem; color: var(--text-secondary);"></div>
+            </div>
+          </div>
+          <div class="stats">
+            <span>Question <strong id="stat-progress">1/10</strong></span>
+            <span>First-try score: <strong id="stat-score">0</strong></span>
+            <span>Streak: <strong id="stat-streak">0</strong></span>
+          </div>
+        </div>
+
+        <div class="progress-track">
+          <div id="progress-fill" class="progress-fill"></div>
+        </div>
+
+        <div id="play-area">
+          <div id="question-text" class="question-text"></div>
+
+          <div id="type-area" class="answer-row">
+            <input
+              id="answer-input"
+              class="answer-input"
+              type="text"
+              inputmode="numeric"
+              placeholder="Type answer"
+              aria-label="Your answer"
+            />
+            <button id="check-btn" type="button" class="btn primary">Check</button>
+            <button id="next-btn-type" type="button" class="btn primary hidden">Next Question</button>
+          </div>
+
+          <div id="tap-area" class="hidden">
+            <div id="choices-row" class="answer-row"></div>
+            <div style="display: flex; justify-content: center; margin-top: 14px;">
+              <button id="next-btn-tap" type="button" class="btn primary hidden">Next Question</button>
+            </div>
+          </div>
+
+          <div id="feedback-box" class="feedback hidden"></div>
+
+          <div class="card-actions">
+            <button id="hint-toggle-btn" type="button" class="btn">Show Sensei Hint</button>
+            <button id="restart-btn" type="button" class="btn">Restart Round</button>
+          </div>
+
+          <div id="hint-box" class="hint-box hidden">
+            <div id="hint-title" class="hint-title"></div>
+            <div id="hint-text" style="color: var(--text-secondary);"></div>
+            <div id="dot-array" style="margin-top: 10px;"></div>
+          </div>
+        </div>
+
+        <div id="summary-area" class="hidden" style="margin-top: 22px; text-align: center;">
+          <div id="summary-heading" style="font-size: 1.35rem; font-weight: 600; margin-bottom: 8px;"></div>
+          <div id="summary-sub" style="color: var(--text-secondary); font-size: 0.92rem; margin-bottom: 16px;"></div>
+          <div class="answer-row">
+            <button id="play-again-btn" type="button" class="btn primary">Play Another Round</button>
+            <button id="retry-missed-btn" type="button" class="btn hidden"></button>
+          </div>
+          <div id="missed-box" class="missed-box hidden">
+            <div style="font-weight: 600; font-size: 0.9rem; margin-bottom: 8px;">Facts to keep sharpening</div>
+            <div id="missed-list" class="wrap-row"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <details>
+        <summary>3. Sensei Notes for Parents</summary>
+        <ul>
+          <li><strong>Keep sessions short and upbeat:</strong> Ten minutes together while they still feel strong beats twenty minutes of fatigue. Stop on a win whenever you can.</li>
+          <li><strong>Praise the method, not just speed:</strong> Asking "How did you work that one out?" builds real number sense.</li>
+          <li><strong>Use the swap trick freely:</strong> If 7 × 4 feels hard, flip it to 4 × 7 and double twice.</li>
+          <li><strong>Treat hints as smart training, not cheating:</strong> In karate you practise a kata slowly before doing it at full speed.</li>
+        </ul>
+      </details>
+    </section>
+  </main>
+
+  <script>
+    const BELTS = [
+      { id: "white", name: "White Belt", subtitle: "2×, 5× and 10× tables", tables: [2, 5, 10], colour: "#F3F4F6", stripe: "#9CA3AF", senseiAnimal: "Snow Leopard" },
+      { id: "yellow", name: "Yellow Belt", subtitle: "3× and 4× tables", tables: [3, 4], colour: "#FACC15", stripe: "#CA8A04", senseiAnimal: "Golden Fox" },
+      { id: "orange", name: "Orange Belt", subtitle: "8× table (double the 4s)", tables: [8], colour: "#FB923C", stripe: "#C2410C", senseiAnimal: "Red Panda" },
+      { id: "green", name: "Green Belt", subtitle: "6× table (double the 3s)", tables: [6], colour: "#22C55E", stripe: "#15803D", senseiAnimal: "Tree Frog" },
+      { id: "blue", name: "Blue Belt", subtitle: "7× and 9× tables", tables: [7, 9], colour: "#3B82F6", stripe: "#1D4ED8", senseiAnimal: "Blue Whale" },
+      { id: "purple", name: "Purple Belt", subtitle: "11× and 12× tables", tables: [11, 12], colour: "#A855F7", stripe: "#7E22CE", senseiAnimal: "Barn Owl" },
+      { id: "brown", name: "Brown Belt", subtitle: "Mixed sparring (2× to 12×)", tables: [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], colour: "#92400E", stripe: "#451A03", senseiAnimal: "Grizzly Bear" },
+      { id: "black", name: "Black Belt", subtitle: "Sensei missing-number challenge", tables: [2, 3, 4, 5, 6, 7, 8, 9, 10, 12], colour: "#1F2937", stripe: "#F59E0B", senseiAnimal: "Black Panther", missingNumber: true }
+    ];
+
+    const PRAISE_LINES = [
+      "Brilliant focus, Isla!",
+      "Spot on — proper brown-belt precision!",
+      "Clean strike! That one is locked in.",
+      "Superb mental maths, Isla!",
+      "Sharp and steady — nice work!",
+      "You nailed it, Isla!"
+    ];
+
+    const state = {
+      selectedBeltId: "white",
+      singleTable: null,
+      answerStyle: "type",
+      roundLength: 10,
+      questions: [],
+      index: 0,
+      score: 0,
+      streak: 0,
+      bestStreak: 0,
+      missed: [],
+      earnedBelts: new Set(),
+      roundFinished: false,
+      isSparringRetry: false,
+      hadWrongOnCurrent: false,
+      feedback: null,
+      showHint: false
+    };
+
+    function getActiveBelt() {
+      return BELTS.find((b) => b.id === state.selectedBeltId) || BELTS[0];
+    }
+
+    function beltSvg(colour, stripe, earned) {
+      return `
+        <svg width="56" height="20" viewBox="0 0 56 20" aria-hidden="true" style="display:block;flex-shrink:0;">
+          <rect x="1" y="4" width="54" height="12" rx="4" fill="${colour}" stroke="var(--border)" stroke-width="1.2" />
+          <rect x="23" y="3" width="10" height="14" rx="2" fill="${colour}" stroke="var(--border)" stroke-width="1.2" />
+          ${earned ? `<rect x="43" y="4.5" width="5" height="11" fill="${stripe}" />` : ""}
+        </svg>
+      `;
+    }
+
+    function getStrategyHint(a, b) {
+      const small = Math.min(a, b);
+      const big = Math.max(a, b);
+      if (small === 2) return `Multiplying by 2 just means double ${big}: ${big} + ${big} = ${a * b}.`;
+      if (small === 10 || big === 10) {
+        const other = small === 10 ? big : small;
+        return `Ten groups of ${other} shifts ${other} one place left to make ${other * 10}.`;
+      }
+      if (small === 5 || big === 5) {
+        const other = small === 5 ? big : small;
+        return `Try 10 × ${other} (${other * 10}) and halve it, or count in 5s ${other} times.`;
+      }
+      if (small === 4 || big === 4) {
+        const other = small === 4 ? big : small;
+        return `Double and double again: 2 × ${other} = ${other * 2}, then double ${other * 2} = ${other * 4}.`;
+      }
+      if (small === 8 || big === 8) {
+        const other = small === 8 ? big : small;
+        return `8× is double 4×: 4 × ${other} = ${other * 4}, so double it to get ${other * 8}.`;
+      }
+      if (small === 6 || big === 6) {
+        const other = small === 6 ? big : small;
+        return `Split 6 into 5 and 1: (5 × ${other}) + ${other} = ${other * 5} + ${other} = ${other * 6}.`;
+      }
+      if (small === 9 || big === 9) {
+        const other = small === 9 ? big : small;
+        return `Do 10 × ${other} (${other * 10}) and take away one ${other}: ${other * 10} − ${other} = ${other * 9}.`;
+      }
+      if (small === 3 || big === 3) {
+        const other = small === 3 ? big : small;
+        return `Do 2 × ${other} (${other * 2}) and add one more ${other}: ${other * 2} + ${other} = ${other * 3}.`;
+      }
+      if (small === 11 || big === 11) {
+        const other = small === 11 ? big : small;
+        return `Do 10 × ${other} (${other * 10}) plus one more ${other} = ${other * 11}.`;
+      }
+      if (small === 12 || big === 12) {
+        const other = small === 12 ? big : small;
+        return `Split 12 into 10 and 2: (10 × ${other}) + (2 × ${other}) = ${other * 10} + ${other * 2} = ${other * 12}.`;
+      }
+      return `Try splitting ${small} into 5 and ${small - 5}: (5 × ${big}) + (${small - 5} × ${big}) = ${5 * big} + ${(small - 5) * big} = ${a * b}.`;
+    }
+
+    function dotArrayHtml(rows, cols) {
+      const displayRows = Math.min(rows, cols);
+      const displayCols = Math.max(rows, cols);
+      const gap = 16;
+      const pad = 14;
+      const width = Math.max(pad * 2 + (displayCols - 1) * gap, 120);
+      const height = Math.max(pad * 2 + (displayRows - 1) * gap, 36);
+      let circles = "";
+      for (let r = 0; r < displayRows; r++) {
+        for (let c = 0; c < displayCols; c++) {
+          const fill = c >= 5 && displayCols > 6 ? "var(--accent-2)" : "var(--accent)";
+          circles += `<circle cx="${pad + c * gap}" cy="${pad + r * gap}" r="4.8" fill="${fill}" />`;
+        }
+      }
+      return `
+        <div style="font-size:0.8rem;color:var(--text-secondary);margin-bottom:6px;">
+          ${displayRows} rows of ${displayCols} dots (${displayRows} × ${displayCols} = ${rows * cols})
+        </div>
+        <svg width="100%" viewBox="0 0 ${width} ${height}" style="max-width:${Math.max(width * 1.4, 180)}px;height:auto;display:block;">
+          ${circles}
+        </svg>
+      `;
+    }
+
+    function shuffle(arr) {
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    }
+
+    function makeChoices(correct, step) {
+      const set = new Set([correct]);
+      for (const off of [step, -step, 1, -1, 2, -2, step * 2, -step * 2]) {
+        if (set.size >= 4) break;
+        if (correct + off > 0) set.add(correct + off);
+      }
+      let extra = correct + 3;
+      while (set.size < 4) {
+        set.add(extra++);
+      }
+      return shuffle(Array.from(set));
+    }
+
+    function startNewRound(customFacts) {
+      const belt = getActiveBelt();
+      const tables = state.singleTable ? [state.singleTable] : belt.tables;
+      const isMissing = !state.singleTable && Boolean(belt.missingNumber) && !customFacts;
+      const pool = [];
+
+      if (customFacts && customFacts.length > 0) {
+        customFacts.forEach((f) => pool.push({ a: f.a, b: f.b }));
+      } else {
+        tables.forEach((t) => {
+          for (let m = 2; m <= 12; m++) {
+            pool.push(Math.random() < 0.5 ? { a: t, b: m } : { a: m, b: t });
+          }
+        });
+      }
+
+      shuffle(pool);
+      const count = customFacts ? Math.min(customFacts.length, 10) : state.roundLength;
+      state.questions = Array.from({ length: count }, (_, i) => {
+        const pair = pool[i % pool.length];
+        const missingLeft = isMissing && Math.random() < 0.65;
+        const answer = missingLeft ? pair.a : pair.a * pair.b;
+        const step = missingLeft ? 1 : Math.min(pair.a, pair.b);
+        return { a: pair.a, b: pair.b, answer, missingLeft, choices: makeChoices(answer, step) };
+      });
+
+      state.index = 0;
+      state.score = 0;
+      state.streak = 0;
+      state.missed = [];
+      state.roundFinished = false;
+      state.isSparringRetry = Boolean(customFacts);
+      state.hadWrongOnCurrent = false;
+      state.feedback = null;
+      state.showHint = false;
+
+      document.getElementById("answer-input").value = "";
+      render();
+    }
+
+    function submitAnswer(rawValue) {
+      const q = state.questions[state.index];
+      if (!q || state.roundFinished || (state.feedback && state.feedback.kind === "correct")) return;
+      const cleaned = String(rawValue).trim();
+      if (!cleaned) return;
+
+      if (Number(cleaned) === q.answer) {
+        const gained = !state.hadWrongOnCurrent;
+        if (gained) {
+          state.score += 1;
+          state.streak += 1;
+          if (state.streak > state.bestStreak) state.bestStreak = state.streak;
+        } else {
+          state.streak = 0;
+        }
+        const praise = PRAISE_LINES[(state.index + state.score) % PRAISE_LINES.length];
+        state.feedback = {
+          kind: "correct",
+          message: state.hadWrongOnCurrent
+            ? `Yes! ${q.a} × ${q.b} = ${q.a * q.b}. Great recovery!`
+            : praise
+        };
+      } else {
+        state.hadWrongOnCurrent = true;
+        state.streak = 0;
+        state.showHint = true;
+        if (!state.missed.some((m) => m.a === q.a && m.b === q.b)) {
+          state.missed.push({ a: q.a, b: q.b, answer: q.answer });
+        }
+        state.feedback = {
+          kind: "try-again",
+          message: "Not quite yet — check the Sensei Hint below and have another go!"
+        };
+        document.getElementById("answer-input").value = "";
+      }
+      render();
+    }
+
+    function nextQuestion() {
+      if (state.index + 1 >= state.questions.length) {
+        state.roundFinished = true;
+        const passMark = Math.ceil(state.questions.length * 0.8);
+        if (!state.singleTable && !state.isSparringRetry && state.score >= passMark) {
+          state.earnedBelts.add(getActiveBelt().id);
+        }
+      } else {
+        state.index += 1;
+        state.feedback = null;
+        state.showHint = false;
+        state.hadWrongOnCurrent = false;
+        document.getElementById("answer-input").value = "";
+      }
+      render();
+    }
+
+    function render() {
+      const belt = getActiveBelt();
+
+      // Belts
+      const beltGrid = document.getElementById("belt-grid");
+      beltGrid.innerHTML = BELTS.map((b) => {
+        const selected = !state.singleTable && state.selectedBeltId === b.id;
+        const earned = state.earnedBelts.has(b.id);
+        return `
+          <button type="button" class="belt-btn ${selected ? "selected" : ""}" data-belt="${b.id}">
+            ${beltSvg(b.colour, b.stripe, earned)}
+            <div>
+              <div class="belt-name">${b.name}${earned ? " ✓" : ""}</div>
+              <div class="belt-sub">${b.subtitle}</div>
+            </div>
+          </button>
+        `;
+      }).join("");
+
+      beltGrid.querySelectorAll("[data-belt]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          state.selectedBeltId = btn.dataset.belt;
+          state.singleTable = null;
+          startNewRound();
+        });
+      });
+
+      // Single-table chips
+      const tableRow = document.getElementById("table-row");
+      tableRow.querySelectorAll(".table-chip").forEach((el) => el.remove());
+      for (let n = 2; n <= 12; n++) {
+        const chip = document.createElement("button");
+        chip.type = "button";
+        chip.className = `table-chip ${state.singleTable === n ? "active" : ""}`;
+        chip.textContent = `${n}×`;
+        chip.addEventListener("click", () => {
+          state.singleTable = n;
+          startNewRound();
+        });
+        tableRow.appendChild(chip);
+      }
+
+      // Header & progress
+      document.getElementById("active-belt-svg").innerHTML = beltSvg(
+        belt.colour,
+        belt.stripe,
+        state.earnedBelts.has(belt.id)
+      );
+      document.getElementById("active-label").textContent = state.isSparringRetry
+        ? "Tricky Facts Sparring"
+        : state.singleTable
+          ? `${state.singleTable}× Table Focus`
+          : `${belt.name} (${belt.subtitle})`;
+      document.getElementById("active-sensei").textContent = `Guide: Sensei ${belt.senseiAnimal}`;
+      document.getElementById("stat-progress").textContent = `${Math.min(state.index + 1, state.questions.length)}/${state.questions.length}`;
+      document.getElementById("stat-score").textContent = String(state.score);
+      document.getElementById("stat-streak").textContent = String(state.streak);
+      const pct = ((state.roundFinished ? state.questions.length : state.index) / state.questions.length) * 100;
+      document.getElementById("progress-fill").style.width = `${pct}%`;
+
+      const playArea = document.getElementById("play-area");
+      const summaryArea = document.getElementById("summary-area");
+
+      if (!state.roundFinished) {
+        playArea.classList.remove("hidden");
+        summaryArea.classList.add("hidden");
+
+        const q = state.questions[state.index];
+        document.getElementById("question-text").textContent = q.missingLeft
+          ? `? × ${q.b} = ${q.a * q.b}`
+          : `${q.a} × ${q.b} = ?`;
+
+        const isCorrect = state.feedback && state.feedback.kind === "correct";
+        const typeArea = document.getElementById("type-area");
+        const tapArea = document.getElementById("tap-area");
+
+        if (state.answerStyle === "type") {
+          typeArea.classList.remove("hidden");
+          tapArea.classList.add("hidden");
+          const checkBtn = document.getElementById("check-btn");
+          const nextBtn = document.getElementById("next-btn-type");
+          checkBtn.classList.toggle("hidden", Boolean(isCorrect));
+          nextBtn.classList.toggle("hidden", !isCorrect);
+          nextBtn.textContent = state.index + 1 >= state.questions.length ? "Finish Round" : "Next Question";
+          if (!isCorrect) document.getElementById("answer-input").focus();
+        } else {
+          typeArea.classList.add("hidden");
+          tapArea.classList.remove("hidden");
+          const choicesRow = document.getElementById("choices-row");
+          choicesRow.innerHTML = q.choices
+            .map((c) => `<button type="button" class="choice-btn" ${isCorrect ? "disabled" : ""} data-choice="${c}">${c}</button>`)
+            .join("");
+          choicesRow.querySelectorAll("[data-choice]").forEach((btn) => {
+            btn.addEventListener("click", () => submitAnswer(btn.dataset.choice));
+          });
+          const nextBtnTap = document.getElementById("next-btn-tap");
+          nextBtnTap.classList.toggle("hidden", !isCorrect);
+          nextBtnTap.textContent = state.index + 1 >= state.questions.length ? "Finish Round" : "Next Question";
+        }
+
+        const fb = document.getElementById("feedback-box");
+        if (state.feedback) {
+          fb.className = `feedback ${state.feedback.kind}`;
+          fb.textContent = state.feedback.message;
+        } else {
+          fb.className = "feedback hidden";
+        }
+
+        const hintBtn = document.getElementById("hint-toggle-btn");
+        const hintBox = document.getElementById("hint-box");
+        hintBtn.textContent = state.showHint ? "Hide Sensei Hint" : "Show Sensei Hint";
+        hintBox.classList.toggle("hidden", !state.showHint);
+        if (state.showHint) {
+          document.getElementById("hint-title").textContent = `Sensei ${belt.senseiAnimal}'s Tip`;
+          document.getElementById("hint-text").textContent = getStrategyHint(q.a, q.b);
+          document.getElementById("dot-array").innerHTML = dotArrayHtml(q.a, q.b);
+        }
+      } else {
+        playArea.classList.add("hidden");
+        summaryArea.classList.remove("hidden");
+        const passMark = Math.ceil(state.questions.length * 0.8);
+        const passed = state.score >= passMark;
+
+        document.getElementById("summary-heading").textContent = passed
+          ? `Round complete, Isla — ${state.score} out of ${state.questions.length} on the first try!`
+          : `Great training session, Isla — ${state.score} out of ${state.questions.length} on the first try!`;
+        document.getElementById("summary-sub").textContent =
+          passed && !state.singleTable && !state.isSparringRetry
+            ? `Sensei ${belt.senseiAnimal} awards you the ${belt.name} stripe! Best streak: ${state.bestStreak}.`
+            : `Every belt takes steady practice. Best streak this session: ${state.bestStreak}.`;
+
+        const retryBtn = document.getElementById("retry-missed-btn");
+        const missedBox = document.getElementById("missed-box");
+        if (state.missed.length > 0) {
+          retryBtn.classList.remove("hidden");
+          retryBtn.textContent = `Practise ${state.missed.length} Tricky Fact${state.missed.length === 1 ? "" : "s"}`;
+          missedBox.classList.remove("hidden");
+          document.getElementById("missed-list").innerHTML = state.missed
+            .map((m) => `<span class="missed-pill">${m.a} × ${m.b} = ${m.a * m.b}</span>`)
+            .join("");
+        } else {
+          retryBtn.classList.add("hidden");
+          missedBox.classList.add("hidden");
+        }
+      }
+    }
+
+    // Wire static controls
+    document.querySelectorAll("#mode-segmented button").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll("#mode-segmented button").forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        state.answerStyle = btn.dataset.mode;
+        render();
+      });
+    });
+
+    document.querySelectorAll("#length-segmented button").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll("#length-segmented button").forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        state.roundLength = Number(btn.dataset.len);
+        startNewRound();
+      });
+    });
+
+    const answerInput = document.getElementById("answer-input");
+    answerInput.addEventListener("input", () => {
+      answerInput.value = answerInput.value.replace(/[^0-9]/g, "");
+    });
+    answerInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        if (state.feedback && state.feedback.kind === "correct") {
+          nextQuestion();
+        } else {
+          submitAnswer(answerInput.value);
+        }
+      }
+    });
+
+    document.getElementById("check-btn").addEventListener("click", () => submitAnswer(answerInput.value));
+    document.getElementById("next-btn-type").addEventListener("click", nextQuestion);
+    document.getElementById("next-btn-tap").addEventListener("click", nextQuestion);
+    document.getElementById("hint-toggle-btn").addEventListener("click", () => {
+      state.showHint = !state.showHint;
+      render();
+    });
+    document.getElementById("restart-btn").addEventListener("click", () => startNewRound());
+    document.getElementById("play-again-btn").addEventListener("click", () => startNewRound());
+    document.getElementById("retry-missed-btn").addEventListener("click", () => {
+      startNewRound(state.missed.map((m) => ({ a: m.a, b: m.b })));
+    });
+
+    startNewRound();
+  </script>
+</body>
+</html>
